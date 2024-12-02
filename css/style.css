@@ -1,0 +1,78 @@
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  h1 {
+    color: rgb(183, 83, 108);
+  }
+  
+  .navbar {
+    background-color: rgb(244, 199, 194);
+  }
+  
+  @media (max-width: 991px) {
+    .sidebar {
+      background-color: rgb(244, 199, 194);
+      backdrop-filter: blur(10px);
+    }
+  }
+  
+  footer {
+    background-color: #f4c7c2; /* Couleur de fond rose */
+    color: #8e4d64; /* Couleur du texte */
+    font-family: 'Britannic Bold', sans-serif; /* Police pour le texte principal */
+  }
+
+  
+  
+  footer h2 {
+    font-size: 2rem;
+    color: #8e4d64; /* Couleur du titre "She Safe" */
+  }
+  
+  footer nav a {
+    font-size: 1.2rem;
+    color: #8e4d64;
+    text-decoration: none;
+  }
+  
+  footer nav a:hover {
+    color: #b06a7b; /* Couleur lors du survol des liens */
+  }
+  
+  footer .btn {
+    background-color: #b06a7b; /* Couleur du bouton Contact */
+    color: white;
+    font-weight: bold;
+    border: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  footer .btn:hover {
+    background-color: #8e4d64; /* Couleur du bouton lors du survol */
+  }
+  
+  footer p {
+    font-size: 0.9rem;
+    margin-top: 20px;
+  }
+  
+  footer img {
+    max-height: 80px; /* Taille du logo */
+  }
+  
+  @media (max-width: 768px) {
+    footer nav a {
+      display: block;
+      margin-bottom: 10px;
+    }
+  
+    .btn {
+      width: 100%; /* Bouton Contact en pleine largeur sur mobile */
+      border-radius: 20px;
+    }
+  }
+  
