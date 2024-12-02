@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-  <body class="d-flex flex-column vh-100"> hello word
+  <body class="d-flex flex-column vh-100"> hello world!
     <!-- Contenu principal -->
     <main class="flex-grow-1">
       <!--Navbar-->
