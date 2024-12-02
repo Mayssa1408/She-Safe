@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-  <body class="d-flex flex-column vh-100">hello
+  <body class="d-flex flex-column vh-100"> john doe
     <!-- Contenu principal -->
     <main class="flex-grow-1">
       <!--Navbar-->
