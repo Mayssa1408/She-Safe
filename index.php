@@ -7,7 +7,7 @@
       <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container-fluid">
           <!--Logo-->
-          <a class="navbar-brand fs-4" href=""><h1>She Safe hello</h1></a>
+          <a class="navbar-brand fs-4" href=""><h1>She Safe</h1></a>
           <!--Toggle Btn-->
           <button
             class="navbar-toggler btn-white shadow-none border-0"
