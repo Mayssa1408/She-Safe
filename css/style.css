@@ -1,83 +1,81 @@
-body {
+
+/* Styles globaux */
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Appliquer la police Glory à tout le texte dans le body */
+body {
+  font-family: 'Glory', sans-serif; /* Applique la police Glory à tout le texte du body */
+}
+
+/* Style du header */
+.header {
   display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #FCD6D2;
 }
 
-h1 {
-  color: rgb(183, 83, 108);
-  margin-bottom: 0;
-}
-
-.navbar {
-  background-color: rgb(244, 199, 194);
-}
-
-.logo {
-  width: 75px;
-  height: 65px;
-  object-fit: contain;
-}
+/* Conteneur du logo */
 .logo-container {
   display: flex;
   align-items: center;
+  margin-left: 81px; /* Marge de 81px à gauche */
 }
 
-@media (max-width: 991px) {
-  .sidebar {
-    background-color: rgb(244, 199, 194);
-    backdrop-filter: blur(10px);
-  }
+/* Style du logo */
+.logo {
+  width: 40px; /* Taille du logo, ajustez selon votre image */
+  height: auto;
+  margin-right: 10px;
 }
 
-footer {
-  background-color: #f4c7c2;
-  color: #8e4d64;
-  font-family: "Britannic Bold", sans-serif;
+/* Nom de l'entreprise à côté du logo (garde la police Great Vibes ici) */
+.logo-name {
+  font-family: 'Great Vibes', cursive; /* Utilisation de la police "Great Vibes" */
+  font-size: 24px;
+  font-weight: normal; /* "Great Vibes" est une police cursive, donc pas besoin de 'bold' */
+  color: #B7536C;
 }
-footer h2 {
-  font-size: 2rem;
-  color: #8e4d64;
+
+/* Style du menu de navigation */
+.navbar ul {
+  display: flex;
+  list-style: none;
 }
-footer nav a {
-  font-size: 1.2rem;
-  color: #8e4d64;
+
+.navbar ul li {
+  margin: 0 20px;
+}
+
+.navbar ul li a {
   text-decoration: none;
+  font-size: 18px;
+  color: #B7536C;
 }
 
-footer nav a:hover {
-  color: #b06a7b;
+.navbar ul li a:hover {
+  color: #D94F78; /* Couleur au survol */
 }
 
-footer .btn {
-  background-color: #b06a7b;
-  color: white;
-  font-weight: bold;
-  border: none;
-  transition: background-color 0.3s ease;
+/* Style des icônes à droite */
+.icons {
+  display: flex;
+  align-items: center;
+  margin-right: 81px; /* Marge de 81px à droite */
 }
 
-footer .btn:hover {
-  background-color: #8e4d64;
+.icon {
+  font-size: 24px;
+  margin-left: 15px;
+  text-decoration: none;
+  color: #333;
 }
 
-footer p {
-  font-size: 0.9rem;
-  margin-top: 20px;
-}
-
-footer img {
-  max-height: 80px;
-}
-
-@media (max-width: 768px) {
-  footer nav a {
-    display: block;
-    margin-bottom: 10px;
-  }
-}
-.btn {
-  width: 100%;
-  border-radius: 20px;
+.icon:hover {
+  color: #007BFF; /* Couleur au survol des icônes */
 }
