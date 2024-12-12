@@ -1,0 +1,81 @@
+
+/* Styles globaux */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Appliquer la police Glory à tout le texte dans le body */
+body {
+  font-family: 'Glory', sans-serif; /* Applique la police Glory à tout le texte du body */
+}
+
+/* Style du header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #FCD6D2;
+}
+
+/* Conteneur du logo */
+.logo-container {
+  display: flex;
+  align-items: center;
+  margin-left: 81px; /* Marge de 81px à gauche */
+}
+
+/* Style du logo */
+.logo {
+  width: 40px; /* Taille du logo, ajustez selon votre image */
+  height: auto;
+  margin-right: 10px;
+}
+
+/* Nom de l'entreprise à côté du logo (garde la police Great Vibes ici) */
+.logo-name {
+  font-family: 'Great Vibes', cursive; /* Utilisation de la police "Great Vibes" */
+  font-size: 24px;
+  font-weight: normal; /* "Great Vibes" est une police cursive, donc pas besoin de 'bold' */
+  color: #B7536C;
+}
+
+/* Style du menu de navigation */
+.navbar ul {
+  display: flex;
+  list-style: none;
+}
+
+.navbar ul li {
+  margin: 0 20px;
+}
+
+.navbar ul li a {
+  text-decoration: none;
+  font-size: 18px;
+  color: #B7536C;
+}
+
+.navbar ul li a:hover {
+  color: #D94F78; /* Couleur au survol */
+}
+
+/* Style des icônes à droite */
+.icons {
+  display: flex;
+  align-items: center;
+  margin-right: 81px; /* Marge de 81px à droite */
+}
+
+.icon {
+  font-size: 24px;
+  margin-left: 15px;
+  text-decoration: none;
+  color: #333;
+}
+
+.icon:hover {
+  color: #007BFF; /* Couleur au survol des icônes */
+}
