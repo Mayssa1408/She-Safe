@@ -1,8 +1,21 @@
+/*
+Theme Name: She-Safe
+Theme URI: http://example.com
+Description: Un thème personnalisé pour She-Safe.
+Author: Votre Nom
+Author URI: http://example.com
+Template: She-Safe
+Version: 1.0
+Text Domain: she-safe
+*/
 body {
   margin: 0;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+}
+main {
+  flex-grow: 1; /* Le main prend l'espace restant */
 }
 
 h1 {
@@ -80,4 +93,21 @@ footer img {
 .btn {
   width: 100%;
   border-radius: 20px;
+}
+
+.about-page h1,
+h2,
+h3 {
+  font-family: "Britannic Bold", sans-serif;
+  color: #b7536c;
+}
+
+.hero img,
+.community img {
+  max-width: 100%;
+  border: 5px solid #b7536c;
+}
+
+.team img {
+  border: 3px solid #fff;
 }
