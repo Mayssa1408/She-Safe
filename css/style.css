@@ -1,5 +1,6 @@
 /*
 Theme Name: She-Safe
+<<<<<<< Updated upstream
 Theme URI: http://example.com
 Description: Un thème personnalisé pour She-Safe.
 Author: Votre Nom
@@ -8,6 +9,16 @@ Template: She-Safe
 Version: 1.0
 Text Domain: she-safe
 */
+=======
+Theme URI: http://example.com/she-safe
+Description: Un thème pour le projet She Safe.
+Author: Votre Nom
+Author URI: http://example.com
+Template: she-safe
+Version: 1.0
+*/
+
+>>>>>>> Stashed changes
 body {
   margin: 0;
   display: flex;

@@ -8,6 +8,7 @@
   <?php wp_head(); ?>
 </head>
 
+<<<<<<< Updated upstream
 <body class="d-flex flex-column vh-100">
   <!--Navbar-->
   <nav class="navbar navbar-expand-lg fixed-top">
@@ -64,3 +65,26 @@
       </div>
     </div>
   </nav>
+
+<body <?php body_class(); ?>>
+  <?php wp_body_open(); ?>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <?php
+      wp_nav_menu([
+        'theme_location' => 'header', // Emplacement du menu
+        'container' => false, // Retirer les divs inutiles
+        'menu_class' => 'navbar-nav me-auto mb-2 mb-lg-0', // Classes Bootstrap pour le menu
+        'fallback_cb' => false // Pas de menu par défaut si aucun n’est configuré
+      ]);
+      ?>
+    </div>
+  </div>
+</nav>
+
