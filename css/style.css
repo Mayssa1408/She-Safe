@@ -183,3 +183,33 @@ header h1 {
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+
+/*About Us*/
+/* Section Hero */
+.hero-section {
+  background-color: #FFF9F0;
+  position: relative;
+  padding: 60px 0;
+}
+
+.hero-section h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #B73756;
+}
+
+.hero-section p {
+  font-size: 1.2rem;
+  color: #333;
+  line-height: 1.6;
+}
+
+.hero-section img {
+  max-width: 100%;
+  height: auto;
+}
+
+.hero-section img.decorative-star {
+  position: absolute;
+  z-index: 1;
+}
