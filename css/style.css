@@ -1,41 +1,41 @@
 /*
 Theme Name: She-Safe
-<<<<<<< Updated upstream
-Theme URI: http://example.com
-Description: Un thème personnalisé pour She-Safe.
-Author: Votre Nom
-Author URI: http://example.com
+Theme URI: http://localhost:8888/wordpress
+Description: Un thème personnalisé pour le projet She Safe.
+Author: Ania
+Author URI: http://localhost:8888/wordpress
 Template: She-Safe
 Version: 1.0
 Text Domain: she-safe
 */
-=======
-Theme URI: http://example.com/she-safe
-Description: Un thème pour le projet She Safe.
-Author: Votre Nom
-Author URI: http://example.com
-Template: she-safe
-Version: 1.0
-*/
 
->>>>>>> Stashed changes
+
+:root {
+  --primary-color: #b7536c;
+  --secondary-color: #f4c7c2;
+  --accent-color: #8e4d64;
+}
+
+/* === Global Styles === */
 body {
   margin: 0;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
+
 main {
   flex-grow: 1; /* Le main prend l'espace restant */
 }
 
 h1 {
-  color: rgb(183, 83, 108);
+  color: var(--primary-color);
   margin-bottom: 0;
 }
 
+/* === Navbar === */
 .navbar {
-  background-color: rgb(244, 199, 194);
+  background-color: var(--secondary-color);
 }
 
 .logo {
@@ -43,39 +43,44 @@ h1 {
   height: 65px;
   object-fit: contain;
 }
+
 .logo-container {
   display: flex;
   align-items: center;
 }
 
+/* === Sidebar Responsive === */
 @media (max-width: 991px) {
   .sidebar {
-    background-color: rgb(244, 199, 194);
+    background-color: var(--secondary-color);
     backdrop-filter: blur(10px);
   }
 }
 
+/* === Footer === */
 footer {
-  background-color: #f4c7c2;
-  color: #8e4d64;
+  background-color: var(--secondary-color);
+  color: var(--accent-color);
   font-family: "Britannic Bold", sans-serif;
 }
+
 footer h2 {
   font-size: 2rem;
-  color: #8e4d64;
+  color: var(--accent-color);
 }
+
 footer nav a {
   font-size: 1.2rem;
-  color: #8e4d64;
+  color: var(--accent-color);
   text-decoration: none;
 }
 
 footer nav a:hover {
-  color: #b06a7b;
+  color: var(--primary-color);
 }
 
 footer .btn {
-  background-color: #b06a7b;
+  background-color: var(--primary-color);
   color: white;
   font-weight: bold;
   border: none;
@@ -83,7 +88,7 @@ footer .btn {
 }
 
 footer .btn:hover {
-  background-color: #8e4d64;
+  background-color: var(--accent-color);
 }
 
 footer p {
@@ -101,24 +106,80 @@ footer img {
     margin-bottom: 10px;
   }
 }
+
+/* === Buttons === */
 .btn {
   width: 100%;
   border-radius: 20px;
 }
 
+/* === Page-specific styles === */
 .about-page h1,
 h2,
 h3 {
   font-family: "Britannic Bold", sans-serif;
-  color: #b7536c;
+  color: var(--primary-color);
 }
 
 .hero img,
 .community img {
   max-width: 100%;
-  border: 5px solid #b7536c;
+  border: 5px solid var(--primary-color);
 }
 
 .team img {
   border: 3px solid #fff;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #fff4f4;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #ffccd2;
+  color: #4f1766;
+  padding: 20px 0;
+}
+
+header h1 {
+  font-size: 2.5rem;
+}
+
+.poll {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.bar-container {
+  background-color: #eee;
+  border-radius: 10px;
+  height: 30px;
+  margin-top: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.bar {
+  height: 100%;
+  background-color: #4caf50;
+  transition: width 0.5s ease;
+}
+
+.percentage {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  font-weight: bold;
+  color: white;
+}
+
+.comments-section .card {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }

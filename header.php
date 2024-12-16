@@ -16,7 +16,7 @@
       <!--Logo-->
       <a class="navbar-brand fs-4" href="">
         <div class="logo-container d-flex align-items-center">
-          <img src="<?php echo get_template_directory_uri(); ?>/logo.png" alt="logo she safe" width="75" height="55">
+          <img src="<?php echo get_template_directory_uri(); ?>/images/logo.png" alt="logo she safe" width="75" height="55">
           <h1 class="ms-2 mb-0">She Safe</h1> <!-- Espacement entre le logo et le texte -->
         </div>
       </a>
@@ -66,25 +66,24 @@
     </div>
   </nav>
 
-<body <?php body_class(); ?>>
-  <?php wp_body_open(); ?>
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <?php
-      wp_nav_menu([
-        'theme_location' => 'header', // Emplacement du menu
-        'container' => false, // Retirer les divs inutiles
-        'menu_class' => 'navbar-nav me-auto mb-2 mb-lg-0', // Classes Bootstrap pour le menu
-        'fallback_cb' => false // Pas de menu par défaut si aucun n’est configuré
-      ]);
-      ?>
-    </div>
-  </div>
-</nav>
 
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <?php
+          wp_nav_menu([
+            'theme_location' => 'header', // Emplacement du menu
+            'container' => false, // Retirer les divs inutiles
+            'menu_class' => 'navbar-nav me-auto mb-2 mb-lg-0', // Classes Bootstrap pour le menu
+            'fallback_cb' => false // Pas de menu par défaut si aucun n’est configuré
+          ]);
+          ?>
+        </div>
+      </div>
+    </nav>
