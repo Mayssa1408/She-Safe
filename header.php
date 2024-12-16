@@ -5,85 +5,63 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><?php bloginfo('name'); ?></title>
+  <link href="https://fonts.googleapis.com/css2?family=Glory:wght@400;700&display=swap" rel="stylesheet">
+
   <?php wp_head(); ?>
 </head>
 
+<body <?php body_class('d-flex flex-column vh-100'); ?>>
 
-<body class="d-flex flex-column vh-100">
-  <!--Navbar-->
-  <nav class="navbar navbar-expand-lg fixed-top">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
     <div class="container-fluid">
-      <!--Logo-->
-      <a class="navbar-brand fs-4" href="">
-        <div class="logo-container d-flex align-items-center">
-          <img src="<?php echo get_template_directory_uri(); ?>/images/logo.png" alt="logo she safe" width="75" height="55">
-          <h1 class="ms-2 mb-0">She Safe</h1> <!-- Espacement entre le logo et le texte -->
-        </div>
+
+      <!-- Logo -->
+      <a class="navbar-brand d-flex align-items-center" href="<?php echo home_url(); ?>">
+        <img src="<?php echo get_template_directory_uri(); ?>/images/SheSafeLG.svg" alt="Logo She Safe" width="75"
+          height="55">
+        <h1 class="ms-2 mb-0 fs-4">She Safe</h1>
       </a>
-      <!--Toggle Btn-->
-      <button class="navbar-toggler btn-white shadow-none border-0" type="button" data-bs-toggle="offcanvas"
+
+      <!-- Toggle Button -->
+      <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="offcanvas"
         data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <!--SideBar-->
-      <div class="sidebar offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
-        aria-labelledby="offcanvasNavbarLabel">
-        <!--Sidebar Header-->
-        <div class="offcanvas-header text-white border-bottom">
+      <!-- Offcanvas Menu -->
+      <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+
+        <!-- Offcanvas Header -->
+        <div class="offcanvas-header border-bottom">
           <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
-          <button type="button" class="btn-close btn-close-white shadow-none" data-bs-dismiss="offcanvas"
-            aria-label="Close"></button>
+          <button type="button" class="btn-close shadow-none" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
 
-        <!--Sidebar body-->
+        <!-- Offcanvas Body -->
         <div class="offcanvas-body d-flex flex-column flex-lg-row p-4 p-lg-0">
-          <ul class="navbar-nav justify-content-center align-items-center fs-5 flex-grow-1 pe-3">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Safe Place</a>
-            </li>
-            <li class="nav-item mx-2">
-              <a class="nav-link" href="#forum">Forum</a>
-            </li>
-            <li class="nav-item mx-2">
-              <a class="nav-link" href="#supportAide">Support et aide</a>
-            </li>
-            <li class="nav-item mx-2">
-              <a class="nav-link" href="#apropos">À propos</a>
-            </li>
-            <li class="nav-item mx-2">
-              <a class="nav-link" href="#moncompte">Mon compte</a>
-            </li>
-          </ul>
-          <!--Log in / Sign Up-->
-          <div class="d-flex flex-column flex-lg-row justify-content-center align-items-center gap-3">
-            <a href="#monCompte" class="text-white">Se connecter</a>
-            <a href="#monCompte" class="text-white text-decoration-none px-3 py-1 rounded-4"
-              style="background-color: #b7536c">S'inscrire</a>
+          <?php
+          wp_nav_menu([
+            'theme_location' => 'header',
+            'container' => false,
+            'menu_class' => 'navbar-nav justify-content-center align-items-center fs-5 flex-grow-1 pe-3',
+          ]);
+          ?>
+
+          <!-- Account Section -->
+          <div class="d-flex justify-content-center align-items-center gap-3">
+            <a href="#moncompte" class="account-icon">
+              <img src="<?php echo get_template_directory_uri(); ?>/images/accounnt.svg" alt="Mon compte" width="32"
+                height="32">
+            </a>
           </div>
         </div>
       </div>
     </div>
   </nav>
+  <!-- Fin Navbar -->
 
+  <?php wp_footer(); ?>
+</body>
 
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <?php
-          wp_nav_menu([
-            'theme_location' => 'header', // Emplacement du menu
-            'container' => false, // Retirer les divs inutiles
-            'menu_class' => 'navbar-nav me-auto mb-2 mb-lg-0', // Classes Bootstrap pour le menu
-            'fallback_cb' => false // Pas de menu par défaut si aucun n’est configuré
-          ]);
-          ?>
-        </div>
-      </div>
-    </nav>
+</html>

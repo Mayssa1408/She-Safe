@@ -9,7 +9,6 @@ Version: 1.0
 Text Domain: she-safe
 */
 
-
 :root {
   --primary-color: #b7536c;
   --secondary-color: #f4c7c2;
@@ -37,6 +36,14 @@ h1 {
 .navbar {
   background-color: var(--secondary-color);
 }
+/* Header */
+header,
+.navbar {
+  background-color: #4e322f; /* Couleur finale */
+  color: var(--primary-color);
+  padding: 10px 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Effet d'ombre */
+}
 
 .logo {
   width: 75px;
@@ -49,6 +56,9 @@ h1 {
   align-items: center;
 }
 
+.offcanvas-title {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
 /* === Sidebar Responsive === */
 @media (max-width: 991px) {
   .sidebar {
@@ -117,8 +127,8 @@ footer img {
 .about-page h1,
 h2,
 h3 {
-  font-family: "Britannic Bold", sans-serif;
-  color: var(--primary-color);
+  font-family: "Glory", sans-serif;
+  color: #b7536c;
 }
 
 .hero img,
@@ -139,7 +149,7 @@ body {
 }
 
 header {
-  background-color: #ffccd2;
+  background-color: #f4c7c2;
   color: #4f1766;
   padding: 20px 0;
 }
@@ -187,7 +197,7 @@ header h1 {
 /*About Us*/
 /* Section Hero */
 .hero-section {
-  background-color: #FFF9F0;
+  background-color: #fff9f0;
   position: relative;
   padding: 60px 0;
 }
@@ -195,7 +205,7 @@ header h1 {
 .hero-section h1 {
   font-size: 3rem;
   font-weight: bold;
-  color: #B73756;
+  color: #b73756;
 }
 
 .hero-section p {
@@ -213,3 +223,74 @@ header h1 {
   position: absolute;
   z-index: 1;
 }
+
+/*support et aide*/
+.account-icon {
+  padding-right: 20px;
+}
+
+/* === Variables === */
+:root {
+  --primary-color: #b7536c; /* Texte principal */
+  --secondary-color: #ffccd2; /* Fond du header */
+  --text-color: #b7536c; /* Texte de la navigation */
+}
+
+/* === Header Styles === */
+header {
+  background-color: var(--secondary-color); /* Utilise la variable */
+  /* Ou remplace directement : */
+  background-color: #f4c7c2; /* Ta nouvelle couleur */
+  padding: 10px 0; /* Réduit l'espacement vertical */
+}
+
+.navbar {
+  background-color: #f4c7c2; /* Nouvelle couleur */
+}
+
+.navbar .logo-container img {
+  width: 65px;
+  height: 65px;
+  object-fit: contain;
+}
+
+.navbar-brand h1 {
+  font-family: "Great Vibes", cursive;
+  font-size: 32px;
+  color: var(--primary-color);
+  margin: 0; /* Supprime l'espacement par défaut */
+}
+
+.navbar-nav .nav-link {
+  font-family: "Glory", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-color) !important;
+  margin: 0 15px; /* Espacement horizontal */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+  color: var(--primary-color); /* Changement de couleur */
+  transform: scale(1.05); /* Légère mise en valeur */
+  text-shadow: 1px 1px 5px rgba(183, 83, 100, 0.5); /* Effet d'ombre */
+}
+
+/* === Header Background === */
+header,
+.navbar {
+  background-color: #e6a19a; /* Nouvelle couleur de fond pour le header */
+}
+
+header:hover,
+.navbar:hover {
+  background-color: #b7536c; /* Changement subtil au survol */
+}
+
+.account-icon img {
+  width: 32px;
+  height: 32px;
+  margin-right: 10px;
+}
+
