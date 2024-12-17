@@ -38,7 +38,7 @@
                 <a class="nav-link" href="#forum">Forum</a>
               </li>
               <li class="nav-item mx-2">
-                <a class="nav-link" href="#supportAide">Support et aide</a>
+                <a class="nav-link" href="#supportAide">Support</a>
               </li>
               <li class="nav-item mx-2">
                 <a class="nav-link" href="#apropos">A propos</a>
