@@ -1,5 +1,11 @@
 <!DOCTYPE html>
 <html lang="fr">
+<?php
+/** 
+ * Template Name: safe-place Page
+ */
+get_header();
+?>
 
 <head>
     <meta charset="UTF-8">
