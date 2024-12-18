@@ -79,3 +79,226 @@ body {
 .icon:hover {
   color: #007BFF; /* Couleur au survol des icônes */
 }
+
+/* css forum */
+/* Styles personnalisés */
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.forum-section {
+  background-color: #FEF6E9;
+  height: 600px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding: 100px;
+}
+
+.forum-text h1 {
+  font-family: 'Lora', serif;
+  font-weight: bold;
+  font-size: 32px;
+  color: #B7536C;
+  margin-bottom: 50px;
+  padding-left: 80px;
+}
+
+.forum-text h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  font-size: 24px;
+  color: #B7536C;
+  margin-bottom: 30px;
+  padding-left: 80px;
+  max-width: 826px;
+}
+
+.forum-text p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  color: #B7536C;
+  margin-bottom: 20px;
+  padding-left: 80px;
+  max-width: 826px;
+}
+
+/* Image */
+.forum-image img {
+  width: 50%;
+  max-width: 400px;
+  height: auto;
+  max-height: 600px;
+  object-fit: cover;
+}
+
+/* Styles personnalisés */
+body {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.second-section {
+  background-color: #F4C7C2;
+  height: auto; /* S'adapte au contenu */
+  display: flex;
+  flex-direction: column; /* Colonne pour empiler les éléments */
+  align-items: center;
+  justify-content: center;
+  padding: 100px; /* Marge en haut et en bas */
+}
+
+/* Section de l'utilisateur (bulle + texte à gauche, bouton à droite) */
+.profile-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Texte à gauche, bouton à droite */
+  width: 100%; /* Prend toute la largeur disponible */
+  max-width: 800px; /* Limite la largeur pour rester responsive */
+  margin-bottom: 50px; /* Espacement en bas */
+}
+
+/* Bulle utilisateur */
+.user-bubble {
+  width: 120px;
+  height: 120px;
+  background-color: #B7536C;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* Design moderne de l'utilisateur */
+.modern-user {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Tête de l'utilisateur */
+.user-head {
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  border-radius: 50%;
+}
+
+/* Épaules / torse */
+.user-shoulders {
+  width: 60px;
+  height: 30px;
+  background-color: white;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  margin-top: 5px;
+}
+
+/* Détails utilisateur (bulle + texte) */
+.user-details {
+  margin-left: 20px; /* Espacement entre la bulle et le texte */
+  display: flex;
+  flex-direction: column;
+}
+
+.user-details h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  font-size: 24px;
+  color: #B7536C;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.user-details p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  color: #B7536C;
+  margin: 0;
+}
+
+/* Bouton "Se connecter" */
+.cta-button {
+  text-decoration: none; /* Enlève le soulignement */
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  background-color: #B7536C;
+  color: white;
+  border: none;
+  width: 250px; /* Largeur du bouton */
+  height: 50px; /* Hauteur du bouton */
+  border-radius: 15px;
+  border-top-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto; /* Aligne le bouton à droite */
+}
+
+/* Effet au survol du bouton */
+.cta-button:hover {
+  background-color: #D94F78;
+}
+
+/* Rectangle pour écrire */
+.write-box {
+  width: 600px;
+  height: 120px;
+  background-color: white;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px; /* Espace interne */
+  gap: 10px;
+  margin-bottom: 20px; /* Espacement avec le bouton envoyer */
+}
+
+/* Champ de texte */
+.write-input {
+  flex: 1;
+  font-family: 'Glory', sans-serif;
+  font-size: 18px;
+  font-weight: 300;
+  color: #000;
+  border: none;
+  outline: none; /* Enlève les bordures par défaut */
+  resize: none; /* Empêche le redimensionnement de la textarea */
+  background-color: transparent;
+}
+
+/* Bouton envoyer */
+.send-button-wrapper {
+  display: flex;
+  justify-content: center; /* Centre horizontalement */
+  width: 100%; /* Prend toute la largeur */
+}
+
+.send-button {
+  width: 50px;
+  height: 50px;
+  background-color: #B7536C;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-top: 60px;
+}
+
+.send-button .send-icon {
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+}
+.send-button:hover {
+  background-color: #D94F78; /* Nouvelle couleur au survol */
+}
