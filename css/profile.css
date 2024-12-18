@@ -1,0 +1,132 @@
+/*css pourla page profile */
+/* Styles globaux */
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #FEF6E9; /* Couleur de fond générale */
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    font-family: 'Lora', serif;
+    font-weight: bold;
+    color: #B7536C;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.container {
+    background-color: white; /* Fond blanc pour la section principale */
+    max-width: 1200px;
+    margin: 50px auto; /* Centré avec une marge autour */
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Photo de profil */
+.profile-picture {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.profile-picture img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%; /* Rend l'image ronde */
+    object-fit: cover;
+    border: 3px solid #B7536C; /* Bordure autour de la photo */
+    cursor: pointer;
+}
+
+.profile-picture button {
+    margin-top: 20px;
+    background-color: #B7536C;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease;
+}
+
+.profile-picture button:hover {
+    background-color: #D94F78;
+}
+
+/* Formulaire */
+form .form-label {
+    font-family: 'Glory', sans-serif;
+    font-size: 20px;
+    color: #B7536C;
+    margin-bottom: 10px;
+}
+
+form .form-control {
+    border: 1px solid #B7536C;
+    border-radius: 5px;
+    box-shadow: none;
+}
+
+form .form-control:focus {
+    border-color: #D94F78;
+    box-shadow: 0 0 0 0.2rem rgba(215, 79, 120, 0.25);
+}
+
+/* Bouton Enregistrer */
+.save-button {
+    display: block;
+    margin: 40px auto 0;
+    padding: 10px 50px;
+    background-color: #B7536C;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    border: none;
+    border-radius: 15px;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.save-button:hover {
+    background-color: #D94F78;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 30px;
+    }
+
+    .profile-picture img {
+        width: 100px;
+        height: 100px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    .form-label {
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    h1 {
+        font-size: 24px;
+    }
+
+    .form-label {
+        font-size: 16px;
+    }
+
+    .save-button {
+        width: 100%;
+        padding: 10px 0;
+    }
+}
