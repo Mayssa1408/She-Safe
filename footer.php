@@ -18,7 +18,7 @@
                     <li><a href="#" class="footer-link">Mon profil</a></li>
                 </ul>
             </div>
-
+    
             <!-- Logo and Copyright -->
             <div class="col-md-4 mb-3 text-center">
                 <h1>She Safe</h1>

@@ -1,13 +1,14 @@
+style css 
 /*
-Theme Name: She-Safe
-Theme URI: http://localhost:8888/wordpress
-Description: Un thème personnalisé pour le projet She Safe.
-Author: Ania
-Author URI: http://localhost:8888/wordpress
-Template: She-Safe
-Version: 1.0
-Text Domain: she-safe
-*/
+  Theme Name: She-Safe
+  Theme URI: http://localhost:8888/wordpress
+  Description: Un thème personnalisé pour le projet She Safe.
+  Author: Ania
+  Author URI: http://localhost:8888/wordpress
+  Template: She-Safe
+  Version: 1.0
+  Text Domain: she-safe
+  */
 
 :root {
   --primary-color: #b7536c;
@@ -85,6 +86,7 @@ header,
 h2,
 h3 {
   font-family: "Glory", sans-serif;
+  font-size: 10px;
   color: #b7536c;
 }
 
@@ -379,4 +381,205 @@ header {
 
 .social-icon:hover {
   color: var(--accent-color);
+}
+
+/**about page*/
+
+.feature-box {
+  max-width: 250px; /* Pour centrer les blocs */
+  margin: 0 auto;
+}
+
+.feature-box img {
+  display: block;
+  margin: 0 auto;
+}
+
+p {
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+.features-section {
+  background-color: #f8c6c6; /* Couleur de fond principale */
+}
+
+.feature-box {
+  background-color: #f2e6f7; /* Couleur de fond des blocs */
+  border-radius: 75px; /* Coins arrondis */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre douce */
+  display: flex; /* Utilisation de flexbox */
+  flex-direction: column; /* Alignement vertical */
+  justify-content: center; /* Centrage vertical */
+  align-items: center; /* Centrage horizontal */
+  height: 100%; /* Prend toute la hauteur du conteneur parent */
+  text-align: center;
+}
+
+.feature-box img {
+  width: 90px; /* Taille des icônes agrandie */
+  height: 90px;
+  margin-bottom: 20px;
+}
+
+.feature-box p {
+  font-size: 1rem;
+  color: #9e4a5c; /* Couleur du texte */
+  font-weight: bold;
+  line-height: 1.5;
+  margin: 0;
+}
+
+h2 {
+  font-size: 1.8rem;
+  color: #fffbe8;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Ajustements du formulaire */
+.poll {
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Card des lieux recommandés */
+.feature-box {
+  background-color: #f8f9fa;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.feature-box:hover {
+  transform: scale(1.05);
+}
+
+.feature-box h3 {
+  color: var(--primary-color);
+  font-size: 1.5rem;
+}
+
+.feature-box p {
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero-section h1 {
+    font-size: 2rem;
+  }
+}
+.survey-container {
+  background-color: #ffede9; /* Couleur de fond douce */
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: "Arial", sans-serif;
+  color: #a84764;
+}
+
+.survey-container h2 {
+  font-size: 1.8rem;
+  text-align: center;
+  color: #a84764;
+  margin-bottom: 20px;
+}
+
+.survey-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  gap: 10px;
+}
+
+.survey-item-title {
+  font-weight: bold;
+  flex: 2;
+  font-size: 1.2rem;
+}
+
+.progress-bar-container {
+  flex: 3;
+  background-color: #fce7e5;
+  border-radius: 20px;
+  height: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: #da627d; /* Couleur des barres */
+  border-radius: 20px;
+  transition: width 0.5s ease;
+}
+
+.survey-item-percentage {
+  font-weight: bold;
+  flex: 0.5;
+  font-size: 1rem;
+}
+
+/***/
+body {
+  font-family: Arial, sans-serif;
+  background-color: #fff4f4;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #ffccd2;
+  color: #4f1766;
+  padding: 20px 0;
+}
+
+header h1 {
+  font-size: 2.5rem;
+}
+
+footer {
+  background-color: #ffccd2;
+  color: #4f1766;
+  padding: 10px 0;
+}
+
+.bar-container {
+  background-color: #eee;
+  border-radius: 10px;
+  height: 30px;
+  margin-top: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.bar {
+  height: 100%;
+  background-color: #4caf50;
+  transition: width 0.5s ease;
+}
+
+.percentage {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  font-weight: bold;
+  color: white;
+}
+
+button {
+  background-color: #ff5c93;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #ff3366;
 }

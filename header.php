@@ -11,7 +11,7 @@
 </head>
 
 <body <?php body_class('d-flex flex-column vh-100'); ?>>
-
+ 
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
     <div class="container-fluid">

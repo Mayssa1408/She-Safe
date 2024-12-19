@@ -40,3 +40,33 @@ document.getElementById('commentForm').addEventListener('submit', function(e) {
         alert("Veuillez écrire un commentaire.");
     }
 });
+
+document.addEventListener('submit', function (e) {
+    if (e.target.matches('.sondage form')) {
+        e.preventDefault();
+
+        const formData = new FormData(e.target);
+        formData.append('action', 'save_vote'); // Nom de ton hook AJAX
+
+        fetch(ajax_object.ajax_url, {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert('Votre vote a été enregistré !');
+                location.reload(); // Rafraîchit pour voir les résultats
+            } else {
+                alert('Erreur : ' + data.data.message);
+            }
+        });
+    }
+});
+document.querySelectorAll('input[type="radio"]').forEach((radio) => {
+    radio.addEventListener('change', () => {
+        document.querySelectorAll('.bar').forEach(bar => bar.style.backgroundColor = '#007bff');
+        const selectedBar = document.querySelector(`#bar${radio.id}`);
+        if (selectedBar) selectedBar.style.backgroundColor = '#28a745';
+    });
+});

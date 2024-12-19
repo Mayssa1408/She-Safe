@@ -71,5 +71,23 @@ get_header();
         <?php endif; ?>
     </div>
 </main>
-
+<!-- Formulaire de Saisie -->
+<div class="col-md-8">
+    <div class="poll p-4 rounded">
+        <h2 class="text-center mb-4" style="color: var(--primary-color);">Proposez un Lieu</h2>
+        <form method="post" action="">
+            <div class="mb-3">
+                <label for="placeName" class="form-label">Nom du Lieu</label>
+                <input type="text" class="form-control" id="placeName" placeholder="Ex: Café Central" required>
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea class="form-control" id="description" rows="3" placeholder="Pourquoi ce lieu est sûr?"
+                    required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Soumettre</button>
+        </form>
+    </div>
+</div>
+</div>
 <?php get_footer(); ?>
