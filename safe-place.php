@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>She Safe</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
+<?php get_header(); ?>
 
 <body>
     <?php
@@ -41,25 +42,39 @@
     </header>
 
     <main class="container">
-        <section class="poll col-md-3 mx-auto my-5">
+        <section class="poll my-5">
             <h2>Parcs</h2>
-            <form method="POST" action="">
-                <?php foreach ($votes as $key => $value): ?>
-                    <div class="option">
-                        <label for="<?= $key ?>">
-                            <input type="radio" id="<?= $key ?>" name="vote" value="<?= $key ?>">
-                            <?= ucfirst(str_replace("parc", "Parc ", $key)) ?>
-                        </label>
-                        <div class="bar-container">
-                            <div class="bar" id="bar<?= $key ?>"
-                                style="width: <?= calculatePercentage($value, $totalVotes) ?>%;"></div>
-                            <span class="percentage"
-                                id="percentage<?= $key ?>"><?= round(calculatePercentage($value, $totalVotes)) ?>%</span>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
-                <button class="btn btn-success mt-3" type="submit">Soumettre mon vote</button>
-            </form>
+
+            <div class="option">
+                <label for="parc1">
+                    <input type="radio" id="parc1" name="vote" value="parc1"> Parc Botanique
+                </label>
+                <div class="bar-container">
+                    <div class="bar" id="bar1"></div>
+                    <span class="percentage" id="percentage1">0%</span>
+                </div>
+            </div>
+
+            <div class="option">
+                <label for="parc2">
+                    <input type="radio" id="parc2" name="vote" value="parc2"> Parc Cinquantenaire
+                </label>
+                <div class="bar-container">
+                    <div class="bar" id="bar2"></div>
+                    <span class="percentage" id="percentage2">0%</span>
+                </div>
+            </div>
+
+            <div class="option">
+                <label for="parc3">
+                    <input type="radio" id="parc3" name="vote" value="parc3"> Parc Royaleee
+                </label>
+                <div class="bar-container">
+                    <div class="bar" id="bar3"></div>
+                    <span class="percentage" id="percentage3">0%</span>
+                </div>
+            </div>
+            <button class="btn btn-success mt-3" onclick="submitVote()">Soumettre mon vote</button>
         </section>
 
         <section class="comments-section my-5">
@@ -93,7 +108,9 @@
         <p>&copy; 2024 She Safe - Tous droits réservés</p>
     </footer>
 
-    <script src="sondage.js"></script>
+    <script src="script/sondage.js"></script>
+
+    <?php get_footer(); ?>
 </body>
 
 </html>

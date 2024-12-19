@@ -1,21 +1,29 @@
-jQuery(document).ready(function ($) {
-    $('#vote-form').on('submit', function (e) {
-        e.preventDefault();
+let votes = {
+    parc1: 0,
+    parc2: 0,
+    parc3: 0
+};
 
-        $.ajax({
-            url: ajax_url, // Utiliser la variable localisée via wp_localize_script
-            type: 'POST',
-            data: {
-                action: 'she_safe_save_vote',
-                park_name: $('#park').val(),
-            },
-            success: function (response) {
-                $('#vote-message').html('<div class="alert alert-success">' + response.data + '</div>');
-                location.reload(); // Actualiser les résultats
-            },
-            error: function (response) {
-                $('#vote-message').html('<div class="alert alert-danger">' + response.data + '</div>');
-            },
-        });
-    });
-});
+function submitVote() {
+    const selectedOption = document.querySelector('input[name="vote"]:checked');
+    if (selectedOption) {
+        const selectedParc = selectedOption.value;
+        votes[selectedParc] += 1;
+        updateBars();
+    } else {
+        alert("Veuillez sélectionner un parc.");
+    }
+}
+
+function updateBars() {
+    const totalVotes = votes.parc1 + votes.parc2 + votes.parc3;
+    if (totalVotes > 0) {
+        for (let key in votes) {
+            const percentage = (votes[key] / totalVotes) * 100;
+            const barId = `bar${key.slice(-1)}`;
+            const percentageId = `percentage${key.slice(-1)}`;
+            document.getElementById(barId).style.width = percentage + "%";
+            document.getElementById(percentageId).innerText = Math.round(percentage) + "%";
+        }
+    }
+}
