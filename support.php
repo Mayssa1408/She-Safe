@@ -1,5 +1,4 @@
 <?php
-
 /** Template Name: My FAQ Page */
 get_header();
 ?>

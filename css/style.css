@@ -1,4 +1,4 @@
-style css 
+/* === Theme Info === */
 /*
   Theme Name: She-Safe
   Theme URI: http://localhost:8888/wordpress
@@ -8,24 +8,30 @@ style css
   Template: She-Safe
   Version: 1.0
   Text Domain: she-safe
-  */
+*/
 
+/* === Variables === */
 :root {
-  --primary-color: #b7536c;
+  --primary-color:#b7536c;
   --secondary-color: #f4c7c2;
   --accent-color: #8e4d64;
+  --footer-bg: #fddad7;
+  --footer-text: #b35e6e;
 }
 
 /* === Global Styles === */
 body {
+  font-family: "Glory", Arial, sans-serif;
   margin: 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  background-color: #fff4f4;
 }
 
 main {
-  flex-grow: 1; /* Le main prend l'espace restant */
+  flex-grow: 1;
 }
 
 h1 {
@@ -33,352 +39,28 @@ h1 {
   margin-bottom: 0;
 }
 
-/* === Navbar === */
-.navbar {
-  background-color: var(--secondary-color);
+p {
+  margin-bottom: 5px;
+  font-size: 0.9rem;
+  line-height: 1.4;
 }
-/* Header */
-header,
-.navbar {
-  background-color: #4e322f; /* Couleur finale */
+
+/* === Header === */
+header {
+  background-color: var(--secondary-color);
   color: var(--primary-color);
   padding: 10px 0;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Effet d'ombre */
-}
-
-.logo {
-  width: 75px;
-  height: 65px;
-  object-fit: contain;
-}
-
-.logo-container {
-  display: flex;
-  align-items: center;
-}
-
-.offcanvas-title {
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-}
-/* === Sidebar Responsive === */
-@media (max-width: 991px) {
-  .sidebar {
-    background-color: var(--secondary-color);
-    backdrop-filter: blur(10px);
-  }
-}
-
-@media (max-width: 768px) {
-  footer nav a {
-    display: block;
-    margin-bottom: 10px;
-  }
-}
-
-/* === Buttons === */
-.btn {
-  width: 100%;
-  border-radius: 20px;
-}
-
-/* === Page-specific styles === */
-.about-page h1,
-h2,
-h3 {
-  font-family: "Glory", sans-serif;
-  font-size: 10px;
-  color: #b7536c;
-}
-
-.hero img,
-.community img {
-  max-width: 100%;
-  border: 5px solid var(--primary-color);
-}
-
-.team img {
-  border: 3px solid #fff;
-}
-
-body {
-  font-family: Arial, sans-serif;
-  background-color: #fff4f4;
-  margin: 0;
-  padding: 0;
-}
-
-header {
-  background-color: #f4c7c2;
-  color: #4f1766;
-  padding: 20px 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 header h1 {
   font-size: 2.5rem;
 }
 
-.poll {
-  background: white;
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.bar-container {
-  background-color: #eee;
-  border-radius: 10px;
-  height: 30px;
-  margin-top: 10px;
-  overflow: hidden;
-  position: relative;
-}
-
-.bar {
-  height: 100%;
-  background-color: #4caf50;
-  width: 0;
-  transition: width 0.5s ease;
-}
-
-.percentage {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  font-weight: bold;
-  color: white;
-  line-height: 30px;
-}
-
-.bar-container {
-  background-color: #eee;
-  border-radius: 10px;
-  height: 30px;
-  margin-top: 10px;
-  overflow: hidden;
-  position: relative;
-}
-
-.bar {
-  height: 100%;
-  background-color: #4caf50;
-  width: 0;
-  transition: width 0.5s ease;
-}
-
-.percentage {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  font-weight: bold;
-  color: white;
-  line-height: 30px;
-}
-
-.bar-container {
-  background-color: #eee;
-  border-radius: 10px;
-  height: 30px;
-  margin-top: 10px;
-  position: relative;
-  overflow: hidden;
-}
-
-.bar {
-  height: 100%;
-  background-color: #d4b90a;
-  transition: width 0.5s ease;
-}
-
-.percentage {
-  position: absolute;
-  top: 5px;
-  right: 10px;
-  font-weight: bold;
-  color: white;
-}
-
-.comments-section .card {
-  border: none;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-/*About Us*/
-/* Section Hero */
-.hero-section {
-  background-color: #fff9f0;
-  position: relative;
-  padding: 60px 0;
-}
-
-.hero-section h1 {
-  font-size: 3rem;
-  font-weight: bold;
-  color: #b73756;
-}
-
-.hero-section p {
-  font-size: 1.2rem;
-  color: #333;
-  line-height: 1.6;
-}
-
-.hero-section img {
-  max-width: 100%;
-  height: auto;
-}
-
-.hero-section img.decorative-star {
-  position: absolute;
-  z-index: 1;
-}
-
-/*support et aide*/
-.account-icon {
-  padding-right: 20px;
-}
-
-/* === Variables === */
-:root {
-  --primary-color: #b7536c; /* Texte principal */
-  --secondary-color: #ffccd2; /* Fond du header */
-  --text-color: #b7536c; /* Texte de la navigation */
-}
-
-/* === Header Styles === */
-header {
-  background-color: var(--secondary-color); /* Utilise la variable */
-  /* Ou remplace directement : */
-  background-color: #f4c7c2; /* Ta nouvelle couleur */
-  padding: 10px 0; /* Réduit l'espacement vertical */
-}
-
 .navbar {
-  background-color: #f4c7c2; /* Nouvelle couleur */
-}
-
-.navbar .logo-container img {
-  width: 65px;
-  height: 65px;
-  object-fit: contain;
-}
-
-.navbar-brand h1 {
-  font-family: "Great Vibes", cursive;
-  font-size: 32px;
-  color: var(--primary-color);
-  margin: 0; /* Supprime l'espacement par défaut */
-}
-
-.navbar-nav .nav-link {
-  font-family: "Glory", sans-serif;
-  font-size: 20px;
-  font-weight: 600;
-  color: var(--text-color) !important;
-  margin: 0 15px; /* Espacement horizontal */
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.navbar-nav .nav-link:hover {
-  color: var(--primary-color); /* Changement de couleur */
-  transform: scale(1.05); /* Légère mise en valeur */
-  text-shadow: 1px 1px 5px rgba(183, 83, 100, 0.5); /* Effet d'ombre */
-}
-
-/* === Header Background === */
-header,
-.navbar {
-  background-color: #e6a19a; /* Nouvelle couleur de fond pour le header */
-}
-
-header:hover,
-.navbar:hover {
-  background-color: #b7536c; /* Changement subtil au survol */
-}
-
-.account-icon img {
-  width: 32px;
-  height: 32px;
-  margin-right: 10px;
-}
-
-/*footer*/
-/* Footer Styles */
-.footer {
-  background-color: #fddad7;
-  color: #b35e6e;
-  font-size: 14px;
-}
-
-/* Liens */
-.footer-link {
-  text-decoration: none;
-  color: #b35e6e;
-  transition: color 0.3s ease;
-}
-
-.footer-link:hover {
-  color: #7a2e40;
-}
-
-/* Logo */
-.footer-logo {
-  width: 80px;
-  height: auto;
-}
-
-/* Social Icons */
-.social-icon {
-  color: #b7536c;
-  margin-right: 10px;
-  font-size: 20px;
-  transition: color 0.3s ease;
-}
-
-.social-icon:hover {
-  color: #7a2e40;
-}
-
-p {
-  margin-bottom: 5px;
-}
-@import url("https://fonts.googleapis.com/css2?family=Glory:wght@400;600&display=swap");
-
-/* === Variables === */
-:root {
-  --primary-color: #b7536c;
-  --secondary-color: #f4c7c2;
-  --accent-color: #8e4d64;
-  --footer-bg: #fddad7;
-  --footer-text: #b35e6e;
-}
-
-body {
-  font-family: "Glory", sans-serif;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-header {
   background-color: var(--secondary-color);
-  padding: 10px 0;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* === Navbar === */
-.navbar-nav .nav-link {
-  font-family: "Glory", sans-serif;
-  font-size: 22px; /* Taille de police */
-  color: var(--primary-color) !important;
-  margin: 0 10px;
-}
-
-/* Centrage logo + titre */
 .logo-container {
   display: flex;
   align-items: center;
@@ -399,101 +81,92 @@ header {
   padding-left: 10px;
 }
 
-/* === Footer === */
-/* === Footer Styles === */
-.footer {
-  background-color: var(--secondary-color);
+.navbar-nav .nav-link {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--primary-color) !important;
+  margin: 0 10px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
   color: var(--accent-color);
-  font-family: "Glory", sans-serif;
-  font-size: 20px;
+  transform: scale(1.05);
+  text-shadow: 1px 1px 5px rgba(183, 83, 100, 0.5);
 }
+
+/* === Footer === */
+.footer {
+  background-color: var(--footer-bg);
+  color: var(--footer-text);
+  font-size: 14px;
+}
+
 .footer h1 {
-  font-family: Great Vibes;
-}
-.footer i {
-  padding: 5px;
+  font-family: "Great Vibes";
 }
 
 .footer-link {
   text-decoration: none;
-  color: var(--accent-color);
+  color: var(--footer-text);
   transition: color 0.3s ease;
 }
 
 .footer-link:hover {
-  color: var(--primary-color);
+  color: var(--accent-color);
 }
 
 .social-icon {
   font-size: 1.5rem;
   color: var(--primary-color);
-  transition: color 0.3s ease;
   margin: 5px;
+  transition: color 0.3s ease;
 }
 
 .social-icon:hover {
   color: var(--accent-color);
 }
 
-/**about page*/
-
-.feature-box {
-  max-width: 250px; /* Pour centrer les blocs */
-  margin: 0 auto;
+/* === Hero Section === */
+.hero-section {
+  background-color: #fff9f0;
+  padding: 60px 0;
+  position: relative;
 }
 
-.feature-box img {
-  display: block;
-  margin: 0 auto;
+.hero-section h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #b73756;
 }
 
-p {
-  font-size: 0.9rem;
-  line-height: 1.4;
+.hero-section p {
+  font-size: 1.2rem;
+  color: #333;
+  line-height: 1.6;
 }
+
+.hero-section img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* === Features Section === */
 .features-section {
-  background-color: #f8c6c6; /* Couleur de fond principale */
+  background-color: #f8c6c6;
 }
 
 .feature-box {
-  background-color: #f2e6f7; /* Couleur de fond des blocs */
-  border-radius: 75px; /* Coins arrondis */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre douce */
-  display: flex; /* Utilisation de flexbox */
-  flex-direction: column; /* Alignement vertical */
-  justify-content: center; /* Centrage vertical */
-  align-items: center; /* Centrage horizontal */
-  height: 100%; /* Prend toute la hauteur du conteneur parent */
-  text-align: center;
-}
-
-.feature-box img {
-  width: 90px; /* Taille des icônes agrandie */
-  height: 90px;
-  margin-bottom: 20px;
-}
-
-.feature-box p {
-  font-size: 1rem;
-  color: #9e4a5c; /* Couleur du texte */
-  font-weight: bold;
-  line-height: 1.5;
-  margin: 0;
-}
-
-h2 {
-  font-size: 1.8rem;
-  color: #fffbe8;
-  margin-bottom: 20px;
-  text-align: center;
-  font-weight: bold;
-}
-
-/* Card des lieux recommandés */
-.feature-box {
-  background-color: #f8f9fa;
+  background-color: #f2e6f7;
   border-radius: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
   transition: transform 0.3s ease;
 }
 
@@ -501,35 +174,29 @@ h2 {
   transform: scale(1.05);
 }
 
+.feature-box img {
+  width: 90px;
+  height: 90px;
+  margin-bottom: 20px;
+}
+
 .feature-box h3 {
   color: var(--primary-color);
   font-size: 1.5rem;
 }
 
-.feature-box p {
-  font-size: 0.9rem;
-  color: #6c757d;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .hero-section h1 {
-    font-size: 2rem;
-  }
-}
+/* === Survey Section === */
 .survey-container {
-  background-color: #ffede9; /* Couleur de fond douce */
+  background-color: #ffede9;
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  font-family: "Arial", sans-serif;
   color: #a84764;
 }
 
 .survey-container h2 {
   font-size: 1.8rem;
   text-align: center;
-  color: #a84764;
   margin-bottom: 20px;
 }
 
@@ -546,77 +213,40 @@ h2 {
   font-size: 1.2rem;
 }
 
-.progress-bar-container {
-  flex: 3;
-  background-color: #fce7e5;
-  border-radius: 20px;
-  height: 20px;
-  position: relative;
-  overflow: hidden;
-}
-
-.progress-bar {
-  height: 100%;
-  background-color: #da627d; /* Couleur des barres */
-  border-radius: 20px;
-  transition: width 0.5s ease;
-}
-
 .survey-item-percentage {
   font-weight: bold;
   flex: 0.5;
   font-size: 1rem;
 }
 
-/***/
-body {
-  font-family: Arial, sans-serif;
-  background-color: #fff4f4;
-  margin: 0;
-  padding: 0;
-}
-
-header {
-  background-color: #ffccd2;
-  color: #4f1766;
-  padding: 20px 0;
-}
-
-header h1 {
-  font-size: 2.5rem;
-}
-
-footer {
-  background-color: #ffccd2;
-  color: #4f1766;
-  padding: 10px 0;
-}
-
 .bar-container {
   background-color: #eee;
   border-radius: 10px;
   height: 30px;
-  margin-top: 10px;
-  position: relative;
   overflow: hidden;
+  position: relative;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .bar {
   height: 100%;
-  background-color: #4caf50;
-  transition: width 0.5s ease;
+  background-color: var(--primary-color);
+  width: 0;
+  transition: width 0.5s ease-in-out;
 }
 
 .percentage {
   position: absolute;
-  top: 5px;
-  right: 10px;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
   font-weight: bold;
   color: white;
+  line-height: 30px;
 }
 
 button {
-  background-color: #ff5c93;
+  background-color: var(--primary-color);
   color: white;
   border: none;
   padding: 10px 20px;
