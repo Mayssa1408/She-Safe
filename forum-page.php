@@ -1,69 +1,82 @@
 <?php
-/* Template Name: Forum Page */
-get_header(); // Inclut l'entête du site WordPress
+// On peut ajouter des logiques PHP ici si nécessaire pour le traitement des données, mais pour l'instant, on garde un HTML de base.
 ?>
 <style>
-/* Forum - Section principale */
+/* Styles personnalisés */
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
 .forum-section {
     background-color: #FEF6E9;
-    height: 600px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    padding: 50px;
-}
-
-.forum-text h1, .forum-text h2, .forum-text p {
-    color: #B7536C;
-    font-family: 'Montserrat', sans-serif;
+    padding: 50px 10px; /* Ajuste les padding pour rendre la section plus compacte sur petits écrans */
 }
 
 .forum-text h1 {
     font-family: 'Lora', serif;
     font-weight: bold;
     font-size: 32px;
-    margin-bottom: 20px;
+    color: #B7536C;
+    margin-bottom: 50px;
+    padding-left: 80px;
 }
 
 .forum-text h2 {
+    font-family: 'Montserrat', sans-serif;
     font-weight: bold;
     font-size: 24px;
-    margin-bottom: 20px;
+    color: #B7536C;
+    margin-bottom: 30px;
+    padding-left: 80px;
+    max-width: 826px;
 }
 
 .forum-text p {
+    font-family: 'Montserrat', sans-serif;
     font-size: 18px;
+    color: #B7536C;
     margin-bottom: 20px;
+    padding-left: 80px;
+    max-width: 826px;
 }
 
-/* Image dans la section Forum */
+/* Image */
 .forum-image img {
     width: 50%;
-    max-width: 300px;
+    max-width: 400px;
     height: auto;
+    max-height: 600px;
     object-fit: cover;
 }
 
-/* Profil Utilisateur */
+/* Section Profil */
 .second-section {
     background-color: #F4C7C2;
-    padding: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 50px 10px; /* Ajuste le padding pour les écrans plus petits */
 }
 
+/* Section de l'utilisateur */
 .profile-info {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
     max-width: 800px;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
+    flex-wrap: wrap; /* Permet l'ajustement de la disposition sur les petits écrans */
 }
 
+/* Bulle utilisateur */
 .user-bubble {
     width: 120px;
     height: 120px;
@@ -72,8 +85,10 @@ get_header(); // Inclut l'entête du site WordPress
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 
+/* Design moderne de l'utilisateur */
 .modern-user {
     position: relative;
     display: flex;
@@ -82,6 +97,7 @@ get_header(); // Inclut l'entête du site WordPress
     justify-content: center;
 }
 
+/* Tête de l'utilisateur */
 .user-head {
     width: 40px;
     height: 40px;
@@ -89,6 +105,7 @@ get_header(); // Inclut l'entête du site WordPress
     border-radius: 50%;
 }
 
+/* Épaules / torse */
 .user-shoulders {
     width: 60px;
     height: 30px;
@@ -98,6 +115,7 @@ get_header(); // Inclut l'entête du site WordPress
     margin-top: 5px;
 }
 
+/* Détails utilisateur */
 .user-details {
     margin-left: 20px;
     display: flex;
@@ -109,23 +127,31 @@ get_header(); // Inclut l'entête du site WordPress
     font-weight: bold;
     font-size: 24px;
     color: #B7536C;
+    margin: 0;
+    margin-bottom: 10px;
 }
 
 .user-details p {
     font-family: 'Montserrat', sans-serif;
     font-size: 20px;
     color: #B7536C;
+    margin: 0;
 }
 
+/* Bouton "Se connecter" */
 .cta-button {
+    text-decoration: none;
     font-family: 'Montserrat', sans-serif;
     font-size: 18px;
     background-color: #B7536C;
     color: white;
+    border: none;
     width: 250px;
     height: 50px;
     border-radius: 15px;
-    text-align: center;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    transition: background-color 0.3s ease;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -136,44 +162,35 @@ get_header(); // Inclut l'entête du site WordPress
     background-color: #D94F78;
 }
 
-/* Formulaire pour soumettre un témoignage */
+/* Rectangle pour écrire */
 .write-box {
-    width: 600px;
+    width: 100%;
+    max-width: 600px;
+    height: 120px;
     background-color: white;
     border-radius: 30px;
-    padding: 20px;
     display: flex;
-    flex-direction: column;
-    gap: 25px; /* Espacement entre les champs */
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    gap: 10px;
+    margin-bottom: 20px;
 }
 
-/* Champs de saisie */
-.write-input, .form-input {
-    width: 100%;
-    padding: 15px;
-    border-radius: 15px;
-    border: 2px solid #B7536C;
-    font-size: 18px;
-    font-family: 'Montserrat', sans-serif;
-}
-
-.form-input + .form-input {
-    margin-top: 20px; /* Ajoute de l'espace entre les champs */
-}
-
-/* Espacement entre le champ "Ton nom" et "Ton vécu" */
+/* Champ de texte */
 .write-input {
-    margin-bottom: 20px; /* Ajout d'un espacement sous le champ "Ton nom" */
+    flex: 1;
+    font-family: 'Glory', sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+    color: #000;
+    border: none;
+    outline: none;
+    resize: none;
+    background-color: transparent;
 }
 
-/* Bouton envoyer centré */
-.send-button-wrapper {
-    display: flex;
-    justify-content: center; /* Centre horizontalement */
-    width: 100%;
-}
-
+/* Bouton envoyer */
 .send-button {
     width: 50px;
     height: 50px;
@@ -184,20 +201,43 @@ get_header(); // Inclut l'entête du site WordPress
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    margin-top: 20px;
-    transition: background-color 0.3s ease;
 }
 
 .send-button .send-icon {
     color: white;
     font-size: 18px;
+    font-weight: bold;
 }
 
 .send-button:hover {
-    background-color: #D94F78; /* Nouvelle couleur au survol */
+    background-color: #D94F78;
 }
 
+/* Media Queries pour Responsivité */
+@media (max-width: 768px) {
+    .forum-text h1 {
+        font-size: 28px;
+    }
+    
+    .forum-text h2 {
+        font-size: 22px;
+    }
+
+    .forum-text p {
+        font-size: 16px;
+    }
+
+    .forum-image img {
+        width: 70%;
+    }
+
+    .profile-info {
+        flex-direction: column;
+        align-items: center;
+    }
+}
 </style>
+
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -206,20 +246,29 @@ get_header(); // Inclut l'entête du site WordPress
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Forum - She Safe</title>
+    <!-- Lien vers Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Lien vers Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Lora:wght@700&family=Montserrat:wght@700;400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/styles.css"> <!-- Relier votre fichier CSS personnalisé -->
+    <!-- Lien vers CSS -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
     <!-- Section Forum -->
     <section class="forum-section container-fluid d-flex align-items-center justify-content-center">
         <div class="row align-items-center w-100">
+            <!-- Colonne Texte -->
             <div class="col-md-6 forum-text">
                 <h1>Un lieu de partage</h1>
                 <h2>Partage ton expérience pour améliorer la sécurité des femmes à Bruxelles !</h2>
-                <p>Ton témoignage aidera d'autres femmes à éviter ces endroits et à découvrir les lieux les plus sécurisés.</p>
+                <p>
+                    Tu as déjà vécu une situation où tu t'es sentie en danger ou mal à l’aise dans un lieu public ?
+                    Partage ton histoire sur le forum She Safe ! Ton témoignage aidera d'autres femmes à éviter ces endroits
+                    et à découvrir les lieux les plus sécurisés de Bruxelles.
+                </p>
             </div>
+            <!-- Colonne Image -->
             <div class="col-md-6 d-flex justify-content-center forum-image mb-4 mb-md-0">
                 <img src="https://via.placeholder.com/300x400" alt="Image de partage">
             </div>
@@ -228,63 +277,37 @@ get_header(); // Inclut l'entête du site WordPress
 
     <!-- Section Profil -->
     <div class="second-section">
+        <!-- Profil (bulle + texte à gauche, bouton à droite) -->
         <div class="profile-info">
+            <!-- Bulle utilisateur -->
             <div class="user-bubble">
                 <div class="modern-user">
                     <div class="user-head"></div>
                     <div class="user-shoulders"></div>
                 </div>
             </div>
+            <!-- Texte utilisateur -->
             <div class="user-details">
                 <h2>Anonyme</h2>
                 <p>Âge</p>
             </div>
+            <!-- Bouton "Se connecter" -->
             <a href="#" class="cta-button">Se connecter</a>
         </div>
 
-        <!-- Formulaire d'envoi de témoignage -->
+        <!-- Rectangle pour écrire -->
         <div class="write-box">
-            <form method="POST" action="">
-                <textarea name="temoignage" class="write-input" placeholder="J'écris ici mon vécu..." required></textarea>
-                <input type="text" name="nom" placeholder="Ton nom (facultatif)" class="form-input" />
-                <input type="number" name="age" placeholder="Ton âge" class="form-input" required />
-                <button type="submit" class="send-button">
-                    <i class="send-icon">▶</i>
-                </button>
-            </form>
+            <textarea class="write-input" placeholder="J'écris ici mon vécu..."></textarea>
         </div>
+
+        <!-- Bouton Envoyer -->
+        <button class="send-button">
+            <i class="send-icon">▶</i>
+        </button>
     </div>
 
+    <!-- Lien vers Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
-
-<?php
-// Traitement du formulaire
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Récupération des données du formulaire
-    $nom = htmlspecialchars($_POST['nom']);
-    $age = htmlspecialchars($_POST['age']);
-    $temoignage = htmlspecialchars($_POST['temoignage']);
-
-    // Vous pouvez ajouter ici une logique pour enregistrer ces informations dans une base de données
-    // Exemple avec PDO pour MySQL (Assurez-vous d'avoir une table adéquate dans votre base de données)
-    try {
-        $pdo = new PDO('mysql:host=localhost;dbname=forum_db', 'root', ''); // Remplacez par vos informations de connexion
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        
-        $stmt = $pdo->prepare("INSERT INTO temoignages (nom, age, temoignage) VALUES (:nom, :age, :temoignage)");
-        $stmt->bindParam(':nom', $nom);
-        $stmt->bindParam(':age', $age);
-        $stmt->bindParam(':temoignage', $temoignage);
-        
-        $stmt->execute();
-        echo "Témoignage envoyé avec succès !";
-    } catch (PDOException $e) {
-        echo "Erreur : " . $e->getMessage();
-    }
-}
-?>
-
-<?php get_footer(); // Inclut le pied de page du site WordPress ?>

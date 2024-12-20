@@ -1,130 +1,194 @@
-<?php 
-/** Template Name: Profile - Page */
-get_header();
-include('db_connection.php');  // Connexion à la base de données
-?>
+<?php get_header(); ?>
+<main class="content">
 
-<link rel="stylesheet" href="style.css">
+<style>
+/* Corps principal */
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #FEF6E9;
+    margin: 0;
+    padding: 0;
+}
 
-<?php
-// Permettre l'upload de la photo de profil
-$profilePhoto = "assets/img/default.png";  // Définir une photo par défaut
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+/* Titre de la page d'inscription */
+h1 {
+    font-weight: bold;
+    color: #B7536C;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 36px;
+}
 
-    // Gérer l'upload de la photo de profil
-    if (isset($_FILES['profile_photo'])) {
-        $targetDir = "assets/uploads/";
-        $fileName = basename($_FILES["profile_photo"]["name"]);
-        $targetFilePath = $targetDir . $fileName;
-        $uploadOk = true;
+/* Conteneur principal du formulaire */
+.container {
+    background: white;
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
 
-        // Vérifier si le fichier est une image
-        $imageFileType = strtolower(pathinfo($targetFilePath, PATHINFO_EXTENSION));
-        $check = getimagesize($_FILES["profile_photo"]["tmp_name"]);
-        if ($check === false) {
-            $uploadOk = false;
-            $error = "Le fichier n'est pas une image.";
-        }
+/* Formulaire d'inscription */
+form label {
+    font-weight: bold;
+    color: #B7536C;
+    display: block;
+    margin-top: 15px;
+}
 
-        // Vérifier la taille
-        if ($_FILES["profile_photo"]["size"] > 2 * 1024 * 1024) { // 2MB max
-            $uploadOk = false;
-            $error = "Le fichier est trop volumineux.";
-        }
+form input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #B7536C;
+    border-radius: 5px;
+    margin-top: 8px;
+    font-size: 16px;
+    color: #B7536C;
+    background-color: #FFF1F0;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
 
-        // Autoriser certains formats
-        if (!in_array($imageFileType, ['jpg', 'png', 'jpeg', 'gif'])) {
-            $uploadOk = false;
-            $error = "Seuls les formats JPG, JPEG, PNG et GIF sont autorisés.";
-        }
+form input:focus {
+    border-color: #D94F78;
+    box-shadow: 0 0 5px rgba(217, 79, 120, 0.7);
+    outline: none;
+}
 
-        // Déplacer le fichier uploadé
-        if ($uploadOk) {
-            if (move_uploaded_file($_FILES["profile_photo"]["tmp_name"], $targetFilePath)) {
-                $profilePhoto = $targetFilePath;
-            } else {
-                $error = "Une erreur est survenue lors de l'upload.";
-            }
-        }
+/* Bouton d'inscription */
+button {
+    background-color: #B7536C;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #D94F78;
+    transform: scale(1.05);
+}
+
+/* Lien de connexion */
+p {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+p a {
+    color: #B7536C;
+    text-decoration: none;
+}
+
+p a:hover {
+    text-decoration: underline;
+}
+
+/* Espacement entre les éléments */
+.row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Responsivité */
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 15px;
     }
 
-    // Récupérer les données du formulaire
-    $nom = $_POST['nom'];
-    $email = $_POST['email'];
-    $password = password_hash($_POST['password'], PASSWORD_DEFAULT); // Sécuriser le mot de passe
-    $date_naissance = $_POST['date_naissance'];
-    $pays = $_POST['pays'];
+    form label {
+        font-size: 14px;
+    }
 
-    // Insérer les données dans la base de données
-    $sql = "INSERT INTO users (nom, email, password, date_naissance, pays, photo_profil) 
-            VALUES (?, ?, ?, ?, ?, ?)";
+    form input {
+        font-size: 14px;
+    }
 
-    if ($stmt = $conn->prepare($sql)) {
-        $stmt->bind_param("ssssss", $nom, $email, $password, $date_naissance, $pays, $profilePhoto);
+    button {
+        font-size: 16px;
+        padding: 10px 18px;
+    }
+}
 
-        if ($stmt->execute()) {
-            echo "Profil créé avec succès!";
+</style>
+<?php
+
+// Gestion de l'inscription
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['create_account_nonce'])) {
+    if (wp_verify_nonce($_POST['create_account_nonce'], 'create_account_action')) {
+        $fname  = sanitize_text_field($_POST['fname']);
+        $lname  = sanitize_text_field($_POST['lname']);
+        $user   = sanitize_user($_POST['uname']);
+        $email  = sanitize_email($_POST['uemail']);
+        $pass   = sanitize_text_field($_POST['upass']);
+        $repass = sanitize_text_field($_POST['repass']);
+
+        if ($pass !== $repass) {
+            echo '<p style="color: red;">Les mots de passe ne correspondent pas.</p>';
+        } elseif (username_exists($user) || email_exists($email)) {
+            echo '<p style="color: red;">Le nom d’utilisateur ou l’adresse e-mail est déjà enregistré.</p>';
         } else {
-            echo "Erreur lors de l'enregistrement du profil.";
-        }
+            $userdata = [
+                'user_login' => $user,
+                'user_email' => $email,
+                'user_pass'  => $pass,
+                'first_name' => $fname,
+                'last_name'  => $lname,
+            ];
 
-        $stmt->close();  // Fermer la déclaration
+            $user_id = wp_insert_user($userdata);
+
+            if (!is_wp_error($user_id)) {
+                echo '<p style="color: green;">Inscription réussie ! Vous pouvez maintenant vous connecter.</p>';
+                wp_redirect(esc_url(home_url('/login')));
+                exit;
+            } else {
+                echo '<p style="color: red;">Une erreur est survenue lors de la création du compte.</p>';
+            }
+        }
+    } else {
+        echo '<p style="color: red;">Nonce de sécurité invalide.</p>';
     }
 }
 ?>
-
 <div class="container" style="background-color: #FEF6E9; max-width: 1200px; margin-top: 100px; padding: 50px;">
-    <!-- Photo de Profil -->
-    <div class="text-center mb-5">
-        <form method="POST" enctype="multipart/form-data">
-            <label for="profile_photo">
-                <img src="<?php echo $profilePhoto; ?>" class="rounded-circle" style="width: 120px; height: 120px; object-fit: cover; cursor: pointer;">
-            </label>
-            <input type="file" id="profile_photo" name="profile_photo" accept="image/*" style="display: none;">
-            <button type="submit" class="btn btn-primary mt-3">Mettre à jour</button>
-        </form>
+    <!-- Formulaire d'inscription -->
+    <div class="row">
+        <div class="col-lg-6 col-12">
+            <h1 class="titreseconnecter">S'inscrire</h1>
+            <form method="POST">
+                <label for="fname">Prénom</label>
+                <input type="text" id="fname" name="fname" required />
+
+                <label for="lname">Nom</label>
+                <input type="text" id="lname" name="lname" required />
+
+                <label for="uname">Nom d'utilisateur</label>
+                <input type="text" id="uname" name="uname" required />
+
+                <label for="uemail">Adresse mail</label>
+                <input type="email" id="uemail" name="uemail" required />
+
+                <label for="upass">Mot de passe</label>
+                <input type="password" id="upass" name="upass" required />
+
+                <label for="repass">Confirmer le mot de passe</label>
+                <input type="password" id="repass" name="repass" required />
+
+                <input type="hidden" name="create_account_nonce" value="<?php echo wp_create_nonce('create_account_action'); ?>">
+                <button type="submit" class="btn-inscrire">S'inscrire</button>
+            </form>
+            <p>Déjà membre ? <a href="<?php echo esc_url(home_url('/login')); ?>">Se connecter</a></p>
+        </div>
     </div>
-
-    <!-- Titre -->
-    <h1 class="text-center" style="font-family: 'Lora', serif; font-weight: bold; font-size: 32px; margin-bottom: 50px;">Mon Profil</h1>
-
-    <!-- Formulaire -->
-    <form action="#" method="POST">
-        <div class="mb-3">
-            <label for="nom" class="form-label" style="font-family: 'Glory', sans-serif; font-size: 24px;">Nom</label>
-            <input type="text" class="form-control" id="nom" name="nom" placeholder="Votre nom">
-        </div>
-        <div class="mb-3">
-            <label for="email" class="form-label" style="font-family: 'Glory', sans-serif; font-size: 24px;">Email</label>
-            <input type="email" class="form-control" id="email" name="email" placeholder="Votre email">
-        </div>
-        <div class="mb-3">
-            <label for="password" class="form-label" style="font-family: 'Glory', sans-serif; font-size: 24px;">Mot de passe</label>
-            <input type="password" class="form-control" id="password" name="password" placeholder="Votre mot de passe">
-        </div>
-        <div class="mb-3">
-            <label for="date_naissance" class="form-label" style="font-family: 'Glory', sans-serif; font-size: 24px;">Date de naissance</label>
-            <input type="date" class="form-control" id="date_naissance" name="date_naissance">
-        </div>
-        <div class="mb-3">
-            <label for="pays" class="form-label" style="font-family: 'Glory', sans-serif; font-size: 24px;">Pays</label>
-            <input type="text" class="form-control" id="pays" name="pays" placeholder="Votre pays">
-        </div>
-        <!-- Bouton Enregistrer -->
-        <div class="text-center mt-4">
-            <button type="submit" class="btn" style="
-                background-color: #B7536C;
-                color: white;
-                font-family: 'Montserrat', sans-serif;
-                font-size: 18px;
-                border-radius: 15px;
-                border-top-left-radius: 5px;
-                border-bottom-right-radius: 5px;
-                padding: 10px 50px;">
-                Enregistrer
-            </button>
-        </div>
-    </form>
 </div>
 
 <?php get_footer(); ?>
