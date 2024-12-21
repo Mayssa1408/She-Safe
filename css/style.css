@@ -12,7 +12,7 @@
 
 /* === Variables === */
 :root {
-  --primary-color:#b7536c;
+  --primary-color: #b7536c;
   --secondary-color: #f4c7c2;
   --accent-color: #8e4d64;
   --footer-bg: #fddad7;
@@ -41,7 +41,8 @@ h1 {
 
 p {
   margin-bottom: 5px;
-  font-size: 0.9rem;
+
+  font-size: 20px;
   line-height: 1.4;
 }
 
@@ -247,7 +248,7 @@ header h1 {
 
 button {
   background-color: var(--primary-color);
-  color: white;
+  color: rgb(123, 9, 9);
   border: none;
   padding: 10px 20px;
   border-radius: 25px;
@@ -258,3 +259,104 @@ button {
 button:hover {
   background-color: #ff3366;
 }
+
+/******************************************************* Section Safe Place ************************************/
+#safe-place {
+  background-color: #fef6e9;
+  padding: 0; /* Enlève les espaces inutiles autour de la section */
+  margin: 0;
+  height: auto; /* Prend toute la hauteur de l'écran */
+  display: flex; /* Flexbox pour aligner contenu/image */
+  align-items: stretch; /* Étend les colonnes pour remplir toute la hauteur */
+}
+
+#safe-place h2 {
+  color: #ba476d;
+  font-size: 2.5rem; /* Taille du titre plus grande */
+  text-align: right; /* Centrer le titre */
+}
+
+#safe-place p {
+  color: #333333; /* Texte avec un contraste adapté */
+  font-size: 1.2rem; /* Taille de police adaptée */
+  line-height: 1.6; /* Meilleure lisibilité */
+  text-align: right;
+}
+
+#safe-place .btn {
+  background-color: #ba476d;
+  color: white;
+  border: none;
+  border-radius: 15px 2px 15px 2px;
+  padding: 12px 25px;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  text-align: right;
+}
+
+#safe-place .btn:hover {
+  background-color: #90274f; /* Couleur légèrement plus foncée au survol */
+}
+
+#safe-place img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+#safe-place .container-fluid {
+  max-width: 100%; /* Ajuste selon la taille souhaitée */
+  margin: 0 auto; /* Centre le contenu */
+}
+
+.container-fluid {
+  padding: 0; /* Ajouter des marges latérales pour éviter que le contenu ne touche les bords */
+  background-color: transparent;
+}
+
+#safe-place .icon {
+  display: flex;
+  justify-content: center; /* Centre l'icône horizontalement */
+  align-items: center; /* Centre l'icône verticalement si nécessaire */
+  margin-bottom: 20px; /* Espace entre l'icône et le titre */
+}
+
+#safe-place .safe-icon {
+  width: 175px; /* Taille de l'icône */
+  height: auto; /* Maintient les proportions */
+  margin: 30px 15px;
+}
+
+/****************************sondage*********************************/
+.poll-container {
+  background-color: #f7d7d4;
+  padding: 50px 0;
+ 
+}
+
+.poll-card {
+  width: 1000px; /* Largeur maximale de la carte */
+  margin: auto; /* Centre la carte horizontalement */
+  background-color: #fff4f4;
+  border-radius: 15px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.poll-card h2 {
+  font-size: 42px; /* Taille du titre */
+}
+
+.progress {
+  background-color: #f5d6d9;
+  border-radius: 10px;
+}
+
+.progress-bar {
+  background-color: #ba476d;
+  font-weight: bold;
+  color: white;
+}
+
+button {
+  width: 100%; /* Bouton prend toute la largeur */
+}
+  
