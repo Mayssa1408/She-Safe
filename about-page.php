@@ -85,7 +85,7 @@ get_header();
 <section class="content-section py-5" style="background-color: #FDE3E3;">
     <div class="row mb-4">
         <div class="col-md-6 text-center">
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/group1.jpg" class="img-fluid rounded-circle"
+            <img src="<?php echo get_template_directory_uri(); ?>/images/group1.jpg" class="img-fluid"
                 alt="Group 1">
         </div>
         <div class="col-md-6">
@@ -98,7 +98,7 @@ get_header();
     </div>
     <div class="row">
         <div class="col-md-6 order-md-2 text-center">
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/group2.jpg" class="img-fluid rounded-circle"
+            <img src="<?php echo get_template_directory_uri(); ?>/images/group2.jpg" class="img-fluid  rounded-circle"
                 alt="Group 2">
         </div>
         <div class="col-md-6">
@@ -119,21 +119,21 @@ get_header();
     <div class="row">
         <!-- Team Member 1 -->
         <div class="col-md-4">
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/team1.jpg" class="rounded-circle mb-3"
+            <img src="<?php echo get_template_directory_uri(); ?>/images/team1.png" class="rounded-circle mb-3"
                 width="150" alt="Team 1">
             <h5>Alia</h5>
             <p>Co-fondatrice et coordinatrice</p>
         </div>
         <!-- Team Member 2 -->
         <div class="col-md-4">
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/team2.jpg" class="rounded-circle mb-3"
+            <img src="<?php echo get_template_directory_uri(); ?>/images/team2.png" class="rounded-circle mb-3"
                 width="150" alt="Team 2">
             <h5>Louisa</h5>
             <p>Responsable Communication</p>
         </div>
         <!-- Team Member 3 -->
         <div class="col-md-4">
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/team3.jpg" class="rounded-circle mb-3"
+            <img src="<?php echo get_template_directory_uri(); ?>/images/team3.png" class="rounded-circle mb-3"
                 width="150" alt="Team 3">
             <h5>Stella</h5>
             <p>Designer & Développeuse</p>

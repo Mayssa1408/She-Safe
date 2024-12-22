@@ -253,7 +253,7 @@ button {
   padding: 10px 20px;
   border-radius: 25px;
   font-weight: bold;
-  transition: background-color 0.3s ease;
+
 }
 
 button:hover {
@@ -267,7 +267,7 @@ button:hover {
   margin: 0;
   height: auto; /* Prend toute la hauteur de l'écran */
   display: flex; /* Flexbox pour aligner contenu/image */
-  align-items: stretch; /* Étend les colonnes pour remplir toute la hauteur */
+  align-items: center; /* Étend les colonnes pour remplir toute la hauteur */
 }
 
 #safe-place h2 {
@@ -326,23 +326,22 @@ button:hover {
   margin: 30px 15px;
 }
 
-/****************************sondage*********************************/
+/****************************sondage*************************************************************************/
 .poll-container {
   background-color: #f7d7d4;
-  padding: 50px 0;
- 
+  padding: 50px;
 }
 
 .poll-card {
-  width: 1000px; /* Largeur maximale de la carte */
-  margin: auto; /* Centre la carte horizontalement */
+  margin: auto; /* Centrer la carte dans la grille */
   background-color: #fff4f4;
-  border-radius: 15px;
+  border-radius: 50px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 30px;
 }
 
 .poll-card h2 {
-  font-size: 42px; /* Taille du titre */
+  font-size: 42px;
 }
 
 .progress {
@@ -357,6 +356,70 @@ button:hover {
 }
 
 button {
-  width: 100%; /* Bouton prend toute la largeur */
+  width: 50%;
 }
-  
+
+/*controller*/
+
+.carousel-control-prev,
+.carousel-control-next {
+  width: 30px; /* Réduit la largeur */
+  height: 30px; /* Réduit la hauteur */
+  top: 50%; /* Centre verticalement */
+  transform: translateY(-50%);
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  width: 15px; /* Taille des icônes flèches */
+  height: 15px;
+  background-size: 100%; /* Ajuste la taille de l'icône */
+}
+
+/*****************comments***************************************/
+
+.add-comment {
+  background-color: #f9f3f4;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.testimonials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.testimonial-card {
+  background-color: #fdf5f6;
+  border: 1px solid #f7d7db;
+  border-radius: 10px;
+  padding: 15px;
+  width: 250px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.testimonial-card:hover {
+  transform: scale(1.05);
+}
+
+.testimonial-card h5 {
+  color: #e74c3c;
+}
+
+.testimonial-card p {
+  font-size: 14px;
+  color: #555;
+}
+
+.btn-submit {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.btn-submit:hover {
+  background-color: #c0392b;
+}
