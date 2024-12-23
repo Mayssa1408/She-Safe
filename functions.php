@@ -147,3 +147,34 @@ function she_safe_forum_form() {
 
 // Enregistrer le shortcode
 add_shortcode('forum_form', 'she_safe_forum_form');
+
+
+/// faq function et js lien  ////
+function she_safe_enqueue_scripts() {
+    if (is_page_template('faq-page.php')) {
+        wp_enqueue_style('faq-styles', get_template_directory_uri() . '/faq-style.css', [], '1.0');
+        wp_enqueue_script('faq-script', get_template_directory_uri() . '/faq-script.js', [], '1.0', true);
+    }
+}
+add_action('wp_enqueue_scripts', 'she_safe_enqueue_scripts');
+
+function she_safe_handle_contact_form() {
+    if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['name'], $_POST['subject'], $_POST['message'])) {
+        $name = sanitize_text_field($_POST['name']);
+        $subject = sanitize_text_field($_POST['subject']);
+        $message = sanitize_textarea_field($_POST['message']);
+
+        // Envoi d'email
+        $admin_email = get_option('admin_email');
+        $email_subject = "Contact: " . $subject;
+        $email_message = "Nom: $name\n\nMessage:\n$message";
+
+        wp_mail($admin_email, $email_subject, $email_message);
+
+        // Redirection avec succès
+        wp_redirect(add_query_arg('success', '1', wp_get_referer()));
+        exit;
+    }
+}
+add_action('admin_post_nopriv_she_safe_contact', 'she_safe_handle_contact_form');
+add_action('admin_post_she_safe_contact', 'she_safe_handle_contact_form');
