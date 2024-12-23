@@ -72,25 +72,6 @@ function add_sondage_options_metabox()
 }
 add_action('add_meta_boxes', 'add_sondage_options_metabox');
 
-function render_sondage_options_box($post)
-{
-    $options = get_post_meta($post->ID, 'sondage_options', true) ?: [];
-    wp_nonce_field('save_sondage_options', 'sondage_options_nonce');
-    ?>
-    <div id="sondage-options">
-        <p>Ajoutez des options de vote (une par ligne) :</p>
-        <div id="options-container">
-            <?php foreach ($options as $option): ?>
-                <div class="option-row">
-                    <input type="text" name="sondage_options[]" value="<?php echo esc_attr($option); ?>"
-                        placeholder="Entrez une option...">
-                </div>
-            <?php endforeach; ?>
-        </div>
-        <button type="button" id="add-option">Ajouter une option</button>
-    </div>
-    <?php
-}
 
 function save_sondage_options($post_id)
 {
@@ -141,3 +122,24 @@ function she_safe_save_vote()
 }
 add_action('wp_ajax_nopriv_she_safe_save_vote', 'she_safe_save_vote');
 add_action('wp_ajax_she_safe_save_vote', 'she_safe_save_vote');
+
+// PHP to handle form submissions
+add_action('wp_ajax_add_testimonial', 'add_testimonial');
+add_action('wp_ajax_nopriv_add_testimonial', 'add_testimonial');
+
+function add_testimonial() {
+  $place = sanitize_text_field($_POST['place']);
+  $name = sanitize_text_field($_POST['name']);
+  $comment = sanitize_textarea_field($_POST['comment']);
+
+  $testimonials = get_option('safe_place_testimonials', []);
+  $testimonials[] = [
+    'place' => $place,
+    'name' => $name,
+    'comment' => $comment
+  ];
+
+  update_option('safe_place_testimonials', $testimonials);
+
+  wp_send_json_success();
+}

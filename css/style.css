@@ -153,6 +153,19 @@ header h1 {
   height: auto;
 }
 
+.values-section {
+  padding-top: 5%;
+}
+.values-section h1 {
+  margin-bottom: 10;
+  padding: 0;
+}
+
+.values-section h3 {
+  margin-top: 0;
+  padding: 0;
+}
+
 /* === Features Section === */
 .features-section {
   background-color: #f8c6c6;
@@ -167,7 +180,8 @@ header h1 {
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 20px;
+  padding: 50px; /* Padding interne */
+  margin-bottom: 30px; /* Espacement externe sous la box */
   transition: transform 0.3s ease;
 }
 
@@ -186,7 +200,102 @@ header h1 {
   font-size: 1.5rem;
 }
 
-/* === Survey Section === */
+.containerAbout {
+  text-align: center;
+  padding: 10px 20px;
+  color: #a84764;
+}
+.about-us-image {
+  width: 80%; /* Modifier la largeur */
+}
+.text-container {
+  max-width: 800px; /* Largeur maximale du texte */
+  margin: 0 auto; /* Centre horizontalement */
+  padding: 20px; /* Espacement intérieur */
+  text-align: center; /* Centre le texte dans le conteneur */
+  align-items: center;
+  color: #a84764;
+  line-height: 1;
+  font-size: 22px;
+  margin-bottom: 5%;
+}
+
+.feature-text {
+  line-height: 1; /* Hauteur de ligne pour une meilleure lisibilité */
+  font-size: 20px; /* Optionnel : Ajuste la taille de la police */
+  color: #9e4a5c; /* Conserve la couleur déjà définie */
+  text-align: center; /* Centre le texte (optionnel) */
+  margin-bottom: 50px; /* Ajoute un espace en haut si nécessaire */
+}
+
+.img-fluid {
+  width: 80%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 25px;
+  border-radius: 2px 15px 2px 15px;
+}
+
+#about-us-title {
+  font-size: px;
+}
+
+/* ============================TEAM SECTION ================================*/
+/* Animation pour le titre */
+.animate-title {
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Style des cartes de l'équipe */
+.team-card {
+  background-color: #ffc0cb; /* Couleur complémentaire */
+  border-radius: 15px 2px 15px 2px; /* Signature */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.team-header {
+  margin-bottom: 50px;
+}
+/* Style des images de l'équipe */
+.team-img {
+  width: 150px;
+  height: 150px;
+  border: 3px solid #F2E6F7; /* Cercle doré autour de l'image */
+}
+
+/* Espacement et responsivité */
+.team-section h2,
+.team-section p {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/*Member*/
+.team-title {
+  color: #9E4A5C; /* Doré */
+  font-weight: bold; /* Optionnel : Mettre en gras */
+  margin-bottom: 10px; /* Espacement sous le titre */
+  font-size: 25px;
+}
+
+.team-description {
+  color: #9E4A5C; /* Gris clair */
+  font-size: 20px; /* Taille ajustée */
+  line-height: 1; /* Lisibilité accrue */
+  margin-bottom: 0; /* Supprimer tout espacement supplémentaire */
+}
+
+@media (max-width: 768px) {
+  .team-card {
+    padding: 20px;
+  }
+}
+/* ===Survey Section === */
 .survey-container {
   background-color: #ffede9;
   padding: 20px;
@@ -253,7 +362,6 @@ button {
   padding: 10px 20px;
   border-radius: 25px;
   font-weight: bold;
-
 }
 
 button:hover {
@@ -327,36 +435,91 @@ button:hover {
 }
 
 /****************************sondage*************************************************************************/
-.poll-container {
-  background-color: #f7d7d4;
-  padding: 50px;
+/* Conteneur principal */
+#poll-container {
+  background-color: #f7d7d4; /* Couleur de fond */
+  padding: 50px 0;
 }
 
+/* Carte du sondage */
 .poll-card {
-  margin: auto; /* Centrer la carte dans la grille */
-  background-color: #fff4f4;
-  border-radius: 50px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fef6e9; /* Couleur de la carte */
+  border-radius: 15px 2px 15px 2px; /* Coins arrondis */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Ombre */
   padding: 30px;
+  text-align: left;
+  width: 100%; /* S'étend sur toute la largeur de la grille Bootstrap */
 }
 
+/* Titre principal */
 .poll-card h2 {
-  font-size: 42px;
+  font-size: 2.5rem;
+  color: #ba476d; /* Texte blanc */
+  margin-bottom: 30px;
+  text-align: center;
 }
 
-.progress {
-  background-color: #f5d6d9;
+/* Options de vote */
+.option {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  margin-bottom: 20px;
+  padding: 15px;
   border-radius: 10px;
 }
 
-.progress-bar {
-  background-color: #ba476d;
-  font-weight: bold;
-  color: white;
+/* Boutons radio */
+.option input[type="radio"] {
+  accent-color: #ba476d; /* Couleur personnalisée */
+  margin-right: 10px;
 }
 
-button {
-  width: 50%;
+/* Barre de progression */
+.bar-container {
+  background-color: #d08c9b;
+  border-radius: 20px;
+  width: 100%;
+  height: 20px;
+  overflow: hidden;
+  margin-top: 10px;
+  position: relative;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1); /* Ombre interne */
+}
+
+.bar {
+  background-color: #ba476d;
+  height: 100%;
+  width: 0%;
+  transition: width 0.5s ease; /* Animation */
+}
+
+/* Pourcentage */
+.percentage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+/* Bouton */
+.poll-card .btn {
+  background-color: #b7536c;
+  color: #ffffff;
+  border-radius: 15px;
+  padding: 10px 30px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.poll-card .btn:hover {
+  background-color: #ac435d; /* Couleur plus sombre au survol */
 }
 
 /*controller*/
@@ -416,7 +579,7 @@ button {
 }
 
 .btn-submit {
-  background-color: #e74c3c;
+  background-color: #32110d;
   color: white;
 }
 
