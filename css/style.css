@@ -3,7 +3,7 @@
   Theme Name: She-Safe
   Theme URI: http://localhost:8888/wordpress
   Description: Un thème personnalisé pour le projet She Safe.
-  Author: Ania
+  Author: Mayssa
   Author URI: http://localhost:8888/wordpress
   Template: She-Safe
   Version: 1.0
@@ -530,6 +530,7 @@ button:hover {
   height: 30px; /* Réduit la hauteur */
   top: 50%; /* Centre verticalement */
   transform: translateY(-50%);
+  color:#9E4A5C;
 }
 
 .carousel-control-prev-icon,
@@ -537,6 +538,7 @@ button:hover {
   width: 15px; /* Taille des icônes flèches */
   height: 15px;
   background-size: 100%; /* Ajuste la taille de l'icône */
+  color:#8e4d64;
 }
 
 /*****************comments***************************************/
@@ -585,4 +587,60 @@ button:hover {
 
 .btn-submit:hover {
   background-color: #c0392b;
+}
+
+
+/*formualires*/
+.carousel-control-prev-icon {
+  color :#9E4A5C;
+}
+
+
+/**************sondages *******************************************************/
+.safe-icon {
+  max-width: 120px;
+  height: auto;
+}
+
+.poll-card {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.option {
+  margin: 1rem 0;
+  padding: 0.5rem;
+  border-radius: 5px;
+  background: #f8f9fa;
+}
+
+.option:hover {
+  background: #e9ecef;
+}
+
+.testimonial-card {
+  background: #fff;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: #BA476D;
+  border-radius: 50%;
+  padding: 1.5rem;
+}
+
+.btn-success {
+  background-color: #BA476D;
+  border-color: #BA476D;
+}
+
+.btn-success:hover {
+  background-color: #9d3859;
+  border-color: #9d3859;
 }

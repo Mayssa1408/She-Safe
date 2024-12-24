@@ -15,7 +15,8 @@ function she_safe_enqueue_scripts()
 
     // Scripts
     wp_enqueue_script('bootstrap-js', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js', [], null, true);
-    wp_enqueue_script('app-js', get_template_directory_uri() . '/script/safe-place.js', ['jquery', 'bootstrap-js'], '1.0', true);
+
+    wp_enqueue_script('sondage-js', get_template_directory_uri() . '/script/sondage.js', ['jquery'], '1.0', true); // Ajout de sondage.js
 
     // Passer l'URL AJAX à JavaScript
     wp_localize_script('app-js', 'ajax_object', [
@@ -23,6 +24,7 @@ function she_safe_enqueue_scripts()
     ]);
 }
 add_action('wp_enqueue_scripts', 'she_safe_enqueue_scripts');
+
 
 // Enregistrer le menu principal
 register_nav_menus([

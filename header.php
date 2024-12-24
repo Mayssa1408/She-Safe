@@ -6,13 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><?php bloginfo('name'); ?></title>
   <link href="https://fonts.googleapis.com/css2?family=Glory:wght@400;700&display=swap" rel="stylesheet">
-  
+  <link rel="stylesheet" href="css/styles.css">
+
 
   <?php wp_head(); ?>
 </head>
 
 <body <?php body_class('d-flex flex-column vh-100'); ?>>
- 
+
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
     <div class="container-fluid">

@@ -86,3 +86,4 @@ function initializeBars() {
 
 document.addEventListener("DOMContentLoaded", initializeBars);
 
+console.log('sondage.js est chargé correctement !');
