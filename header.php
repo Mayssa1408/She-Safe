@@ -4,12 +4,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><?php bloginfo('name'); ?></title>
+  <title><?php bloginfo('name'); ?> - <?php wp_title(); ?></title>
   <link href="https://fonts.googleapis.com/css2?family=Glory:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css">
-
-
+  <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/style.css">
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
   <?php wp_head(); ?>
+  <script src="http://localhost:8888/wordpress/wp-content/themes/She-Safe/script/account.js"></script>
+
 </head>
 
 <body <?php body_class('d-flex flex-column vh-100'); ?>>
@@ -19,15 +20,15 @@
     <div class="container-fluid">
 
       <!-- Logo -->
-      <a class="navbar-brand d-flex align-items-center" href="<?php echo home_url(); ?>">
-        <img src="<?php echo get_template_directory_uri(); ?>/images/SheSafeLG.svg" alt="Logo She Safe" width="75"
-          height="55">
+      <a class="navbar-brand d-flex align-items-center" href="<?php echo esc_url(home_url('/')); ?>">
+        <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/SheSafeLG.svg" alt="Logo She Safe"
+          width="75" height="55">
         <h1 class="ms-2 mb-0 fs-4">She Safe</h1>
       </a>
 
       <!-- Toggle Button -->
       <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="offcanvas"
-        data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+        data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
@@ -43,20 +44,40 @@
         <!-- Offcanvas Body -->
         <div class="offcanvas-body d-flex flex-column flex-lg-row p-4 p-lg-0">
           <?php
-          wp_nav_menu([
-            'theme_location' => 'header',
-            'container' => false,
-            'menu_class' => 'navbar-nav justify-content-center align-items-center fs-5 flex-grow-1 pe-3',
-          ]);
+          if (has_nav_menu('header')) {
+            wp_nav_menu([
+              'theme_location' => 'header',
+              'container' => false,
+              'menu_class' => 'navbar-nav justify-content-center align-items-center fs-5 flex-grow-1 pe-3',
+            ]);
+          } else {
+            echo '<p class="text-center">Aucun menu n’est assigné à la navigation principale.</p>';
+          }
           ?>
 
           <!-- Account Section -->
-          <div class="d-flex justify-content-center align-items-center gap-3">
-            <a href="#moncompte" class="account-icon">
-              <img src="<?php echo get_template_directory_uri(); ?>/images/accounnt.svg" alt="Mon compte" width="32"
-                height="32">
-            </a>
-          </div>
+          < <!-- Account Section -->
+            <div class="d-flex justify-content-center align-items-center gap-3">
+              <div class="account-dropdown">
+                <a href="#" class="account-icon" id="accountDropdown">
+                  <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/accounnt.svg" alt="Mon compte"
+                    width="32" height="32">
+                </a>
+                <div class="dropdown-menu" id="accountMenu">
+                  <?php if (is_user_logged_in()): ?>
+                    <a href="<?php echo esc_url(get_template_directory_uri() . 'monCompte.php'); ?>">Mon Compte</a>
+
+                    <a href="<?php echo esc_url(wp_logout_url(home_url())); ?>">Déconnexion</a>
+                  <?php else: ?>
+                    <a href="<?php echo esc_url(get_template_directory_uri() . '/connexion.php'); ?>">Connexion</a>
+
+                    <a
+                      href="<?php echo esc_url(get_template_directory_uri() . '/inscription-page.php'); ?>">Inscription</a>
+
+                  <?php endif; ?>
+                </div>
+              </div>
+            </div>
         </div>
       </div>
     </div>

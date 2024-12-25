@@ -24,7 +24,7 @@
                 <h1>She Safe</h1>
                 <img src="<?php echo get_template_directory_uri(); ?>/images/SheSafeLG.svg" alt="Logo She Safe"
                     width="150" height="75" class="footer-logo">
-                <p class="mt-5">&copy; <?php echo date('Y'); ?>, She Safe. All rights reserved.</p>
+                <p class="mt-5">&copy; <?php echo date('Y'); ?>, a href She Safe. All rights reserved.</p>
             </div>
 
             <!-- Contact Info -->
