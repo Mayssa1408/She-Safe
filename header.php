@@ -7,10 +7,8 @@
   <title><?php bloginfo('name'); ?> - <?php wp_title(); ?></title>
   <link href="https://fonts.googleapis.com/css2?family=Glory:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/style.css">
-  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+  <link rel="icon" type="image/x-icon" href="<?php echo get_template_directory_uri(); ?>/favicon.ico">
   <?php wp_head(); ?>
-  <script src="http://localhost:8888/wordpress/wp-content/themes/She-Safe/script/account.js"></script>
-
 </head>
 
 <body <?php body_class('d-flex flex-column vh-100'); ?>>
@@ -56,35 +54,23 @@
           ?>
 
           <!-- Account Section -->
-          < <!-- Account Section -->
-            <div class="d-flex justify-content-center align-items-center gap-3">
-              <div class="account-dropdown">
-                <a href="#" class="account-icon" id="accountDropdown">
-                  <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/accounnt.svg" alt="Mon compte"
-                    width="32" height="32">
-                </a>
-                <div class="dropdown-menu" id="accountMenu">
-                  <?php if (is_user_logged_in()): ?>
-                    <a href="<?php echo esc_url(get_template_directory_uri() . 'monCompte.php'); ?>">Mon Compte</a>
-
-                    <a href="<?php echo esc_url(wp_logout_url(home_url())); ?>">Déconnexion</a>
-                  <?php else: ?>
-                    <a href="<?php echo esc_url(get_template_directory_uri() . '/connexion.php'); ?>">Connexion</a>
-
-                    <a
-                      href="<?php echo esc_url(get_template_directory_uri() . '/inscription-page.php'); ?>">Inscription</a>
-
-                  <?php endif; ?>
-                </div>
+          <!-- Account Section -->
+          <div class="d-flex justify-content-center align-items-center gap-3">
+            <div class="account-dropdown">
+              <a href="#" class="account-icon" id="accountDropdown">
+                <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/accounnt.svg" alt="Mon compte"
+                  width="32" height="32">
+              </a>
+              <div class="dropdown-menu" id="accountMenu">
+                <?php if (is_user_logged_in()): ?>
+                  <a href="<?php echo esc_url(get_permalink(get_page_by_path('mon-compte'))); ?>">Mon Compte</a>
+                  <a href="<?php echo esc_url(wp_logout_url(home_url())); ?>">Déconnexion</a>
+                <?php else: ?>
+                  <a href="<?php echo esc_url(get_permalink(get_page_by_path('connexion'))); ?>">Connexion</a>
+                  <a href="<?php echo esc_url(get_permalink(get_page_by_path('inscription'))); ?>">Inscription</a>
+                <?php endif; ?>
               </div>
             </div>
-        </div>
-      </div>
-    </div>
+          </div>
   </nav>
   <!-- Fin Navbar -->
-
-  <?php wp_footer(); ?>
-</body>
-
-</html>

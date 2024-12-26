@@ -1,7 +1,7 @@
-/**
-Template : Home - Page */
-
-<?php get_header(); ?>
+<?php /**
+  * 
+  * Template Name: Home - Page */
+get_header(); ?>
 <main class="content">
   <style>
     /* Global Styles */
@@ -162,6 +162,7 @@ Template : Home - Page */
       0% {
         transform: translateX(0);
       }
+
       100% {
         transform: translateX(-100%);
       }
@@ -285,14 +286,14 @@ Template : Home - Page */
       <div class="col-md-6 text-container">
         <h1>She Safe</h1>
         <h2>Bienvenue dans ta Safe Place !</h2>
-        <p>Rejoins une communauté engagée pour la sécurité des femmes. Partage ton expérience, découvre des lieux sûrs et connecte-toi à un réseau solidaire.</p>
+        <p>Rejoins une communauté engagée pour la sécurité des femmes. Partage ton expérience, découvre des lieux sûrs
+          et connecte-toi à un réseau solidaire.</p>
         <p>Explore dès maintenant !</p>
         <a href="<?php echo esc_url(home_url('/about')); ?>" class="cta-button">Découvrez-nous</a>
       </div>
       <div class="col-md-6 image-container">
-        <img src="<?php echo esc_url(get_template_directory_uri() . '/images/group1.jpg'); ?>" 
-             alt="Image représentant She Safe" 
-          >
+        <img src="<?php echo esc_url(get_template_directory_uri() . '/images/group1.jpg'); ?>"
+          alt="Image représentant She Safe">
       </div>
     </div>
   </section>
@@ -328,7 +329,8 @@ Template : Home - Page */
               <div class="testimonial-avatar"></div>
               <h3>Marie, 23 ans</h3>
             </div>
-            <p>"She Safe m'a littéralement changé la vie ! Je me sens tellement plus en sécurité maintenant lors de mes sorties nocturnes."</p>
+            <p>"She Safe m'a littéralement changé la vie ! Je me sens tellement plus en sécurité maintenant lors de mes
+              sorties nocturnes."</p>
             <div class="testimonial-rating">★★★★★</div>
           </div>
 
@@ -346,7 +348,8 @@ Template : Home - Page */
               <div class="testimonial-avatar"></div>
               <h3>Laura, 29 ans</h3>
             </div>
-            <p>"Cette app m'a permis de découvrir des endroits sûrs où je peux travailler ou me détendre en toute tranquillité."</p>
+            <p>"Cette app m'a permis de découvrir des endroits sûrs où je peux travailler ou me détendre en toute
+              tranquillité."</p>
             <div class="testimonial-rating">★★★★★</div>
           </div>
 
@@ -364,7 +367,8 @@ Template : Home - Page */
               <div class="testimonial-avatar"></div>
               <h3>Emma, 27 ans</h3>
             </div>
-            <p>"J'utilise She Safe tous les jours pour planifier mes trajets. C'est devenu un réflexe indispensable !"</p>
+            <p>"J'utilise She Safe tous les jours pour planifier mes trajets. C'est devenu un réflexe indispensable !"
+            </p>
             <div class="testimonial-rating">★★★★★</div>
           </div>
 
@@ -373,7 +377,8 @@ Template : Home - Page */
               <div class="testimonial-avatar"></div>
               <h3>Julie, 31 ans</h3>
             </div>
-            <p>"Les alertes en temps réel m'ont sauvée plusieurs fois d'endroits peu recommandables. Merci She Safe !"</p>
+            <p>"Les alertes en temps réel m'ont sauvée plusieurs fois d'endroits peu recommandables. Merci She Safe !"
+            </p>
             <div class="testimonial-rating">★★★★★</div>
           </div>
 
@@ -382,7 +387,8 @@ Template : Home - Page */
               <div class="testimonial-avatar"></div>
               <h3>Sarah, 22 ans</h3>
             </div>
-            <p>"Une app qui devrait être connue par toutes les femmes. Elle m'a aidée à me sentir plus forte et plus confiante."</p>
+            <p>"Une app qui devrait être connue par toutes les femmes. Elle m'a aidée à me sentir plus forte et plus
+              confiante."</p>
             <div class="testimonial-rating">★★★★★</div>
           </div>
 
@@ -391,7 +397,8 @@ Template : Home - Page */
               <div class="testimonial-avatar"></div>
               <h3>Léa, 24 ans</h3>
             </div>
-            <p>"Le système de notation des lieux est génial. Ça aide vraiment à identifier les endroits sûrs rapidement."</p>
+            <p>"Le système de notation des lieux est génial. Ça aide vraiment à identifier les endroits sûrs
+              rapidement."</p>
             <div class="testimonial-rating">★★★★★</div>
           </div>
         </div>
@@ -403,26 +410,26 @@ Template : Home - Page */
   <section class="newsletter-section">
     <h1 class="newsletter-title">Bruxelles en toute sécurité. Participe à notre initiative !</h1>
     <p class="newsletter-text">
-      Abonne-toi à notre newsletter pour contribuer à la liste des lieux les plus sûrs de Bruxelles. 
+      Abonne-toi à notre newsletter pour contribuer à la liste des lieux les plus sûrs de Bruxelles.
       Reçois des infReçois des infos utiles et reste informée pour te déplacer en toute confiance !
     </p>
 
     <div class="input-container">
-        <!-- Prénom Input -->
-        <input type="text" class="input-field" placeholder="Prénom" id="firstName" />
+      <!-- Prénom Input -->
+      <input type="text" class="input-field" placeholder="Prénom" id="firstName" />
 
-        <!-- E-mail Input -->
-        <input type="email" class="input-field" placeholder="E-mail" id="email" />
+      <!-- E-mail Input -->
+      <input type="email" class="input-field" placeholder="E-mail" id="email" />
     </div>
 
     <p class="newsletter-disclaimer">
-        En t’inscrivant, tu seras abonné à la newsletter. Promis, pas de spam et tu pourras te désinscrire à tout moment !
+      En t’inscrivant, tu seras abonné à la newsletter. Promis, pas de spam et tu pourras te désinscrire à tout moment !
     </p>
 
     <div class="cta-button-container">
-        <a href="#" class="cta-button">Je m'inscris</a>
+      <a href="#" class="cta-button">Je m'inscris</a>
     </div>
-</section>
+  </section>
 
 </main>
 

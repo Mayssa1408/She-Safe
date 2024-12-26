@@ -22,6 +22,9 @@ function she_safe_enqueue_scripts()
     wp_localize_script('app-js', 'ajax_object', [
         'ajax_url' => admin_url('admin-ajax.php'),
     ]);
+
+    //menu
+    wp_enqueue_script('account-dropdown', get_template_directory_uri() . '/script/account-dropdown.js', '1.0.0', true);
 }
 add_action('wp_enqueue_scripts', 'she_safe_enqueue_scripts');
 
@@ -201,7 +204,7 @@ function she_safe_enqueue_styles()
 {
     wp_enqueue_style(
         'she-safe-main-style',
-        get_template_directory_uri() . '/css/index.css',
+        get_template_directory_uri() . '/css/style.css',
         array(),
         '1.0',
         'all'
@@ -213,7 +216,7 @@ function mon_theme_enqueue_styles()
 {
     wp_enqueue_style('mon-style', get_stylesheet_uri()); // Charge le fichier style.css
     // Ou un fichier CSS spécifique
-    wp_enqueue_style('mon-style-personnalise', get_template_directory_uri() . '/css/index.css');
+    wp_enqueue_style('mon-style-personnalise', get_template_directory_uri() . '/css/style.css');
 }
 add_action('wp_enqueue_scripts', 'mon_theme_enqueue_styles');
 
@@ -308,7 +311,13 @@ add_action('admin_post_nopriv_she_safe_contact', 'she_safe_handle_contact_form')
 add_action('admin_post_she_safe_contact', 'she_safe_handle_contact_form');
 
 /****************************account */
-function enqueue_account_dropdown_script() {
-  wp_enqueue_script('account-dropdown', get_template_directory_uri() . '/js/account-dropdown.js', array(), '1.0.0', true);
+function enqueue_account_dropdown_script()
+{
+    wp_enqueue_script('account-dropdown', get_template_directory_uri() . '/script/account-dropdown.js', array(), '1.0.0', true);
 }
 add_action('wp_enqueue_scripts', 'enqueue_account_dropdown_script');
+function enqueue_custom_scripts()
+{
+    wp_enqueue_script('account-dropdown', get_template_directory_uri() . '/script/account-dropdown.js', array(), '1.0', true);
+}
+add_action('wp_enqueue_scripts', 'enqueue_custom_scripts');

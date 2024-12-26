@@ -1,4 +1,5 @@
 
+
 /**
  * Soumet le vote pour un thème donné.
  * @param {string} theme - Le thème pour lequel le vote est soumis (parcs, cafes, arrets, bars).

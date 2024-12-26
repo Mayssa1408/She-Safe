@@ -3,7 +3,28 @@
  * Template Name: Page Se Connecter
  */
 
-get_header(); ?>
+// Débogage des erreurs
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
+// Hooks de débogage pour la connexion
+add_action('wp_login_failed', function ($username) {
+    error_log('Échec de connexion pour l\'utilisateur : ' . $username);
+}, 10, 1);
+
+add_action('wp_login', function ($user_login, $user) {
+    error_log('Connexion réussie pour l\'utilisateur : ' . $user_login);
+}, 10, 2);
+
+// Redirection si déjà connecté
+if (is_user_logged_in()) {
+    wp_redirect(home_url());
+    exit;
+}
+
+get_header();
+?>
+
 <style>
     /* Corps principal */
     body {
@@ -122,68 +143,77 @@ get_header(); ?>
     }
 </style>
 
+
+
 <main class="content">
-
-    <style>
-        /* Le même CSS que pour la page d'inscription, à intégrer ici */
-    </style>
-
     <div class="container" style="background-color: #FEF6E9; max-width: 1200px; margin-top: 100px; padding: 50px;">
-        <!-- Formulaire de connexion -->
         <div class="row">
             <div class="col-lg-6 col-12">
                 <h1 class="titreseconnecter">Se connecter</h1>
 
                 <?php
-                // Si l'utilisateur est déjà connecté, le rediriger
-                if (is_user_logged_in()) {
-                    echo '<p style="color: green;">Vous êtes déjà connecté. <a href="' . esc_url(home_url('/')) . '">Retour à l\'accueil</a></p>';
-                } else {
-                    // Si le formulaire est soumis
-                    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login_nonce'])) {
-                        if (wp_verify_nonce($_POST['login_nonce'], 'login_action')) {
-                            $username = sanitize_user($_POST['uname']);
-                            $password = sanitize_text_field($_POST['upass']);
+                // Traitement du formulaire
+                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                    // Vérification du nonce
+                    if (isset($_POST['login_nonce']) && wp_verify_nonce($_POST['login_nonce'], 'login_action')) {
+                        $username = isset($_POST['uname']) ? sanitize_user($_POST['uname']) : '';
+                        $password = isset($_POST['upass']) ? $_POST['upass'] : '';
 
-                            // Tentative de connexion
+                        if (empty($username) || empty($password)) {
+                            echo '<div class="alert alert-danger">Veuillez remplir tous les champs.</div>';
+                        } else {
                             $creds = array(
                                 'user_login' => $username,
                                 'user_password' => $password,
                                 'remember' => true
                             );
 
+                            // Désactive la redirection automatique de WordPress
+                            remove_action('authenticate', 'wp_authenticate_redirect_login_failed', 10);
+
                             $user = wp_signon($creds, false);
 
                             if (is_wp_error($user)) {
-                                echo '<p style="color: red;">Erreur de connexion : ' . $user->get_error_message() . '</p>';
+                                echo '<div class="alert alert-danger">' .
+                                    esc_html($user->get_error_message()) .
+                                    '</div>';
+                                error_log('Erreur de connexion : ' . $user->get_error_message());
                             } else {
-                                wp_redirect(home_url()); // Redirige vers la page d'accueil après une connexion réussie
+                                wp_set_current_user($user->ID);
+                                wp_set_auth_cookie($user->ID, true);
+
+                                // Redirection en PHP plutôt qu'en JavaScript
+                                wp_safe_redirect(home_url());
                                 exit;
                             }
-                        } else {
-                            echo '<p style="color: red;">Nonce de sécurité invalide.</p>';
                         }
+                    } else {
+                        echo '<div class="alert alert-danger">Erreur de sécurité. Veuillez réessayer.</div>';
                     }
                 }
                 ?>
 
-                <form method="POST">
+                <form method="POST" action="">
                     <label for="uname">Nom d'utilisateur</label>
-                    <input type="text" id="uname" name="uname" required />
+                    <input type="text" id="uname" name="uname" required
+                        value="<?php echo isset($_POST['uname']) ? esc_attr($_POST['uname']) : ''; ?>" />
 
                     <label for="upass">Mot de passe</label>
                     <input type="password" id="upass" name="upass" required />
 
-                    <input type="hidden" name="login_nonce" value="<?php echo wp_create_nonce('login_action'); ?>">
+                    <?php wp_nonce_field('login_action', 'login_nonce'); ?>
+
                     <button type="submit" class="btn-inscrire">Se connecter</button>
                 </form>
 
-                <p>Pas encore inscrit ? <a href="<?php echo esc_url(home_url('/inscription')); ?>">Créer un compte</a>
+                <p>Pas encore inscrit ?
+                    <a href="<?php echo esc_url(get_permalink(get_page_by_path('inscription'))); ?>">
+                        Créer un compte
+                    </a>
                 </p>
             </div>
         </div>
     </div>
-
 </main>
 
 <?php get_footer(); ?>

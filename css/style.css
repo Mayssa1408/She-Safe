@@ -19,39 +19,39 @@
   --footer-text: #b35e6e;
 }
 /*==menu==================================================*/
- .account-dropdown {
-      position: relative;
-    }
+.account-dropdown {
+  position: relative;
+}
 
-    .dropdown-menu {
-      display: none;
-      position: absolute;
-      right: 0;
-      top: 100%;
-      background: white;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      padding: 0.5rem 0;
-      min-width: 200px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      z-index: 1000;
-    }
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 0.5rem 0;
+  min-width: 200px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
 
-    .dropdown-menu.show {
-      display: block;
-    }
+.dropdown-menu.show {
+  display: block;
+}
 
-    .dropdown-menu a {
-      display: block;
-      padding: 0.5rem 1rem;
-      color: #333;
-      text-decoration: none;
-      transition: background-color 0.2s;
-    }
+.dropdown-menu a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #333;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
 
-    .dropdown-menu a:hover {
-      background-color: #f8f9fa;
-    }
+.dropdown-menu a:hover {
+  background-color: #f8f9fa;
+}
 /* === Global Styles === */
 body {
   font-family: "Glory", Arial, sans-serif;
@@ -298,7 +298,7 @@ header h1 {
 .team-img {
   width: 150px;
   height: 150px;
-  border: 3px solid #F2E6F7; /* Cercle doré autour de l'image */
+  border: 3px solid #f2e6f7; /* Cercle doré autour de l'image */
 }
 
 /* Espacement et responsivité */
@@ -310,14 +310,14 @@ header h1 {
 
 /*Member*/
 .team-title {
-  color: #9E4A5C; /* Doré */
+  color: #9e4a5c; /* Doré */
   font-weight: bold; /* Optionnel : Mettre en gras */
   margin-bottom: 10px; /* Espacement sous le titre */
   font-size: 25px;
 }
 
 .team-description {
-  color: #9E4A5C; /* Gris clair */
+  color: #9e4a5c; /* Gris clair */
   font-size: 20px; /* Taille ajustée */
   line-height: 1; /* Lisibilité accrue */
   margin-bottom: 0; /* Supprimer tout espacement supplémentaire */
@@ -563,17 +563,84 @@ button:hover {
   height: 30px; /* Réduit la hauteur */
   top: 50%; /* Centre verticalement */
   transform: translateY(-50%);
-  color:#9E4A5C;
+  color: #9e4a5c;
 }
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
   width: 15px; /* Taille des icônes flèches */
   height: 15px;
-  background-size: 100%; /* Ajuste la taille de l'icône */
-  color:#8e4d64;
+  background-size: 50%; /* Ajuste la taille de l'icône */
+  color: #8e4d64;
 }
 
+.carousel-control-prev,
+.carousel-control-next {
+  top: 50%; /* Place les boutons au milieu verticalement */
+  transform: translateY(-50%); /* Centrage vertical */
+}
+
+.carousel-control-prev {
+  left: 200px; /* Ajuste la distance du bouton précédent par rapport au bord gauche */
+}
+
+.carousel-control-next {
+  right: 200px; /* Ajuste la distance du bouton suivant par rapport au bord droit */
+}
+
+/******************page - safe place - temoignages *************************/
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+.my-5 {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+.mb-4 {
+  margin-bottom: 1.5rem;
+}
+.text-center {
+  text-align: center;
+}
+.testimonial-card {
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.form-control {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+.btn {
+  background-color: #28a745;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+}
+.btn:hover {
+  background-color: #218838;
+}
+.card {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#testimonials .testimonial-card {
+  margin: 20px; /* Modifier cette valeur pour ajuster l'espacement */
+}
 /*****************comments***************************************/
 
 .add-comment {
@@ -622,12 +689,10 @@ button:hover {
   background-color: #c0392b;
 }
 
-
 /*formualires*/
 .carousel-control-prev-icon {
-  color :#9E4A5C;
+  color: #9e4a5c;
 }
-
 
 /**************sondages *******************************************************/
 .safe-icon {
@@ -663,17 +728,50 @@ button:hover {
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-  background-color: #BA476D;
+  background-color: #ba476d;
   border-radius: 50%;
   padding: 1.5rem;
 }
 
 .btn-success {
-  background-color: #BA476D;
-  border-color: #BA476D;
+  background-color: #ba476d;
+  border-color: #ba476d;
 }
 
 .btn-success:hover {
   background-color: #9d3859;
   border-color: #9d3859;
+}
+
+/**account dropdown*/
+.account-dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 8px 0;
+  min-width: 150px;
+  z-index: 1000;
+}
+
+.dropdown-menu.show {
+  display: block;
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 8px 16px;
+  text-decoration: none;
+  color: #333;
+}
+
+.dropdown-menu a:hover {
+  background-color: #f7d7db;
 }

@@ -1,6 +1,6 @@
 <?php
 /** 
- * Template Name: monCompte  - Page 
+ * Template Name: Page Mon Compte
  */
 get_header();
 

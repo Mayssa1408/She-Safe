@@ -7,6 +7,7 @@
     <title>She Safe</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
 </head>
 
 <?php
@@ -20,11 +21,6 @@ get_header();
         <div class="row align-items-center">
             <!-- Colonne contenant l'icône et le texte -->
             <div class="col-lg-6 col-md-12 text-center text-lg-start px-5">
-                <!-- Icône SVG centrée -->
-                <div class="icon mb-3">
-                    <img src="<?php echo get_template_directory_uri(); ?>/images/roadMap.svg" alt="Safe Place Icon"
-                        class="safe-icon">
-                </div>
                 <!-- Titre -->
                 <h2 class="fw-bold mb-4" style="color: #BA476D;">Besoin d'une Safe Place ?</h2>
                 <!-- Texte -->
@@ -249,32 +245,72 @@ get_header();
 </section>
 
 
-
-<!-- Testimonials Section -->
+<!-- Section Témoignages -->
 <section class="container my-5">
     <h2 class="text-center mb-4">Ce que les femmes disent des Safe Places</h2>
-    <div id="testimonials" class="row"></div>
+    <div id="testimonials" class="d-flex flex-wrap center-content-between">
+        <?php
+        // Exemple de données de témoignages
+        $testimonials = [
+            ["name" => "Marie", "place" => "Parc Royale", "comment" => "J'adore ce parc, toujours des gens autour et bien éclairé !"],
+            ["name" => "Sophie", "place" => "Place Flagey", "comment" => "Super endroit, mais un peu bruyant parfois."],
+            ["name" => "Jade", "place" => "BarkBoy", "comment" => "C'est cool et c'est dans un quartier calme"],
+            ["name" => "Sarah", "place" => "Gare du Nord", "comment" => "Il y a souvent la police c'est rassurant"],
+
+        ];
+
+        foreach ($testimonials as $testimonial) {
+            echo '<div class="testimonial-card">
+                        <h5>' . htmlspecialchars($testimonial["place"]) . '</h5>
+                        <p><strong>' . htmlspecialchars($testimonial["name"]) . '</strong></p>
+                        <p>' . htmlspecialchars($testimonial["comment"]) . '</p>
+                    </div>';
+        }
+        ?>
+    </div>
 </section>
 
-<!-- Add Testimonial Section -->
-<section class="add-comment container my-5">
-    <div class="card p-4 bg-white">
+<!-- Section Ajout de Témoignage -->
+<section class="container my-5">
+    <div class="card">
         <h2 class="text-center mb-4">Partagez votre expérience</h2>
         <form id="testimonial-form">
-            <div class="mb-3">
-                <input type="text" name="name" class="form-control" placeholder="Votre nom" required>
-            </div>
-            <div class="mb-3">
-                <input type="text" name="place" class="form-control" placeholder="Nom de l'endroit" required>
-            </div>
-            <div class="mb-3">
-                <textarea name="comment" class="form-control" rows="4" placeholder="Ajoutez votre commentaire..."
-                    required></textarea>
-            </div>
-            <button type="submit" class="btn btn-success w-100">Soumettre mon commentaire</button>
+            <input type="text" name="name" class="form-control" placeholder="Votre nom" required>
+            <input type="text" name="place" class="form-control" placeholder="Nom de l'endroit" required>
+            <textarea name="comment" class="form-control" rows="4" placeholder="Ajoutez votre commentaire..."
+                required></textarea>
+            <button type="submit" class="btn">Soumettre mon commentaire</button>
         </form>
     </div>
 </section>
+
+<script>
+    document.getElementById('testimonial-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        // Récupération des valeurs du formulaire
+        const name = this.elements['name'].value;
+        const place = this.elements['place'].value;
+        const comment = this.elements['comment'].value;
+
+        // Création du nouveau témoignage
+        const newTestimonial = document.createElement('div');
+        newTestimonial.className = 'testimonial-card';
+        newTestimonial.innerHTML = `
+                <h5>${place}</h5>
+                <p><strong>${name}</strong></p>
+                <p>${comment}</p>
+            `;
+
+        // Ajout du témoignage au début de la liste
+        const testimonialsList = document.getElementById('testimonials');
+        testimonialsList.insertBefore(newTestimonial, testimonialsList.firstChild);
+
+        // Réinitialisation du formulaire
+        this.reset();
+    });
+</script>
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>

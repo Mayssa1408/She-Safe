@@ -261,7 +261,7 @@ get_header();
                 <h2>Anonyme</h2>
                 <p>Âge</p>
             </div>
-            <a href="#" class="cta-button">Se connecter</a>
+            <a href="connexion.php" class="cta-button">Se connecter</a>
         </div>
 
         <!-- Formulaire d'envoi de témoignage -->
