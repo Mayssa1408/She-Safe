@@ -249,6 +249,7 @@ get_header(); ?>
 
     .newsletter-section .cta-button {
       border-radius: 50px;
+      text-align: center;
     }
 
     /* Responsive Design */
@@ -264,8 +265,8 @@ get_header(); ?>
       }
 
       .rectangle {
-        width: 100%;
-        max-width: 500px;
+        width: 80%;
+        height: 50%;
       }
 
       .input-field {
@@ -304,15 +305,14 @@ get_header(); ?>
       <div class="rectangle-container">
         <div class="rectangle">
           <h2>Tu cherches une Safe Place à Bruxelles ?</h2>
-          <div class="flower">🌸</div>
+
           <p>Découvre les lieux les plus sûrs de Bruxelles grâce à nos sondages interactifs.</p>
-          <a href="#" class="cta-button">En savoir plus ➡</a>
+          <a href="#" class="cta-button">En savoir plus</a>
         </div>
         <div class="rectangle">
           <h2>Tu as vécu une expérience marquante ?</h2>
-          <div class="flower">🌸</div>
           <p>Partage-la avec notre communauté et découvre les témoignages inspirants des autres utilisatrices.</p>
-          <a href="#" class="cta-button">En savoir plus ➡</a>
+          <a href="#" class="cta-button">En savoir plus</a>
         </div>
       </div>
     </div>
