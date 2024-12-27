@@ -1,17 +1,29 @@
-<!DOCTYPE html>
-<html lang="fr">
-
 <?php
 /** 
  * Template Name: forum - Page 
  */
 get_header();
+
+
+// Vérifier la session
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+// Exemple : Stocker l'ID dans la session lors de la connexion
+// $_SESSION['userId'] = 123; // À définir lors de la connexion
+$userId = isset($_SESSION['userId']) ? intval($_SESSION['userId']) : null;
+
+// Obtenir les données de l'utilisateur
+$isConnected = isset($_SESSION['username']) && !empty($_SESSION['username']);
+$userName = $isConnected ? htmlspecialchars($_SESSION['username']) : null;
+?>
 ?>
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Forum</title>
 </head>
 
 <style>
@@ -248,66 +260,189 @@ get_header();
         </div>
     </section>
 
-    <!-- Section Profil -->
-    <div class="second-section">
-        <div class="profile-info">
-            <div class="user-bubble">
-                <div class="modern-user">
-                    <div class="user-head"></div>
-                    <div class="user-shoulders"></div>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .experience-card {
+            border-left: 4px solid #ff69b4;
+            margin-bottom: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-section {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .navbar-custom {
+            background-color: rgb(184, 173, 30);
+        }
+
+        .navbar-custom .navbar-brand {
+            color: white;
+        }
+    </style>
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-custom mb-4">
+            <div class="container">
+                <a class="navbar-brand">Forum de Soutien</a>
+                <div class="ms-auto">
+                    <span class="navbar-text text-white" id="userInfo">
+                        <?php if ($isConnected): ?>
+                            Connectée en tant que <span id="userName"><?php echo $userName; ?></span>
+                            <!-- Ajout de l'ID utilisateur dans un attribut de l'élément -->
+                            <span id="userId" style="display: none;"><?php echo $userId; ?></span>
+                        <?php else: ?>
+                            <a href="/login" class="text-white">Se connecter</a>
+                        <?php endif; ?>
+                    </span>
                 </div>
             </div>
-            <div class="user-details">
-                <h2>Anonyme</h2>
-                <p>Âge</p>
+        </nav>
+        <div class="container">
+            <!-- Section des expériences -->
+            <div class="experiences-section mb-5">
+                <h2 class="mb-4">Expériences Partagées</h2>
+                <div id="experiencesList">
+                    <!-- Les expériences seront ajoutées ici dynamiquement -->
+                </div>
             </div>
-            <a href="connexion.php" class="cta-button">Se connecter</a>
+
+            <!-- Section du formulaire -->
+            <!-- Remplacer la section du formulaire existante par celle-ci -->
+            <div class="form-section">
+                <?php if (isset($_SESSION['username'])): ?>
+                    <h3 class="mb-4">Partagez votre expérience</h3>
+                    <form id="experienceForm">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Nom</label>
+                            <input type="text" class="form-control" id="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="age" class="form-label">Âge</label>
+                            <input type="number" class="form-control" id="age" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="experience" class="form-label">Mon vécu</label>
+                            <textarea class="form-control" id="experience" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Partager</button>
+                    </form>
+                <?php else: ?>
+                    <div class="alert alert-warning">
+                        Veuillez vous connecter pour partager votre expérience.
+                        <a href="login.php" class="alert-link">Se connecter</a>
+                    </div>
+                <?php endif; ?>
+            </div>
         </div>
 
-        <!-- Formulaire d'envoi de témoignage -->
-        <div class="write-box">
-            <form method="POST" action="">
-                <textarea name="temoignage" class="write-input" placeholder="J'écris ici mon vécu..."
-                    required></textarea>
-                <input type="text" name="nom" placeholder="Ton nom (facultatif)" class="form-input" />
-                <input type="number" name="age" placeholder="Ton âge" class="form-input" required />
-                <button type="submit" class="send-button">
-                    <i class="send-icon">▶</i>
-                </button>
-            </form>
-        </div>
-    </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script>
+            // Simulation de données
+            let experiences = [
+                {
+                    name: "Sophie",
+                    age: 25,
+                    text: "Après avoir été confrontée à des remarques dégradantes de la part d'un supérieur, j'ai décidé de parler. J'ai rassemblé mon courage, contacté les RH, et aujourd'hui, je suis fière d'avoir ouvert la voie à un environnement de travail plus respectueux pour mes collègues et moi.",
+                    date: "2024-02-15"
+                },
+                {
+                    name: "Laura",
+                    age: 30,
+                    text: "Un jour, dans les transports en commun, un homme s'est permis de me parler avec insistance malgré mes refus. J'ai finalement décidé de lui répondre à voix haute, ce qui a attiré l'attention des passagers. Cela m'a montré que l'on peut se faire entendre, même dans les situations les plus oppressantes.",
+                    date: "2024-02-10"
+                },
+                {
+                    name: "Mélissa",
+                    age: 22,
+                    text: "Un soir, en rentrant chez moi, j'ai remarqué qu'un homme me suivait. Mon cœur battait la chamade, mais j'ai gardé mon calme. J'ai appelé une amie, changé de direction et fini par rejoindre un groupe de personnes. Cet incident m'a donné la force de m'inscrire à des cours d'autodéfense et de ne plus jamais me sentir vulnérable.",
+                    date: "2024-02-20"
+                },
+                {
+                    name: "Chloé",
+                    age: 28,
+                    text: "Après une soirée, quelqu'un a insisté lourdement pour m'accompagner, malgré mes refus répétés. Je me suis fermement exprimée, et cela a été un moment clé pour moi : réaliser que mon 'non' est une phrase complète. Cette expérience a renforcé ma capacité à poser des limites claires et non négociables.",
+                    date: "2024-02-18"
+                },
+                {
+                    name: "Sarah",
+                    age: 27,
+                    text: "Un matin, en courant dans le parc, un passant a osé faire des commentaires déplacés. J'ai répondu calmement mais avec fermeté, et j'ai continué ma course sans laisser ses mots m'atteindre. Ce jour-là, j'ai compris que le pouvoir de ne pas laisser les autres définir ma journée m'appartient.",
+                    date: "2024-02-12"
+                },
+                {
+                    name: "Camille",
+                    age: 24,
+                    text: "Lors d'un événement professionnel, un collègue a essayé de franchir mes limites. Au lieu de rester silencieuse, j'ai pris la parole devant l'équipe et souligné l'importance du respect mutuel. C'était terrifiant, mais je sais que ma voix a résonné pour celles qui n'osaient pas encore parler.",
+                    date: "2024-02-25"
+                },
+                {
+                    name: "Emma",
+                    age: 21,
+                    text: "Dans une file d'attente, un homme a commencé à me faire des commentaires sur mon apparence. Plutôt que de baisser la tête, je lui ai rappelé que je n'étais pas là pour être évaluée. Les regards des autres m'ont soutenue, et j'ai ressenti une force collective qui m'a fait sourire.",
+                    date: "2024-02-14"
+                }
+            ];
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
 
-</html>
+            // Afficher les expériences
+            function displayExperiences() {
+                const experiencesList = document.getElementById('experiencesList');
+                experiencesList.innerHTML = '';
 
-<?php
-// Traitement du formulaire
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Récupération des données du formulaire
-    $nom = htmlspecialchars($_POST['nom']);
-    $age = htmlspecialchars($_POST['age']);
-    $temoignage = htmlspecialchars($_POST['temoignage']);
+                experiences.forEach(exp => {
+                    const card = document.createElement('div');
+                    card.className = 'card experience-card p-3 mb-3';
+                    card.innerHTML = `
+                    <div class="d-flex justify-content-between">
+                        <h5 class="card-title">${exp.name}, ${exp.age} ans</h5>
+                        <small class="text-muted">${new Date(exp.date).toLocaleDateString()}</small>
+                    </div>
+                    <p class="card-text">${exp.text}</p>
+                `;
+                    experiencesList.appendChild(card);
+                });
+            }
 
-    // Vous pouvez ajouter ici une logique pour enregistrer ces informations dans une base de données
-    // Exemple avec PDO pour MySQL (Assurez-vous d'avoir une table adéquate dans votre base de données)
-    try {
-        $pdo = new PDO('mysql:host=localhost;dbname=forum_db', 'root', ''); // Remplacez par vos informations de connexion
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            // Gérer la soumission du formulaire
+            document.getElementById('experienceForm').addEventListener('submit', function (e) {
+                e.preventDefault();
 
-        $stmt = $pdo->prepare("INSERT INTO temoignages (nom, age, temoignage) VALUES (:nom, :age, :temoignage)");
-        $stmt->bindParam(':nom', $nom);
-        $stmt->bindParam(':age', $age);
-        $stmt->bindParam(':temoignage', $temoignage);
+                const newExperience = {
+                    name: document.getElementById('name').value,
+                    age: parseInt(document.getElementById('age').value),
+                    text: document.getElementById('experience').value,
+                    date: new Date().toISOString().split('T')[0]
+                };
 
-        $stmt->execute();
-        echo "Témoignage envoyé avec succès !";
-    } catch (PDOException $e) {
-        echo "Erreur : " . $e->getMessage();
-    }
-}
-?>
+                experiences.unshift(newExperience);
+                displayExperiences();
+                this.reset();
+            });
 
-<?php get_footer(); // Inclut le pied de page du site WordPress ?>
+            // Afficher les expériences au chargement
+            displayExperiences();
+
+            /****************compte */
+
+            // Récupérer l'ID utilisateur depuis le DOM
+            const userIdElement = document.getElementById('userId');
+            const userId = userIdElement ? userIdElement.textContent : null;
+
+            if (userId) {
+                console.log(`ID de l'utilisatrice connectée : ${userId}`);
+                // Vous pouvez utiliser l'ID pour d'autres opérations (exemple : appel API)
+            } else {
+                console.log("Aucune utilisatrice connectée.");
+            }
+
+
+        </script>
+
+        <?php get_footer(); // Inclut le pied de page du site WordPress ?>
+        <style>

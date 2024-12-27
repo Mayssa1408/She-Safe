@@ -191,7 +191,7 @@
                     <input type="hidden" name="create_account_nonce" value="<?php echo wp_create_nonce('create_account_action'); ?>">
                     <button type="submit" class="btn-inscrire">S'inscrire</button>
                 </form>
-                <p>Déjà membre ? <a href="<?php echo esc_url(home_url('/login')); ?>">Se connecter</a></p>
+                <p>Déjà membre ? <a href="<?php echo esc_url(home_url('/page-connexion.php')); ?>">Se connecter</a></p>
             </div>
         </div>
     </div>

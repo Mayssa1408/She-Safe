@@ -11,11 +11,11 @@
             <div class="col-md-4 mb-3">
                 <ul class="list-unstyled">
                     <li><a href="<?php echo home_url('/'); ?>" class="footer-link">Accueil</a></li>
-                    <li><a href="safePlace.php" class="footer-link">Safe Place</a></li>
-                    <li><a href="#" class="footer-link">Forum</a></li>
+                    <li><a href="safe-place.php" class="footer-link">Safe Place</a></li>
+                    <li><a href="forum.php" class="footer-link">Forum</a></li>
                     <li><a href="about-page.php" class="footer-link">À propos</a></li>
-                    <li><a href="#" class="footer-link">Support et aide</a></li>
-                    <li><a href="#" class="footer-link">Mon profil</a></li>
+                    <li><a href="support.php" class="footer-link">Support</a></li>
+                    <li><a href="mon-compte-page.php" class="footer-link">Mon compte</a></li>
                 </ul>
             </div>
 
@@ -24,7 +24,7 @@
                 <h1 class="ms-2 mb-0 fs-4 " style="color : #B0596A;">She Safe</h1>
                 <img src="<?php echo get_template_directory_uri(); ?>/images/SheSafeLG.svg" alt="Logo She Safe"
                     width="150" height="75" class="footer-logo">
-                <p class="copy mt-5">&copy; <?php echo date('Y'); ?> She Safe. All rights reserved.</p>
+                <p class="copy mt-5">&copy; <?php echo date('Y'); ?> She Safe. <a href="mentionsLegales.php">All rights reserved. </a> </p>
             </div>
 
             <!-- Contact Info -->
