@@ -1,3 +1,7 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+
 <?php
 /** 
  * Template Name: forum - Page 
@@ -5,19 +9,11 @@
 get_header();
 
 
-// Vérifier la session
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
+session_start();
+if (!isset($_SESSION['username'])) {
+    $_SESSION['username'] = null;
 }
 
-// Exemple : Stocker l'ID dans la session lors de la connexion
-// $_SESSION['userId'] = 123; // À définir lors de la connexion
-$userId = isset($_SESSION['userId']) ? intval($_SESSION['userId']) : null;
-
-// Obtenir les données de l'utilisateur
-$isConnected = isset($_SESSION['username']) && !empty($_SESSION['username']);
-$userName = $isConnected ? htmlspecialchars($_SESSION['username']) : null;
-?>
 ?>
 
 <head>
@@ -292,17 +288,12 @@ $userName = $isConnected ? htmlspecialchars($_SESSION['username']) : null;
                 <a class="navbar-brand">Forum de Soutien</a>
                 <div class="ms-auto">
                     <span class="navbar-text text-white" id="userInfo">
-                        <?php if ($isConnected): ?>
-                            Connectée en tant que <span id="userName"><?php echo $userName; ?></span>
-                            <!-- Ajout de l'ID utilisateur dans un attribut de l'élément -->
-                            <span id="userId" style="display: none;"><?php echo $userId; ?></span>
-                        <?php else: ?>
-                            <a href="/login" class="text-white">Se connecter</a>
-                        <?php endif; ?>
+                        Connectée en tant que <span id="userName"><?php echo $userName; ?></span>
                     </span>
                 </div>
             </div>
         </nav>
+
         <div class="container">
             <!-- Section des expériences -->
             <div class="experiences-section mb-5">
@@ -427,21 +418,6 @@ $userName = $isConnected ? htmlspecialchars($_SESSION['username']) : null;
 
             // Afficher les expériences au chargement
             displayExperiences();
-
-            /****************compte */
-
-            // Récupérer l'ID utilisateur depuis le DOM
-            const userIdElement = document.getElementById('userId');
-            const userId = userIdElement ? userIdElement.textContent : null;
-
-            if (userId) {
-                console.log(`ID de l'utilisatrice connectée : ${userId}`);
-                // Vous pouvez utiliser l'ID pour d'autres opérations (exemple : appel API)
-            } else {
-                console.log("Aucune utilisatrice connectée.");
-            }
-
-
         </script>
 
         <?php get_footer(); // Inclut le pied de page du site WordPress ?>

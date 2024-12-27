@@ -322,7 +322,7 @@ header h1 {
   line-height: 30px;
 }
 button {
-  background-color: var(--mauve-color);
+  background-color: var();
   color: rgb(123, 9, 9);
   border: none;
   padding: 10px 20px;

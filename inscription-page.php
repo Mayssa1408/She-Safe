@@ -1,12 +1,11 @@
-    <?php
-    /*
-    Template Name: inscription
-    */
-    get_header();
-    ?>
-    <main class="content">
+<?php
+/*
+Template Name: Inscription
+*/
+get_header();
+?>
 
-    <style>
+<style>
     /* Corps principal */
     body {
         font-family: 'Montserrat', sans-serif;
@@ -15,7 +14,7 @@
         padding: 0;
     }
 
-    /* Titre de la page d'inscription */
+    /* Titre de la page */
     h1 {
         font-weight: bold;
         color: #B7536C;
@@ -24,55 +23,70 @@
         font-size: 36px;
     }
 
-    /* Conteneur principal du formulaire */
+    /* Conteneur principal */
     .container {
-        background: white;
         max-width: 900px;
         margin: 40px auto;
         padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        /* Centre le contenu horizontalement */
     }
 
-    /* Formulaire d'inscription */
+    /* Formulaire */
+    form {
+        text-align: center;
+    }
+
     form label {
         font-weight: bold;
         color: #B7536C;
         display: block;
-        margin-top: 15px;
+        margin: 15px auto 8px auto;
+        /* Espacement entre les labels et les champs */
+        text-align: left;
+        /* Aligne le texte à gauche */
+        max-width: 300px;
+        /* Alignement en fonction de la taille des champs */
     }
 
     form input {
         width: 100%;
+        max-width: 300px;
+        /* Réduit la largeur des champs */
         padding: 12px;
         border: 1px solid #B7536C;
+        /* Bordure autour des champs de saisie */
         border-radius: 5px;
-        margin-top: 8px;
+        margin: 0 auto 15px auto;
+        /* Centre les champs et ajoute une marge inférieure */
         font-size: 16px;
         color: #B7536C;
         background-color: #FFF1F0;
-        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        /* Couleur de fond claire */
+        transition: box-shadow 0.3s ease;
+        display: block;
     }
 
     form input:focus {
-        border-color: #D94F78;
         box-shadow: 0 0 5px rgba(217, 79, 120, 0.7);
         outline: none;
     }
 
-    /* Bouton d'inscription */
+    /* Bouton */
     button {
         background-color: #B7536C;
         color: white;
         border: none;
-        padding: 12px 20px;
-        border-radius: 5px;
+        padding: 12px 40px;
+        border-radius: 50px;
         margin-top: 20px;
         font-size: 18px;
         font-weight: bold;
         cursor: pointer;
-        width: 100%;
         transition: background-color 0.3s ease, transform 0.2s ease;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     button:hover {
@@ -80,7 +94,7 @@
         transform: scale(1.05);
     }
 
-    /* Lien de connexion */
+    /* Lien */
     p {
         text-align: center;
         margin-top: 20px;
@@ -94,13 +108,6 @@
 
     p a:hover {
         text-decoration: underline;
-    }
-
-    /* Espacement entre les éléments */
-    .row {
-        display: flex;
-        justify-content: center;
-        align-items: center;
     }
 
     /* Responsivité */
@@ -122,78 +129,81 @@
             padding: 10px 18px;
         }
     }
+</style>
 
-    </style>
-    <?php
 
-    // Gestion de l'inscription
-    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['create_account_nonce'])) {
-        if (wp_verify_nonce($_POST['create_account_nonce'], 'create_account_action')) {
-            $fname  = sanitize_text_field($_POST['fname']);
-            $lname  = sanitize_text_field($_POST['lname']);
-            $user   = sanitize_user($_POST['uname']);
-            $email  = sanitize_email($_POST['uemail']);
-            $pass   = sanitize_text_field($_POST['upass']);
-            $repass = sanitize_text_field($_POST['repass']);
+<main class="content">
 
-            if ($pass !== $repass) {
-                echo '<p style="color: red;">Les mots de passe ne correspondent pas.</p>';
-            } elseif (username_exists($user) || email_exists($email)) {
-                echo '<p style="color: red;">Le nom d’utilisateur ou l’adresse e-mail est déjà enregistré.</p>';
-            } else {
-                $userdata = [
-                    'user_login' => $user,
-                    'user_email' => $email,
-                    'user_pass'  => $pass,
-                    'first_name' => $fname,
-                    'last_name'  => $lname,
-                ];
-
-                $user_id = wp_insert_user($userdata);
-
-                if (!is_wp_error($user_id)) {
-                    echo '<p style="color: green;">Inscription réussie ! Vous pouvez maintenant vous connecter.</p>';
-                    wp_redirect(esc_url(home_url('/login')));
-                    exit;
-                } else {
-                    echo '<p style="color: red;">Une erreur est survenue lors de la création du compte.</p>';
-                }
-            }
-        } else {
-            echo '<p style="color: red;">Nonce de sécurité invalide.</p>';
-        }
-    }
-    ?>
-    <div class="container" style="background-color: #FEF6E9; max-width: 1200px; margin-top: 100px; padding: 50px;">
+    <div class="container" style="background-color: none; margin-top: 100px; padding: 50px;">
         <!-- Formulaire d'inscription -->
-        <div class="row">
-            <div class="col-lg-6 col-12">
-                <h1 class="titreseconnecter">S'inscrire</h1>
-                <form method="POST">
-                    <label for="fname">Prénom</label>
-                    <input type="text" id="fname" name="fname" required />
+        <h1 class="titreseconnecter">S'inscrire</h1>
 
-                    <label for="lname">Nom</label>
-                    <input type="text" id="lname" name="lname" required />
+        <?php
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['create_account_nonce'])) {
+            if (wp_verify_nonce($_POST['create_account_nonce'], 'create_account_action')) {
+                $fname = sanitize_text_field($_POST['fname']);
+                $lname = sanitize_text_field($_POST['lname']);
+                $user = sanitize_user($_POST['uname']);
+                $email = sanitize_email($_POST['uemail']);
+                $pass = sanitize_text_field($_POST['upass']);
+                $repass = sanitize_text_field($_POST['repass']);
 
-                    <label for="uname">Nom d'utilisateur</label>
-                    <input type="text" id="uname" name="uname" required />
+                if ($pass !== $repass) {
+                    echo '<p style="color: red;">Les mots de passe ne correspondent pas.</p>';
+                } elseif (username_exists($user) || email_exists($email)) {
+                    echo '<p style="color: red;">Le nom d’utilisateur ou l’adresse e-mail est déjà enregistré.</p>';
+                } else {
+                    $userdata = [
+                        'user_login' => $user,
+                        'user_email' => $email,
+                        'user_pass' => $pass,
+                        'first_name' => $fname,
+                        'last_name' => $lname,
+                    ];
 
-                    <label for="uemail">Adresse mail</label>
-                    <input type="email" id="uemail" name="uemail" required />
+                    $user_id = wp_insert_user($userdata);
 
-                    <label for="upass">Mot de passe</label>
-                    <input type="password" id="upass" name="upass" required />
+                    if (!is_wp_error($user_id)) {
+                        echo '<p style="color: green;">Inscription réussie ! Vous pouvez maintenant vous connecter.</p>';
+                        wp_redirect(esc_url(home_url('/connexion-page'))); // Redirige vers la page de connexion
+                        exit;
+                    } else {
+                        echo '<p style="color: red;">Une erreur est survenue lors de la création du compte.</p>';
+                    }
+                }
+            } else {
+                echo '<p style="color: red;">Nonce de sécurité invalide.</p>';
+            }
+        }
+        ?>
 
-                    <label for="repass">Confirmer le mot de passe</label>
-                    <input type="password" id="repass" name="repass" required />
+        <form method="POST">
+            <label for="fname">Prénom</label>
+            <input type="text" id="fname" name="fname" required />
 
-                    <input type="hidden" name="create_account_nonce" value="<?php echo wp_create_nonce('create_account_action'); ?>">
-                    <button type="submit" class="btn-inscrire">S'inscrire</button>
-                </form>
-                <p>Déjà membre ? <a href="<?php echo esc_url(home_url('/page-connexion.php')); ?>">Se connecter</a></p>
-            </div>
-        </div>
+            <label for="lname">Nom</label>
+            <input type="text" id="lname" name="lname" required />
+
+            <label for="uname">Nom d'utilisateur</label>
+            <input type="text" id="uname" name="uname" required />
+
+            <label for="uemail">Adresse mail</label>
+            <input type="email" id="uemail" name="uemail" required />
+
+            <label for="upass">Mot de passe</label>
+            <input type="password" id="upass" name="upass" required />
+
+            <label for="repass">Confirmer le mot de passe</label>
+            <input type="password" id="repass" name="repass" required />
+
+            <input type="hidden" name="create_account_nonce"
+                value="<?php echo wp_create_nonce('create_account_action'); ?>">
+            <button type="submit" class="btn-inscrire">S'inscrire</button>
+        </form>
+
+        <p>Déjà membre ? <a href="<?php echo esc_url(home_url('/login')); ?>">Se connecter</a></p>
     </div>
 
-    <?php get_footer(); ?>
+</main>
+
+<?php get_footer(); ?>
