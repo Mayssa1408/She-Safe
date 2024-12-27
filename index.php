@@ -1,7 +1,19 @@
 <?php get_header(); ?>
+
 <main class="content">
   <style>
-    /* Global Styles */
+    /* Variables globales */
+    :root {
+      --primary-color: #B7536C;
+      --primary-hover: #D94F78;
+      --background-light: #FEF6E9;
+      --secondary-light: #F4C7C2;
+      --purple-light: #E6DFF1;
+      --purple-dark: #8D8DAF;
+      --transition: all 0.3s ease;
+    }
+
+    /* Styles globaux améliorés */
     * {
       margin: 0;
       padding: 0;
@@ -10,188 +22,188 @@
 
     body {
       font-family: 'Glory', sans-serif;
-      background-color: #FEF6E9;
+      background-color: var(--background-light);
     }
 
-    /* Header Styles */
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px;
-      background-color: #FCD6D2;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
-    .logo-container {
-      display: flex;
-      align-items: center;
-      margin-left: 20px;
-    }
-
-    .logo {
-      width: 40px;
-      height: auto;
-      margin-right: 10px;
-    }
-
-    .logo-name {
-      font-family: 'Great Vibes', cursive;
-      font-size: 24px;
-      color: #B7536C;
-    }
-
-    /* Navigation */
-    .navbar ul {
-      display: flex;
-      list-style: none;
-      gap: 20px;
-    }
-
-    .navbar ul li a {
-      text-decoration: none;
-      font-size: 18px;
-      color: #B7536C;
-    }
-
-    .navbar ul li a:hover {
-      color: #D94F78;
-    }
-
-    .icons {
-      display: flex;
-      gap: 15px;
-      margin-right: 20px;
-    }
-
-    .icon {
-      font-size: 24px;
-      text-decoration: none;
-      color: #333;
-    }
-
-    .icon:hover {
-      color: #007BFF;
-    }
-
-    /* Intro Section */
+    /* Section Intro améliorée */
     .intro-section {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
-      padding: 50px;
-      background-color: #FEF6E9;
+      padding: 80px 50px;
+      position: relative;
+      overflow: hidden;
     }
 
     .text-container {
       flex: 1;
-      max-width: 500px;
-      margin-right: 20px;
+      max-width: 600px;
+      margin-right: 40px;
+      animation: fadeInUp 1s ease-out;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .text-container h1 {
       font-family: 'Great Vibes', cursive;
-      font-size: 48px;
-      color: #B7536C;
-      margin-bottom: 20px;
+      font-size: 64px;
+      color: var(--primary-color);
+      margin-bottom: 25px;
+      animation: fadeInLeft 1s ease-out;
     }
 
     .text-container h2 {
       font-family: 'Montserrat', sans-serif;
-      font-size: 24px;
+      font-size: 28px;
       font-weight: bold;
-      color: #B7536C;
-      margin-bottom: 20px;
+      color: var(--primary-color);
+      margin-bottom: 25px;
+      animation: fadeInLeft 1.2s ease-out;
     }
 
     .text-container p {
       font-family: 'Montserrat', sans-serif;
       font-size: 18px;
-      color: #B7536C;
+      color: var(--primary-color);
       margin-bottom: 30px;
+      line-height: 1.6;
     }
 
     .cta-button {
-      background-color: #B7536C;
+      background-color: var(--primary-color);
       color: #fff;
       text-decoration: none;
       font-size: 18px;
-      padding: 10px 20px;
+      padding: 15px 30px;
       border-radius: 50px;
-      transition: background-color 0.3s ease;
+      transition: var(--transition);
+      display: inline-block;
+      box-shadow: 0 4px 15px rgba(183, 83, 108, 0.2);
     }
 
     .cta-button:hover {
-      background-color: #D94F78;
+      background-color: var(--primary-hover);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(183, 83, 108, 0.3);
+    }
+
+    .image-container {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      animation: fadeInRight 1s ease-out;
     }
 
     .image-container img {
       width: 428px;
       height: 544px;
-      border-radius: 15px;
+      border-radius: 20px;
       object-fit: cover;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: var(--transition);
     }
 
-    /* Second Section */
+    .image-container img:hover {
+      transform: scale(1.02);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Section Safe Place améliorée */
     .second-section {
-      background-color: #F4C7C2;
-      padding: 50px 20px;
+      background-color: var(--secondary-light);
+      padding: 80px 20px;
+      position: relative;
     }
 
     .rectangle-container {
       display: flex;
       justify-content: center;
-      gap: 20px;
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
     .rectangle {
-      background-color: #FEF6E9;
-      padding: 30px;
+      background-color: var(--background-light);
+      padding: 40px;
       width: 500px;
       height: 400px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       border-radius: 2px 50px 2px 50px;
+      transition: var(--transition);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .rectangle:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
     }
 
     .rectangle h2 {
       font-family: 'Montserrat', sans-serif;
-      font-size: 20px;
+      font-size: 24px;
       font-weight: bold;
-      color: #B7536C;
-      margin-bottom: 20px;
+      color: var(--primary-color);
+      margin-bottom: 25px;
     }
 
     .rectangle .flower {
-      font-size: 30px;
-      margin-bottom: 20px;
+      font-size: 36px;
+      margin-bottom: 25px;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
     }
 
     .rectangle p {
       font-family: 'Montserrat', sans-serif;
-      font-size: 16px;
-      color: #B7536C;
+      font-size: 18px;
+      color: var(--primary-color);
+      line-height: 1.6;
       flex-grow: 1;
       display: flex;
       align-items: center;
     }
 
-    /* Testimonials Section */
+    /* Section Témoignages améliorée */
     .testimonials-section {
-      background-color: #E6DFF1;
-      padding: 50px 20px;
+      background-color: var(--purple-light);
+      padding: 80px 20px;
+      overflow: hidden;
     }
 
     .section-title {
       font-family: 'Lora', serif;
-      font-size: 32px;
-      color: #8D8DAF;
-      margin-bottom: 40px;
+      font-size: 36px;
+      color: var(--purple-dark);
+      margin-bottom: 50px;
       text-align: center;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 100px;
+      height: 3px;
+      background: var(--purple-dark);
+      margin: 20px auto;
     }
 
     .testimonials-container {
@@ -204,78 +216,87 @@
 
     .testimonials-track {
       display: flex;
-      transition: transform 0.5s ease;
       gap: 30px;
-    }
-
-    .testimonial-card {
-      min-width: 300px;
-      flex-shrink: 0;
-      animation: slide 60s linear infinite;
-      background: #8D8DAF;
-      color: white;
-      padding: 25px;
-      border-radius: 15px;
-    }
-
-    @keyframes slide {
-      0% {
-        transform: translateX(0);
-      }
-      100% {
-        transform: translateX(-100%);
-      }
+      animation: slideTrack 40s linear infinite;
     }
 
     .testimonials-track:hover {
       animation-play-state: paused;
     }
 
+    @keyframes slideTrack {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+
+    .testimonial-card {
+      min-width: 300px;
+      background: var(--purple-dark);
+      color: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: var(--transition);
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    }
+
     .testimonial-header {
       display: flex;
       align-items: center;
-      margin-bottom: 15px;
+      margin-bottom: 20px;
     }
 
     .testimonial-avatar {
-      width: 50px;
-      height: 50px;
+      width: 60px;
+      height: 60px;
       border-radius: 50%;
-      background: #E6DFF1;
+      background: var(--purple-light);
       margin-right: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
     }
 
     .testimonial-rating {
       color: gold;
-      margin-top: 10px;
+      margin-top: 15px;
+      font-size: 20px;
     }
 
-    /* Newsletter Section */
+    /* Section Newsletter améliorée */
     .newsletter-section {
-      height: 700px;
+      min-height: 700px;
       background-color: #D08C9B;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding: 0 20px;
+      padding: 80px 20px;
+      position: relative;
     }
 
     .newsletter-title {
       font-family: 'Montserrat', sans-serif;
-      font-size: 32px;
+      font-size: 36px;
       font-weight: bold;
       color: #fff;
       margin-bottom: 40px;
+      max-width: 800px;
     }
 
     .newsletter-text {
       font-family: 'Montserrat', sans-serif;
       font-size: 18px;
       color: #fff;
-      margin-bottom: 30px;
+      margin-bottom: 40px;
       max-width: 841px;
+      line-height: 1.6;
     }
 
     .input-container {
@@ -283,38 +304,48 @@
       flex-direction: column;
       gap: 20px;
       margin-bottom: 30px;
+      width: 100%;
+      max-width: 500px;
     }
 
     .input-field {
-      width: 400px;
+      width: 100%;
       height: 50px;
-      padding: 10px;
+      padding: 15px;
       font-family: 'Glory', sans-serif;
-      color: #B7536C;
       font-size: 18px;
-      border: 0;
-      border-radius: 5px;
-      margin: 0 auto;
+      border: none;
+      border-radius: 10px;
       outline: none;
+      transition: var(--transition);
+    }
+
+    .input-field:focus {
+      box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
     }
 
     .newsletter-disclaimer {
       font-family: 'Montserrat', sans-serif;
-      font-size: 18px;
-      color: #fff;
+      font-size: 16px;
+      color: rgba(255, 255, 255, 0.8);
       margin-bottom: 30px;
       max-width: 600px;
     }
 
-    .newsletter-section .cta-button {
-      border-radius: 50px;
-    }
-
-    /* Responsive Design */
+    /* Responsive Design amélioré */
     @media (max-width: 768px) {
       .intro-section {
-        flex-direction: column;
+        padding: 40px 20px;
+      }
+
+      .text-container {
+        margin-right: 0;
+        margin-bottom: 40px;
         text-align: center;
+      }
+
+      .text-container h1 {
+        font-size: 48px;
       }
 
       .rectangle-container {
@@ -325,10 +356,12 @@
       .rectangle {
         width: 100%;
         max-width: 500px;
+        height: auto;
+        min-height: 400px;
       }
 
       .input-field {
-        width: 90%;
+        width: 100%;
       }
 
       .image-container img {
@@ -336,43 +369,43 @@
         height: auto;
         max-width: 428px;
       }
+
+      .newsletter-title {
+        font-size: 28px;
+      }
     }
   </style>
 
-  <!-- SECTION INTRO -->
-  <section class="intro-section container py-5">
-    <div class="row align-items-center">
-      <div class="col-md-6 text-container">
-        <h1>She Safe</h1>
-        <h2>Bienvenue dans ta Safe Place !</h2>
-        <p>Rejoins une communauté engagée pour la sécurité des femmes. Partage ton expérience, découvre des lieux sûrs et connecte-toi à un réseau solidaire.</p>
-        <p>Explore dès maintenant !</p>
-        <a href="<?php echo esc_url(home_url('/about')); ?>" class="cta-button">Découvrez-nous</a>
-      </div>
-      <div class="col-md-6 image-container">
-        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/your-image.jpg'); ?>" 
-             alt="Image représentant She Safe" 
-             class="img-fluid">
-      </div>
+  <!-- Section Intro -->
+  <section class="intro-section">
+    <div class="text-container">
+      <h1>She Safe</h1>
+      <h2>Bienvenue dans ta Safe Place !</h2>
+      <p>Rejoins une communauté engagée pour la sécurité des femmes. Partage ton expérience, découvre des lieux sûrs et connecte-toi à un réseau solidaire.</p>
+      <p>Explore dès maintenant !</p>
+      <a href="<?php echo esc_url(home_url('/about')); ?>" class="cta-button">Découvrez-nous</a>
+    </div>
+    <div class="image-container">
+      <img src="<?php echo esc_url(get_theme_file_uri('assets/images/your-image.jpg')); ?>" 
+           alt="Image représentant She Safe" 
+           loading="lazy">
     </div>
   </section>
 
-  <!-- SECTION SAFE PLACE -->
-  <section class="second-section py-5">
-    <div class="container">
-      <div class="rectangle-container">
-        <div class="rectangle">
-          <h2>Tu cherches une Safe Place à Bruxelles ?</h2>
-          <div class="flower">🌸</div>
-          <p>Découvre les lieux les plus sûrs de Bruxelles grâce à nos sondages interactifs.</p>
-          <a href="#" class="cta-button">En savoir plus ➡</a>
-        </div>
-        <div class="rectangle">
-          <h2>Tu as vécu une expérience marquante ?</h2>
-          <div class="flower">🌸</div>
-          <p>Partage-la avec notre communauté et découvre les témoignages inspirants des autres utilisatrices.</p>
-          <a href="#" class="cta-button">En savoir plus ➡</a>
-        </div>
+  <!-- Section Safe Place -->
+  <section class="second-section">
+    <div class="rectangle-container">
+      <div class="rectangle">
+        <h2>Tu cherches une Safe Place à Bruxelles ?</h2>
+        <div class="flower">🌸</div>
+        <p>Découvre les lieux les plus sûrs de Bruxelles grâce à nos sondages interactifs.</p>
+        <a href="<?php echo esc_url(home_url('/safe-places')); ?>" class="cta-button">En savoir plus ➡</a>
+      </div>
+      <div class="rectangle">
+        <h2>Tu as vécu une expérience marquante ?</h2>
+        <div class="flower">🌸</div>
+        <p>Partage-la avec notre communauté et découvre les témoignages inspirants des autres utilisatrices.</p>
+        <a href="<?php echo esc_url(home_url('/forum')); ?>" class="cta-button">Partager mon expérience ➡</a>
       </div>
     </div>
   </section>

@@ -10,11 +10,21 @@ get_header();
     font-family: 'Arial', sans-serif;
     color: #333;
     line-height: 1.6;
-    padding: 60px 20px;
     text-align: center;
     animation: fadeIn 1s ease-in-out;
+    
+    /* Pour centrer verticalement et horizontalement */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centrer verticalement */
+    align-items: center; /* Centrer horizontalement */
+    height: 80vh; /* Hauteur de la fenêtre */
+    
+    /* Padding par défaut (desktop) */
+    padding: 100px 20px;
 }
 
+/* En-tête de l'erreur 404 */
 .error-404-header {
     font-size: 2.5rem;
     color: #B7536C;
@@ -22,6 +32,7 @@ get_header();
     animation: slideIn 1s ease-out;
 }
 
+/* Message de l'erreur 404 */
 .error-404-message {
     font-size: 1.2rem;
     color: #555;
@@ -29,6 +40,7 @@ get_header();
     animation: slideUp 1s ease-out;
 }
 
+/* Bouton de retour à l'accueil */
 .error-404-btn {
     background-color: #B7536C;
     color: #fff;
@@ -43,15 +55,17 @@ get_header();
     animation: bounce 1.5s ease-out infinite;
 }
 
+/* Effet au survol du bouton */
 .error-404-btn:hover {
-    background-color: #8D8DAF;
+    background-color: #D94F78;
 }
 
+/* Effet lorsque le bouton est sélectionné */
 .error-404-btn:focus {
     outline: none;
 }
 
-/* Animation Definitions */
+/* Définition des animations */
 @keyframes fadeIn {
     0% {
         opacity: 0;
@@ -95,10 +109,11 @@ get_header();
     }
 }
 
-/* Responsive */
+/* Réglages pour les petits écrans */
 @media (max-width: 768px) {
     .error-404-wrapper {
-        padding: 40px 20px;
+        /* Padding réduit pour mobile */
+        padding: 60px 20px; /* Réduire légèrement le padding pour les mobiles */
     }
 
     .error-404-header {
@@ -112,6 +127,27 @@ get_header();
     .error-404-btn {
         font-size: 0.9rem;
         padding: 12px 25px;
+    }
+}
+
+/* Réglages pour les grands écrans (tablettes et plus grands) */
+@media (max-width: 1024px) {
+    .error-404-wrapper {
+        /* Padding pour les tablettes */
+        padding: 80px 20px;
+    }
+
+    .error-404-header {
+        font-size: 2.2rem;
+    }
+
+    .error-404-message {
+        font-size: 1.1rem;
+    }
+
+    .error-404-btn {
+        font-size: 1rem;
+        padding: 14px 28px;
     }
 }
 </style>

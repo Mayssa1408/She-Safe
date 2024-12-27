@@ -1,14 +1,21 @@
-<style>
- /* === Footer === */
+<?php
+/**
+ * Footer Template for She Safe Theme
+ */
+?>
+
+<style> 
+/* === Footer === */
 .footer {
-    background-color: #B7536C; /* Couleur principale pour le footer */
-    color: #fff; /* Texte en blanc */
+    background-color: #FCD6D2; /* Couleur principale pour le footer */
+    color: #B7536C; /* Texte en blanc */
     font-family: 'Montserrat', sans-serif;
     padding: 50px 20px; /* Padding égal à gauche et à droite */
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+    box-sizing: border-box;
 }
 
 /* Container général */
@@ -32,7 +39,7 @@
 }
 
 .footer-link {
-    color: #fff;
+    color: #B7536C;
     text-decoration: none;
     font-size: 1rem;
     font-weight: 500;
@@ -59,14 +66,14 @@
 .footer h1 {
     font-family: 'Great Vibes', cursive;
     font-size: 2.8rem;
-    color: #fff;
+    color: #B7536C;
     margin-bottom: 10px;
     text-align: center;
 }
 
 .footer p {
     font-size: 1rem;
-    color: #fff;
+    color: #B7536C;
     margin-top: 5px;
     text-align: center;
 }
@@ -82,7 +89,7 @@
 }
 
 .footer-contact {
-    color: #fff;
+    color: #B7536C;
     font-size: 1.1rem;
     text-decoration: none;
     display: inline-block;
@@ -101,7 +108,7 @@
 
 .social-icon {
     font-size: 1.7rem;
-    color: #fff;
+    color: #B7536C;
     transition: color 0.3s ease;
 }
 
@@ -135,17 +142,9 @@
         font-size: 1.5rem;
     }
 }
-
-
 </style>
 
 <!-- SECTION FOOTER -->
-
-<?php
-/**
- * Footer Template for She Safe Theme
- */
-?>
 
 <footer class="footer">
     <div class="container">
@@ -168,8 +167,8 @@
         <!-- Contact Info à droite -->
         <div class="footer-contact-info">
             <a href="mailto:shesafe@gmail.com" class="footer-contact"><i class="bi bi-envelope"></i> shesafe@gmail.com</a>
-            <i class="bi bi-geo-alt"></i> Rue de la Poste 111, Schaerbeek
-            <i class="bi bi-telephone"></i> +32 471 64 53 21
+            <p><i class="bi bi-geo-alt"></i> Rue de la Poste 111, Schaerbeek</p>
+            <p><i class="bi bi-telephone"></i> +32 471 64 53 21</p>
 
             <div class="social-media">
                 <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
@@ -183,4 +182,3 @@
 <?php wp_footer(); ?>
 </body>
 </html>
-

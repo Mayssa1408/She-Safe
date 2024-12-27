@@ -102,7 +102,7 @@ get_header();
     max-height: 0;
     overflow: hidden;
     padding: 0 15px;
-    background: #f9f9f9;
+    background: #FFF;
     font-size: 0.9rem;
     color: #555;
     transition: max-height 0.3s ease, padding 0.3s ease;
@@ -136,10 +136,24 @@ get_header();
     margin-left: auto;
     margin-right: auto;
 }
+.contact-section textarea {
+    width: 100%;             /* Prendre toute la largeur disponible */
+    padding: 15px;           /* Espace à l'intérieur de la zone de texte */
+    font-size: 1rem;         /* Taille de police ajustée */
+    border: 1px solid #8D8DAF;
+    border-radius: 5px;
+    box-shadow: inset 0 1px 3px #8D8DAF;
+    resize: vertical;       /* Permettre le redimensionnement vertical */
+    min-height: 120px;       /* Hauteur minimale pour que la zone soit visible */
+    max-height: 400px;       /* Hauteur maximale pour ne pas dépasser */
+}
+
+
 .contact-section form {
     max-width: 600px;
     margin: 0 auto;
 }
+
 .contact-section .form-group {
     margin-bottom: 20px;
     position: relative;
@@ -148,14 +162,14 @@ get_header();
     width: 100%;
     padding: 15px;
     font-size: 1rem;
-    border: 1px solid #ddd;
+    border: 1px solid #8D8DAF;
     border-radius: 5px;
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0 1px 3px #8D8DAF;
     transition: border 0.3s ease, box-shadow 0.3s ease;
 }
 .contact-section input:focus, .contact-section textarea:focus {
     border-color: #8D8DAF;
-    box-shadow: 0 0 5px rgba(141, 141, 175, 0.5);
+    box-shadow: 0 0 5px #8D8DAF;
 }
 .contact-section input::placeholder, .contact-section textarea::placeholder {
     color: #aaa;
@@ -173,8 +187,15 @@ get_header();
     text-align: center;
 }
 .contact-section .btn-submit:hover {
-    background: #8D8DAF;
+    background: #D94F78;
 }
+.char-count {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #555;
+    text-align: right;
+}
+
 
 /* Responsive */
 @media (max-width: 768px) {
@@ -233,20 +254,21 @@ get_header();
         </div>
     </section>
 
-    <!-- Section Formulaire de contact -->
     <section class="contact-section">
         <h2>Besoin d’assistance ou d’informations ?</h2>
-        <p>Notre équipe est là pour vous accompagner. Que ce soit pour signaler un problème, poser une question ou partager une suggestion, n’hésitez pas à nous contacter via le formulaire ci-dessous. Nous vous répondrons dans les plus brefs délais.</p>
-        <form id="contact-form" method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
-            <input type="hidden" name="action" value="she_safe_contact">
+        <p>Complétez ce formulaire et nous vous répondrons dans les plus brefs délais.</p>
+        <form action="<?php echo esc_url(admin_url('admin-post.php')); ?>" method="POST">
+            <input type="hidden" name="action" value="submit_contact_form">
+            
             <div class="form-group">
-                <input type="text" id="name" name="name" placeholder="Nom Prénom" required>
+                <input type="text" name="name" placeholder="Nom" required>
             </div>
             <div class="form-group">
-                <input type="text" id="subject" name="subject" placeholder="Sujet" required>
+                <input type="email" name="email" placeholder="Email" required>
             </div>
             <div class="form-group">
-                <textarea id="message" name="message" rows="6" maxlength="10000" placeholder="Message" required></textarea>
+                <textarea id="message" name="message" rows="6" maxlength="2000" placeholder="Message" required></textarea>
+                <div id="charCount" class="char-count">2000 caractères restants</div> <!-- Ajout du compteur -->
             </div>
             <button type="submit" class="btn-submit">Envoyer</button>
         </form>
@@ -270,6 +292,18 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+
+// JavaScript pour le compteur de caractères
+document.addEventListener("DOMContentLoaded", function () {
+    const messageTextarea = document.getElementById('message');
+    const charCount = document.getElementById('charCount');
+
+    messageTextarea.addEventListener('input', function () {
+        const remaining = 2000 - messageTextarea.value.length;
+        charCount.textContent = remaining + ' caractères restants';
+    });
+});
+
 </script>
 
 <?php get_footer(); ?>
