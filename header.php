@@ -6,6 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><?php bloginfo('name'); ?> - <?php wp_title(); ?></title>
   <link href="https://fonts.googleapis.com/css2?family=Glory:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=Great+Vibes&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/style.css">
   <link rel="icon" type="image/x-icon" href="<?php echo get_template_directory_uri(); ?>/favicon.ico">
   <?php wp_head(); ?>
@@ -14,14 +19,15 @@
 <body <?php body_class('d-flex flex-column vh-100'); ?>>
 
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #F4C7C2;">
+
     <div class="container-fluid">
 
       <!-- Logo -->
       <a class="navbar-brand d-flex align-items-center" href="<?php echo esc_url(home_url('/')); ?>">
         <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/SheSafeLG.svg" alt="Logo She Safe"
           width="75" height="55">
-        <h1 class="ms-2 mb-0 fs-4">She Safe</h1>
+        <h1 class="ms-2 mb-0 fs-4 "style="color : #B0596A;">She Safe</h1>
       </a>
 
       <!-- Toggle Button -->
@@ -35,7 +41,7 @@
 
         <!-- Offcanvas Header -->
         <div class="offcanvas-header border-bottom">
-          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+
           <button type="button" class="btn-close shadow-none" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
 

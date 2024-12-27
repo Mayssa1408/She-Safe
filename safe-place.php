@@ -233,14 +233,24 @@ get_header();
                 </div>
             </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Précédent</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Suivant</span>
-        </button>
+        <div
+            className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex items-center justify-between pointer-events-none">
+            <div className="w-full max-w-7xl mx-auto px-4 flex justify-between">
+                <button
+                    className="carousel-control-prev pointer-events-auto flex items-center justify-center w-12 h-12 rounded-full bg-black/30 hover:bg-black/50 transition-colors"
+                    type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                    <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span className="sr-only">Précédent</span>
+                </button>
+
+                <button
+                    className="carousel-control-next pointer-events-auto flex items-center justify-center w-12 h-12 rounded-full bg-black/30 hover:bg-black/50 transition-colors"
+                    type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                    <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span className="sr-only">Suivant</span>
+                </button>
+            </div>
+        </div>
     </div>
 </section>
 

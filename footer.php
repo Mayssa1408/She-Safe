@@ -18,19 +18,19 @@
                     <li><a href="#" class="footer-link">Mon profil</a></li>
                 </ul>
             </div>
-    
+
             <!-- Logo and Copyright -->
             <div class="col-md-4 mb-3 text-center">
-                <h1>She Safe</h1>
+                <h1 class="ms-2 mb-0 fs-4 " style="color : #B0596A;">She Safe</h1>
                 <img src="<?php echo get_template_directory_uri(); ?>/images/SheSafeLG.svg" alt="Logo She Safe"
                     width="150" height="75" class="footer-logo">
-                <p class="mt-5">&copy; <?php echo date('Y'); ?>, a href She Safe. All rights reserved.</p>
+                <p class="copy mt-5">&copy; <?php echo date('Y'); ?> She Safe. All rights reserved.</p>
             </div>
 
             <!-- Contact Info -->
             <div class="col-md-4 mb-3 text-md-end">
 
-                <a href="mailto:shesafe@gmail.com" class="text-decoration-none">
+                <a href="mailto:shesafe@gmail.com" class="text-decoration-none" style="color : #B0596A;">
                     <i class="bi bi-envelope"></i> shesafe@gmail.com
                 </a>
 
