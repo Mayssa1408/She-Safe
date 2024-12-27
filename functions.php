@@ -97,13 +97,21 @@ add_action('wp_enqueue_scripts', 'mon_theme_enqueue_styles');
 //////////////connexion page /////////////////
 // Rediriger l'utilisateur connecté vers une page spécifique après la connexion
 function redirect_after_login($redirect_to, $request, $user) {
-  // Vérifiez si l'utilisateur a un rôle spécifique
-  if (in_array('subscriber', (array) $user->roles)) {
-      // Si l'utilisateur est un abonné, rediriger vers la page d'accueil
-      return home_url();
-  }
-  // Par défaut, rediriger vers le tableau de bord
-  return $redirect_to;
+    // Vérifiez si l'utilisateur est valide
+    if (is_wp_error($user)) {
+        // L'utilisateur n'existe pas ou il y a eu une erreur lors de la récupération de l'utilisateur
+        echo "Erreur de récupération de l'utilisateur.";
+        return $redirect_to; // Retourner la valeur par défaut si erreur
+    }
+
+    // Vérifiez si l'utilisateur a un rôle spécifique
+    if (in_array('subscriber', (array) $user->roles)) {
+        // Si l'utilisateur est un abonné, rediriger vers la page d'accueil
+        return home_url();
+    }
+
+    // Par défaut, rediriger vers le tableau de bord
+    return $redirect_to;
 }
 add_filter('login_redirect', 'redirect_after_login', 10, 3);
 
