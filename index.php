@@ -1,3 +1,6 @@
+D'accord, je vais vous envoyer le code complet avec toutes les modifications demandées. Voici le code PHP complet pour votre page :
+
+```php
 <?php get_header(); ?>
 
 <main class="content">
@@ -88,13 +91,13 @@
       border-radius: 50px;
       transition: var(--transition);
       display: inline-block;
-      box-shadow: 0 4px 15px rgba(183, 83, 108, 0.2);
+      box-shadow: 0 4px 15px #b7536c;
     }
 
     .cta-button:hover {
       background-color: var(--primary-hover);
       transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(183, 83, 108, 0.3);
+      box-shadow: 0 6px 20px #b7536c;
     }
 
     .image-container {
@@ -141,6 +144,8 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      align-items: center;
+      text-align: center;
       border-radius: 2px 50px 2px 50px;
       transition: var(--transition);
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -159,10 +164,21 @@
       margin-bottom: 25px;
     }
 
-    .rectangle .flower {
-      font-size: 36px;
+    .rectangle .flower-icon {
+      width: 60px;
+      height: 60px;
+      background-color: var(--primary-color);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       margin-bottom: 25px;
       animation: pulse 2s infinite;
+    }
+
+    .rectangle .flower-icon::before {
+      content: '🌸';
+      font-size: 36px;
     }
 
     @keyframes pulse {
@@ -179,6 +195,26 @@
       flex-grow: 1;
       display: flex;
       align-items: center;
+      padding: 0 20px;
+    }
+
+    .rectangle .cta-button {
+      margin-top: 20px;
+      position: relative;
+      padding-right: 50px;
+    }
+
+    .rectangle .cta-button::after {
+      content: '→';
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      transition: transform 0.3s ease;
+    }
+
+    .rectangle .cta-button:hover::after {
+      transform: translate(5px, -50%);
     }
 
     /* Section Témoignages améliorée */
@@ -234,7 +270,7 @@
       background: var(--purple-dark);
       color: white;
       padding: 30px;
-      border-radius: 20px;
+      border-radius: 2px 50px 2px 50px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
       transition: var(--transition);
     }
@@ -250,25 +286,65 @@
       margin-bottom: 20px;
     }
 
-    .testimonial-avatar {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      background: var(--purple-light);
-      margin-right: 15px;
+    .testimonial-header h3 {
+      font-size: 18px;
+      margin: 0;
+    }
+
+    /* Nouvelle section de statistiques */
+    .stats-section {
+      background-color: var(--background-light);
+      padding: 80px 20px;
+    }
+
+    .stats-container {
       display: flex;
-      align-items: center;
+      justify-content: space-around;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .stat-card {
+      background-color: var(--secondary-light);
+      padding: 40px;
+      width: 300px;
+      height: 300px;
+      display: flex;
+      flex-direction: column;
       justify-content: center;
-      font-size: 24px;
+      align-items: center;
+      text-align: center;
+      border-radius: 2px 50px 2px 50px;
+      transition: var(--transition);
     }
 
-    .testimonial-rating {
-      color: gold;
-      margin-top: 15px;
-      font-size: 20px;
+    .stat-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
     }
 
-    /* Section Newsletter améliorée */
+    .stat-number {
+      font-size: 48px;
+      font-weight: bold;
+      color: var(--primary-color);
+      margin-bottom: 10px;
+    }
+
+    .stat-text {
+      font-size: 18px;
+      color: var(--primary-color);
+    }
+
+    @keyframes countUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .animate-number {
+      animation: countUp 2s forwards;
+    }
+
+    /* Section Newsletter */
     .newsletter-section {
       min-height: 700px;
       background-color: #D08C9B;
@@ -373,6 +449,17 @@
       .newsletter-title {
         font-size: 28px;
       }
+
+      .stats-container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .stat-card {
+        width: 100%;
+        max-width: 300px;
+        margin-bottom: 20px;
+      }
     }
   </style>
 
@@ -397,15 +484,15 @@
     <div class="rectangle-container">
       <div class="rectangle">
         <h2>Tu cherches une Safe Place à Bruxelles ?</h2>
-        <div class="flower">🌸</div>
+        <div class="flower-icon"></div>
         <p>Découvre les lieux les plus sûrs de Bruxelles grâce à nos sondages interactifs.</p>
-        <a href="<?php echo esc_url(home_url('/safe-places')); ?>" class="cta-button">En savoir plus ➡</a>
+        <a href="<?php echo esc_url(home_url('/safe-places')); ?>" class="cta-button">En savoir plus</a>
       </div>
       <div class="rectangle">
         <h2>Tu as vécu une expérience marquante ?</h2>
-        <div class="flower">🌸</div>
+        <div class="flower-icon"></div>
         <p>Partage-la avec notre communauté et découvre les témoignages inspirants des autres utilisatrices.</p>
-        <a href="<?php echo esc_url(home_url('/forum')); ?>" class="cta-button">Partager mon expérience ➡</a>
+        <a href="<?php echo esc_url(home_url('/forum')); ?>" class="cta-button">Partager mon expérience</a>
       </div>
     </div>
   </section>
@@ -413,91 +500,93 @@
   <!-- SECTION TÉMOIGNAGES -->
   <section class="testimonials-section">
     <div class="container">
-      <h2 class="section-title">Témoignages</h2>
+    <h2 class="section-title">Vos avis</h2>
       <div class="testimonials-container">
         <div class="testimonials-track">
           <div class="testimonial-card">
             <div class="testimonial-header">
-              <div class="testimonial-avatar"></div>
               <h3>Marie, 23 ans</h3>
             </div>
             <p>"She Safe m'a littéralement changé la vie ! Je me sens tellement plus en sécurité maintenant lors de mes sorties nocturnes."</p>
-            <div class="testimonial-rating">★★★★★</div>
           </div>
 
           <div class="testimonial-card">
             <div class="testimonial-header">
-              <div class="testimonial-avatar"></div>
               <h3>Camille, 18 ans</h3>
             </div>
             <p>"Grâce à She Safe, j'ai retrouvé confiance. Les conseils de la communauté sont inestimables."</p>
-            <div class="testimonial-rating">★★★★★</div>
           </div>
 
           <div class="testimonial-card">
             <div class="testimonial-header">
-              <div class="testimonial-avatar"></div>
               <h3>Laura, 29 ans</h3>
             </div>
             <p>"Cette app m'a permis de découvrir des endroits sûrs où je peux travailler ou me détendre en toute tranquillité."</p>
-            <div class="testimonial-rating">★★★★★</div>
           </div>
 
           <div class="testimonial-card">
             <div class="testimonial-header">
-              <div class="testimonial-avatar"></div>
               <h3>Sophie, 25 ans</h3>
             </div>
             <p>"La communauté est vraiment bienveillante. C'est rassurant de savoir qu'on n'est pas seule."</p>
-            <div class="testimonial-rating">★★★★★</div>
           </div>
 
           <div class="testimonial-card">
             <div class="testimonial-header">
-              <div class="testimonial-avatar"></div>
               <h3>Emma, 27 ans</h3>
             </div>
             <p>"J'utilise She Safe tous les jours pour planifier mes trajets. C'est devenu un réflexe indispensable !"</p>
-            <div class="testimonial-rating">★★★★★</div>
           </div>
 
           <div class="testimonial-card">
             <div class="testimonial-header">
-              <div class="testimonial-avatar"></div>
               <h3>Julie, 31 ans</h3>
             </div>
             <p>"Les alertes en temps réel m'ont sauvée plusieurs fois d'endroits peu recommandables. Merci She Safe !"</p>
-            <div class="testimonial-rating">★★★★★</div>
           </div>
 
           <div class="testimonial-card">
             <div class="testimonial-header">
-              <div class="testimonial-avatar"></div>
               <h3>Sarah, 22 ans</h3>
             </div>
             <p>"Une app qui devrait être connue par toutes les femmes. Elle m'a aidée à me sentir plus forte et plus confiante."</p>
-            <div class="testimonial-rating">★★★★★</div>
           </div>
 
           <div class="testimonial-card">
             <div class="testimonial-header">
-              <div class="testimonial-avatar"></div>
               <h3>Léa, 24 ans</h3>
             </div>
             <p>"Le système de notation des lieux est génial. Ça aide vraiment à identifier les endroits sûrs rapidement."</p>
-            <div class="testimonial-rating">★★★★★</div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- Nouvelle section de statistiques -->
+<section class="stats-section">
+  <div class="stats-container">
+    <div class="stat-card">
+      <div class="stat-number" id="satisfactionRate">0%</div>
+      <div class="stat-text">Satisfaction</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number" id="freeRate">0%</div>
+      <div class="stat-text">Gratuit et en ligne</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number" id="userCount">0</div>
+      <div class="stat-text">Utilisateurs</div>
+    </div>
+  </div>
+</section>
+
   <!-- SECTION NEWSLETTER -->
   <section class="newsletter-section">
     <h1 class="newsletter-title">Bruxelles en toute sécurité. Participe à notre initiative !</h1>
     <p class="newsletter-text">
       Abonne-toi à notre newsletter pour contribuer à la liste des lieux les plus sûrs de Bruxelles. 
-      Reçois des infReçois des infos utiles et reste informée pour te déplacer en toute confiance !
+      Reçois des infos utiles et reste informée pour te déplacer en toute confiance !
     </p>
 
     <div class="input-container">
@@ -509,14 +598,45 @@
     </div>
 
     <p class="newsletter-disclaimer">
-        En t’inscrivant, tu seras abonné à la newsletter. Promis, pas de spam et tu pourras te désinscrire à tout moment !
+        En t'inscrivant, tu seras abonné à la newsletter. Promis, pas de spam et tu pourras te désinscrire à tout moment !
     </p>
 
     <div class="cta-button-container">
         <a href="#" class="cta-button">Je m'inscris</a>
     </div>
-</section>
+  </section>
 
 </main>
+
+<script>
+  // Animation des nombres
+  function animateValue(id, start, end, duration, isPercentage) {
+    const obj = document.getElementById(id);
+    let startTimestamp = null;
+    const step = (timestamp) => {
+      if (!startTimestamp) startTimestamp = timestamp;
+      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+      obj.innerHTML = Math.floor(progress * (end - start) + start) + (isPercentage ? '%' : '');
+      if (progress < 1) {
+        window.requestAnimationFrame(step);
+      }
+    };
+    window.requestAnimationFrame(step);
+  }
+
+  // Démarrer les animations lorsque la section est visible
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateValue("satisfactionRate", 0, 99, 2000, true);
+        animateValue("freeRate", 0, 100, 2000, true);
+        animateValue("userCount", 0, 789, 2000, false);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  observer.observe(document.querySelector('.stats-section'));
+</script>
 
 <?php get_footer(); ?>
