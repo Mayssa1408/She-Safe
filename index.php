@@ -1,4 +1,4 @@
-D'accord, je vais vous envoyer le code complet avec toutes les modifications demandées. Voici le code PHP complet pour votre page :
+Bien sûr, je vais vous fournir le code complet avec les modifications demandées pour la première section et la section des témoignages. Voici le code PHP complet pour votre page :
 
 ```php
 <?php get_header(); ?>
@@ -30,13 +30,16 @@ D'accord, je vais vous envoyer le code complet avec toutes les modifications dem
 
     /* Section Intro améliorée */
     .intro-section {
+      padding: 80px 50px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .intro-container {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
-      padding: 80px 50px;
-      position: relative;
-      overflow: hidden;
     }
 
     .text-container {
@@ -165,20 +168,20 @@ D'accord, je vais vous envoyer le code complet avec toutes les modifications dem
     }
 
     .rectangle .flower-icon {
-  font-size: 36px;
-  margin-bottom: 25px;
-  animation: pulse 2s infinite;
-}
+      font-size: 36px;
+      margin-bottom: 25px;
+      animation: pulse 2s infinite;
+    }
 
-.rectangle .flower-icon::before {
-  content: '🌸';
-}
+    .rectangle .flower-icon::before {
+      content: '🌸';
+    }
 
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-  100% { transform: scale(1); }
-}
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
 
     .rectangle p {
       font-family: 'Montserrat', sans-serif;
@@ -255,7 +258,7 @@ D'accord, je vais vous envoyer le code complet avec toutes les modifications dem
 
     @keyframes slideTrack {
       0% { transform: translateX(0); }
-      100% { transform: translateX(-100%); }
+      100% { transform: translateX(calc(-100% - 30px)); }
     }
 
     .testimonial-card {
@@ -336,7 +339,63 @@ D'accord, je vais vous envoyer le code complet avec toutes les modifications dem
     .animate-number {
       animation: countUp 2s forwards;
     }
+    .stat-card {
+  perspective: 1000px;
+  width: 300px;
+  height: 300px;
+}
 
+.stat-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.stat-card:hover .stat-card-inner {
+  transform: rotateY(180deg);
+}
+
+.stat-card-front, .stat-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  border-radius: 2px 50px 2px 50px;
+  background-color: var(--secondary-light);
+}
+
+.stat-card-front {
+  color: var(--primary-color);
+}
+
+.stat-card-back {
+  background-color: var(--primary-color);
+  color: white;
+  transform: rotateY(180deg);
+}
+
+.stat-number {
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.stat-text {
+  font-size: 18px;
+}
+
+.stat-card-back p {
+  font-size: 16px;
+  line-height: 1.5;
+}
     /* Section Newsletter */
     .newsletter-section {
       min-height: 700px;
@@ -407,9 +466,17 @@ D'accord, je vais vous envoyer le code complet avec toutes les modifications dem
         padding: 40px 20px;
       }
 
+      .intro-container {
+        flex-direction: column;
+      }
+
+      .image-container {
+        order: -1;
+        margin-bottom: 40px;
+      }
+
       .text-container {
         margin-right: 0;
-        margin-bottom: 40px;
         text-align: center;
       }
 
@@ -458,17 +525,19 @@ D'accord, je vais vous envoyer le code complet avec toutes les modifications dem
 
   <!-- Section Intro -->
   <section class="intro-section">
-    <div class="text-container">
-      <h1>She Safe</h1>
-      <h2>Bienvenue dans ta Safe Place !</h2>
-      <p>Rejoins une communauté engagée pour la sécurité des femmes. Partage ton expérience, découvre des lieux sûrs et connecte-toi à un réseau solidaire.</p>
-      <p>Explore dès maintenant !</p>
-      <a href="<?php echo esc_url(home_url('/about')); ?>" class="cta-button">Découvrez-nous</a>
-    </div>
-    <div class="image-container">
-      <img src="<?php echo esc_url(get_theme_file_uri('assets/images/your-image.jpg')); ?>" 
-           alt="Image représentant She Safe" 
-           loading="lazy">
+    <div class="intro-container">
+      <div class="image-container">
+        <img src="<?php echo esc_url(get_theme_file_uri('assets/images/your-image.jpg')); ?>" 
+             alt="Image représentant She Safe" 
+             loading="lazy">
+      </div>
+      <div class="text-container">
+        <h1>She Safe</h1>
+        <h2>Bienvenue dans ta Safe Place !</h2>
+        <p>Rejoins une communauté engagée pour la sécurité des femmes. Partage ton expérience, découvre des lieux sûrs et connecte-toi à un réseau solidaire.</p>
+        <p>Explore dès maintenant !</p>
+        <a href="<?php echo esc_url(home_url('/about')); ?>" class="cta-button">Découvrez-nous</a>
+      </div>
     </div>
   </section>
 
@@ -490,10 +559,11 @@ D'accord, je vais vous envoyer le code complet avec toutes les modifications dem
     </div>
   </section>
 
-  <!-- SECTION TÉMOIGNAGES -->
+
+   <!-- SECTION TÉMOIGNAGES -->
   <section class="testimonials-section">
     <div class="container">
-    <h2 class="section-title">Vos avis</h2>
+      <h2 class="section-title">Vos avis</h2>
       <div class="testimonials-container">
         <div class="testimonials-track">
           <div class="testimonial-card">
@@ -557,19 +627,40 @@ D'accord, je vais vous envoyer le code complet avec toutes les modifications dem
   </section>
 
   <!-- Nouvelle section de statistiques -->
-<section class="stats-section">
+  <section class="stats-section">
   <div class="stats-container">
     <div class="stat-card">
-      <div class="stat-number" id="satisfactionRate">0%</div>
-      <div class="stat-text">Satisfaction</div>
+      <div class="stat-card-inner">
+        <div class="stat-card-front">
+          <div class="stat-number" id="satisfactionRate">0%</div>
+          <div class="stat-text">Satisfaction</div>
+        </div>
+        <div class="stat-card-back">
+          <p>Nos utilisatrices sont satisfaites de She Safe. Nous travaillons constamment pour améliorer notre service et garantir une expérience sûre et positive pour toutes.</p>
+        </div>
+      </div>
     </div>
     <div class="stat-card">
-      <div class="stat-number" id="freeRate">0%</div>
-      <div class="stat-text">Gratuit et en ligne</div>
+      <div class="stat-card-inner">
+        <div class="stat-card-front">
+          <div class="stat-number" id="freeRate">0%</div>
+          <div class="stat-text">Gratuit et en ligne</div>
+        </div>
+        <div class="stat-card-back">
+          <p>She Safe est entièrement gratuit et accessible en ligne. Notre mission est de rendre la sécurité accessible à toutes les femmes de Bruxelles, sans barrière financière.</p>
+        </div>
+      </div>
     </div>
     <div class="stat-card">
-      <div class="stat-number" id="userCount">0</div>
-      <div class="stat-text">Utilisateurs</div>
+      <div class="stat-card-inner">
+        <div class="stat-card-front">
+          <div class="stat-number" id="userCount">0</div>
+          <div class="stat-text">Utilisatrices</div>
+        </div>
+        <div class="stat-card-back">
+          <p>Notre communauté grandit chaque jour. Rejoignez ces utilisatrices qui contribuent à rendre Bruxelles plus sûre en partageant leurs expériences et en s'entraidant.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
