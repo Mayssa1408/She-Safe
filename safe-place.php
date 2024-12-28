@@ -249,13 +249,13 @@ get_header(); ?>
 
 /* Section Témoignages */
 #testimonials {
-  background-color: #f7d7db;
-  padding: 80px 20px;
+  background-color:none
   position: relative;
+  border-radius: 50px;
 }
 
 .testimonial-card {
-  background-color: #fef6e9;
+  background-color:rgba(247, 215, 219, 0.54);
   border-radius: 15px 2px 15px 2px;
   padding: 30px;
   margin: 20px;
@@ -323,7 +323,7 @@ get_header(); ?>
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to right, transparent, rgba(255,255,255,0.2), transparent);
+  background: linear-gradient(to right, transparent, #ffffff, transparent);
   transform: translateX(-100%);
   transition: transform 0.5s ease;
 }
@@ -338,26 +338,56 @@ get_header(); ?>
   box-shadow: 0 6px 20px rgba(183, 83, 108, 0.3);
 }
 
-/* Style pour la carte qui contient le formulaire */
+/* Style pour le formulaire sans cadre, fond ou contour */
 .card {
-  background-color: #F4C7C2;
-  border-radius: 15px 2px 15px 2px;
-  padding: 50px;
-  box-shadow: 0 10px 30px rgba(186, 71, 109, 0.1);
-  transition: all 0.3s ease;
+  background-color: transparent; /* Pas de fond */
+  padding: 0; /* Pas de marges internes */
+  box-shadow: none; /* Pas d'ombre */
+  border: none; /* Suppression des bordures */
   position: relative;
-  overflow: hidden;
+  overflow: visible; /* Pas de limitation de contenu */
 }
 
+/* Suppression de la barre décorative */
 .card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 100%;
-  height: 4px;
-  background: linear-gradient(to right, #ba476d, #f7d7db);
+  content: none; /* Rien avant la carte */
 }
+
+/* Champs de saisie avec bordures */
+.form-control {
+  border: 2px solid #ba476d; /* Bordure visible pour les champs */
+  border-radius: 25px; /* Bordures arrondies */
+  padding: 12px 20px; /* Espacement interne */
+  margin-bottom: 15px; /* Espacement entre les champs */
+  width: 100%;
+  transition: all 0.3s ease;
+  background-color: #fef6e9; /* Fond léger */
+  color: #333; /* Couleur du texte */
+}
+
+.form-control:focus {
+  outline: none; /* Pas de contour au focus */
+  border-color: #ba476d; /* Bordure accentuée */
+  box-shadow: 0 0 0 3px rgba(186, 71, 109, 0.1); /* Légère lueur au focus */
+}
+
+/* Bouton minimaliste */
+.btn {
+  background-color: #ba476d; /* Couleur principale */
+  color: white;
+  border: none; /* Pas de bordure */
+  border-radius: 50px; /* Boutons arrondis */
+  padding: 15px 30px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #90274f; /* Changement de couleur au survol */
+  transform: translateY(-2px);
+  box-shadow: none; /* Pas d'ombre */
+}
+
 
 /* Responsive */
 @media (max-width: 768px) {
