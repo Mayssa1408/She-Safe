@@ -321,3 +321,121 @@ function enqueue_custom_scripts()
     wp_enqueue_script('account-dropdown', get_template_directory_uri() . '/script/account-dropdown.js', array(), '1.0', true);
 }
 add_action('wp_enqueue_scripts', 'enqueue_custom_scripts');
+
+/////pour forummmmm obligatoire pour generer les témoiganges //// 
+
+// Enregistrement du type de post personnalisé "experience"
+function create_experience_post_type()
+{
+    $labels = array(
+        'name' => 'Expériences',
+        'singular_name' => 'Expérience',
+        'menu_name' => 'Expériences',
+        'add_new' => 'Ajouter nouvelle',
+        'add_new_item' => 'Ajouter nouvelle expérience',
+        'edit_item' => 'Modifier l\'expérience',
+        'new_item' => 'Nouvelle expérience',
+        'view_item' => 'Voir l\'expérience',
+        'search_items' => 'Rechercher des expériences',
+        'not_found' => 'Aucune expérience trouvée',
+        'not_found_in_trash' => 'Aucune expérience trouvée dans la corbeille'
+    );
+
+    $args = array(
+        'labels' => $labels,
+        'public' => true,
+        'show_ui' => true,
+        'show_in_menu' => true,
+        'show_in_nav_menus' => true,
+        'show_in_admin_bar' => true,
+        'menu_position' => 5,
+        'menu_icon' => 'dashicons-heart',
+        'capability_type' => 'post',
+        'hierarchical' => false,
+        'supports' => array('title', 'editor', 'custom-fields'),
+        'has_archive' => true,
+        'rewrite' => array('slug' => 'experiences'),
+        'show_in_rest' => true
+    );
+
+    register_post_type('experience', $args);
+}
+add_action('init', 'create_experience_post_type');
+
+// Ajout des meta boxes pour les champs personnalisés
+function add_experience_meta_boxes()
+{
+    add_meta_box(
+        'experience_details',
+        'Détails de l\'expérience',
+        'display_experience_meta_box',
+        'experience',
+        'normal',
+        'high'
+    );
+}
+add_action('add_meta_boxes', 'add_experience_meta_boxes');
+
+// Affichage des champs personnalisés dans l'admin
+function display_experience_meta_box($post)
+{
+    $age = get_post_meta($post->ID, 'age', true);
+    $lieu = get_post_meta($post->ID, 'lieu', true);
+    $date = get_post_meta($post->ID, 'date', true);
+
+    wp_nonce_field('save_experience_meta', 'experience_meta_nonce');
+    ?>
+    <div style="margin: 20px 0;">
+        <label for="age" style="display: block; margin-bottom: 5px;">Âge :</label>
+        <input type="number" id="age" name="age" value="<?php echo esc_attr($age); ?>" min="13" max="100">
+    </div>
+    <div style="margin: 20px 0;">
+        <label for="lieu" style="display: block; margin-bottom: 5px;">Lieu :</label>
+        <input type="text" id="lieu" name="lieu" value="<?php echo esc_attr($lieu); ?>" style="width: 100%;">
+    </div>
+    <div style="margin: 20px 0;">
+        <label for="date" style="display: block; margin-bottom: 5px;">Date de l'événement :</label>
+        <input type="date" id="date" name="date" value="<?php echo esc_attr($date); ?>">
+    </div>
+    <?php
+}
+
+// Sauvegarde des champs personnalisés
+function save_experience_meta($post_id)
+{
+    // Vérifications de sécurité
+    if (
+        !isset($_POST['experience_meta_nonce']) ||
+        !wp_verify_nonce($_POST['experience_meta_nonce'], 'save_experience_meta')
+    ) {
+        return;
+    }
+
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+        return;
+    }
+
+    if (!current_user_can('edit_post', $post_id)) {
+        return;
+    }
+
+    // Sauvegarde des champs
+    if (isset($_POST['age'])) {
+        update_post_meta($post_id, 'age', sanitize_text_field($_POST['age']));
+    }
+    if (isset($_POST['lieu'])) {
+        update_post_meta($post_id, 'lieu', sanitize_text_field($_POST['lieu']));
+    }
+    if (isset($_POST['date'])) {
+        update_post_meta($post_id, 'date', sanitize_text_field($_POST['date']));
+    }
+}
+add_action('save_post_experience', 'save_experience_meta');
+
+// Flush rewrite rules quand nécessaire
+function my_rewrite_flush()
+{
+    create_experience_post_type();
+    flush_rewrite_rules();
+}
+register_activation_hook(__FILE__, 'my_rewrite_flush');

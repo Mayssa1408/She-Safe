@@ -69,7 +69,7 @@
               </a>
               <div class="dropdown-menu" id="accountMenu">
                 <?php if (is_user_logged_in()): ?>
-                  <a href="<?php echo esc_url(get_permalink(get_page_by_path('mon-compte'))); ?>">Mon Compte</a>
+                  <a href="<?php echo esc_url(get_permalink(get_page_by_path('mon-compte'))); ?>">Mon profil</a>
                   <a href="<?php echo esc_url(wp_logout_url(home_url())); ?>">Déconnexion</a>
                 <?php else: ?>
                   <a href="<?php echo esc_url(get_permalink(get_page_by_path('connexion'))); ?>">Connexion</a>

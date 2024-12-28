@@ -6,12 +6,9 @@ get_header();
 ?>
 
 <style>
-    /* Importation des polices Montserrat et Lora */
-    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Lora:wght@400;700&display=swap');
-
     /* Styles globaux */
     .faq-page-wrapper {
-        font-family: 'Montserrat', sans-serif;
+        font-family: 'Glory', cursive;
         color: #333;
         line-height: 1.6;
     }
@@ -38,7 +35,7 @@ get_header();
     }
 
     .faq-intro .text-content h1 {
-        font-family: 'Montserrat', sans-serif;
+        font-family: 'Glory', cursive;
         font-weight: bold;
         font-size: 24px;
         /* Montserrat Bold 24px */
@@ -46,7 +43,7 @@ get_header();
     }
 
     .faq-intro .text-content p {
-        font-family: 'Montserrat', sans-serif;
+        font-family: 'Glory', cursive;
         font-weight: lighter;
         font-size: 18px;
         /* Montserrat Light 18px */
@@ -67,7 +64,7 @@ get_header();
     }
 
     .faq-section h2 {
-        font-family: 'Lora', serif;
+        font-family: 'Great Vibes', cursive;
         text-align: center;
         font-size: 32px;
         /* Lora Bold 32px */
@@ -101,7 +98,7 @@ get_header();
         cursor: pointer;
         font-size: 1rem;
         font-weight: bold;
-        transition: 0.3s ease;
+        transition: background 0.3s ease;
         border-radius: 5px;
     }
 
@@ -119,7 +116,7 @@ get_header();
         max-height: 0;
         overflow: hidden;
         padding: 0 15px;
-        background: #f9f9f9;
+        background: #FFF;
         font-size: 0.9rem;
         color: #555;
         transition: max-height 0.3s ease, padding 0.3s ease;
@@ -138,7 +135,7 @@ get_header();
     }
 
     .contact-section h2 {
-        font-family: 'Montserrat', sans-serif;
+        font-family: 'Great Vibes', cursive;
         font-weight: bold;
         text-align: center;
         margin-bottom: 20px;
@@ -148,7 +145,7 @@ get_header();
     }
 
     .contact-section p {
-        font-family: 'Montserrat', sans-serif;
+        font-family: 'Glory', cursive;
         font-weight: lighter;
         text-align: center;
         margin-bottom: 30px;
@@ -160,6 +157,25 @@ get_header();
         margin-left: auto;
         margin-right: auto;
     }
+
+    .contact-section textarea {
+        width: 100%;
+        /* Prendre toute la largeur disponible */
+        padding: 15px;
+        /* Espace à l'intérieur de la zone de texte */
+        font-size: 1rem;
+        /* Taille de police ajustée */
+        border: 1px solid #8D8DAF;
+        border-radius: 5px;
+        box-shadow: inset 0 1px 3px #8D8DAF;
+        resize: vertical;
+        /* Permettre le redimensionnement vertical */
+        min-height: 120px;
+        /* Hauteur minimale pour que la zone soit visible */
+        max-height: 400px;
+        /* Hauteur maximale pour ne pas dépasser */
+    }
+
 
     .contact-section form {
         max-width: 600px;
@@ -176,16 +192,16 @@ get_header();
         width: 100%;
         padding: 15px;
         font-size: 1rem;
-        border: 1px solid #ddd;
+        border: 1px solid #8D8DAF;
         border-radius: 5px;
-        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+        box-shadow: inset 0 1px 3px #8D8DAF;
         transition: border 0.3s ease, box-shadow 0.3s ease;
     }
 
     .contact-section input:focus,
     .contact-section textarea:focus {
         border-color: #8D8DAF;
-        box-shadow: 0 0 5px rgba(141, 141, 175, 0.5);
+        box-shadow: 0 0 5px #8D8DAF;
     }
 
     .contact-section input::placeholder,
@@ -203,13 +219,21 @@ get_header();
         /* Bouton avec arrondis de 50px */
         cursor: pointer;
         font-size: 1rem;
-        transition: 0.3s ease;
+        transition: background 0.3s ease;
         text-align: center;
     }
 
     .contact-section .btn-submit:hover {
-        background: #8D8DAF;
+        background: #D94F78;
     }
+
+    .char-count {
+        margin-top: 10px;
+        font-size: 0.9rem;
+        color: #555;
+        text-align: right;
+    }
+
 
     /* Responsive */
     @media (max-width: 768px) {
@@ -231,18 +255,32 @@ get_header();
 
 <div class="faq-page-wrapper">
     <!-- Section d'introduction -->
-    <section class="faq-intro">
-        <div class="container">
-            <div class="text-content">
-                <h1>Pas de panique,<br>nous t’aidons</h1>
-                <p>Consultez notre FAQ pour trouver des réponses rapides ou remplissez le formulaire de contact pour
-                    nous faire part de vos besoins. Nous sommes là pour vous accompagner.</p>
-            </div>
-            <div class="image-content">
-                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/faq-intro.png" alt="SheSafe FAQ">
+    <section id="faq-intro" class="py-5">
+        <div class="container-fluid px-3">
+            <div class="row align-items-center">
+                <!-- Colonne contenant l'icône et le texte -->
+                <div class="col-lg-6 col-md-12 text-center text-lg-start px-5">
+                    <!-- Titre -->
+                    <h2 class="fw-bold mb-4"
+                        style="font-family: 'Great Vibes', cursive; font-size: 36px; color: #B7536C;">
+                        Pas de panique, nous t’aidons
+                    </h2>
+                    <!-- Texte -->
+                    <p class="mb-4" style="color: #B0596B;">
+                        Consultez notre FAQ pour trouver des réponses rapides ou remplissez le formulaire de contact
+                        pour nous faire part de vos besoins. Nous sommes là pour vous accompagner.
+                    </p>
+                </div>
+                <!-- Colonne contenant l'image -->
+                <div class="col-lg-6 col-md-12 text-center mt-4 mt-lg-0">
+                    <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/supportHelp.png"
+                        alt="Image d'aide et de support" class="img-fluid">
+                </div>
             </div>
         </div>
     </section>
+
+
 
     <!-- Section FAQ -->
     <section class="faq-section">
@@ -271,23 +309,22 @@ get_header();
         </div>
     </section>
 
-    <!-- Section Formulaire de contact -->
     <section class="contact-section">
         <h2>Besoin d’assistance ou d’informations ?</h2>
-        <p>Notre équipe est là pour vous accompagner. Que ce soit pour signaler un problème, poser une question ou
-            partager une suggestion, n’hésitez pas à nous contacter via le formulaire ci-dessous. Nous vous répondrons
-            dans les plus brefs délais.</p>
-        <form id="contact-form" method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
-            <input type="hidden" name="action" value="she_safe_contact">
+        <p>Complétez ce formulaire et nous vous répondrons dans les plus brefs délais.</p>
+        <form action="<?php echo esc_url(admin_url('admin-post.php')); ?>" method="POST">
+            <input type="hidden" name="action" value="submit_contact_form">
+
             <div class="form-group">
-                <input type="text" id="name" name="name" placeholder="Nom Prénom" required>
+                <input type="text" name="name" placeholder="Nom" required>
             </div>
             <div class="form-group">
-                <input type="text" id="subject" name="subject" placeholder="Sujet" required>
+                <input type="email" name="email" placeholder="Email" required>
             </div>
             <div class="form-group">
-                <textarea id="message" name="message" rows="6" maxlength="10000" placeholder="Message"
+                <textarea id="message" name="message" rows="6" maxlength="2000" placeholder="Message"
                     required></textarea>
+                <div id="charCount" class="char-count">2000 caractères restants</div> <!-- Ajout du compteur -->
             </div>
             <button type="submit" class="btn-submit">Envoyer</button>
         </form>
@@ -311,6 +348,18 @@ get_header();
             });
         });
     });
+
+    // JavaScript pour le compteur de caractères
+    document.addEventListener("DOMContentLoaded", function () {
+        const messageTextarea = document.getElementById('message');
+        const charCount = document.getElementById('charCount');
+
+        messageTextarea.addEventListener('input', function () {
+            const remaining = 2000 - messageTextarea.value.length;
+            charCount.textContent = remaining + ' caractères restants';
+        });
+    });
+
 </script>
 
 <?php get_footer(); ?>

@@ -139,8 +139,8 @@ get_header();
             <!-- Titre principal -->
             <div class="team-header">
                 <h1 style="color: #FEF6E9; font-size: 36px; font-weight: bold;">Notre équipe</h1>
-                <p>
-                    Les visages derrière She Safe : un collectif de femmes passionnées pour votre sécurité et votre
+                <p  style="color: #FEF6E9;"> 
+                    Les visages derrière She Safe, des femmes passionnées pour votre sécurité et votre
                     bien-être.
                 </p>
             </div>
@@ -153,7 +153,7 @@ get_header();
                         <img src="<?php echo get_template_directory_uri(); ?>/images/team1.png"
                             class="rounded-circle mb-3 team-img" alt="Team 1">
                         <h5 class="team-title">Alia</h5>
-                        <p class="team-description">Co-fondatrice et coordinatrice</p>
+                        <p class="team-description">Co-fondatrice & coordinatrice</p>
                     </div>
                 </div>
 
@@ -163,7 +163,7 @@ get_header();
                         <img src="<?php echo get_template_directory_uri(); ?>/images/team2.png"
                             class="rounded-circle mb-3 team-img" alt="Team 2">
                         <h5 class="team-title">Louisa</h5>
-                        <p class="team-description">Responsable Communication</p>
+                        <p class="team-description">Responsable communication</p>
                     </div>
                 </div>
 
