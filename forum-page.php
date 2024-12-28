@@ -1,396 +1,504 @@
-<?php
-/* Template Name: Forum Page */
+<?php 
+/** 
+ * Template Name: forum - Page 
+ */
+get_header(); 
+?>
 
-// Traitement du formulaire
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_experience'])) {
-    if (!isset($_POST['experience_nonce']) || !wp_verify_nonce($_POST['experience_nonce'], 'submit_experience')) {
-        die('La vérification de sécurité a échoué.');
+<main class="content">
+  <style>
+    /* Variables globales */
+    :root {
+      --primary-color: #B7536C;
+      --primary-hover: #D94F78;
+      --background-light: #FEF6E9;
+      --secondary-light: #F4C7C2;
+      --purple-light: #E6DFF1;
+      --purple-dark: #8D8DAF;
+      --transition: all 0.3s ease;
     }
 
-    $content = sanitize_textarea_field($_POST['experience']);
-    $nom = !empty($_POST['nom']) ? sanitize_text_field($_POST['nom']) : 'Anonyme';
-    $age = intval($_POST['age']);
-    $lieu = sanitize_text_field($_POST['lieu']);
-    $date = sanitize_text_field($_POST['date']);
+    /* Styles globaux */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-    // Création du post
-    $post_data = array(
-        'post_title'    => $nom,
-        'post_content'  => $content,
-        'post_status'   => 'publish',
-        'post_type'     => 'experience'
-    );
+    body {
+      font-family: 'Glory', sans-serif;
+      background-color: var(--background-light);
+    }
 
-    $post_id = wp_insert_post($post_data);
+    Je vais remettre la police Great Vibes pour le h1 tout en gardant les autres améliorations :
+css
+/* Section Forum Intro */
+.intro-section {
+    padding: 80px 50px;
+    position: relative;
+    overflow: hidden;
+    background-color: var(--background-light);
+}
 
-    if (!is_wp_error($post_id)) {
-        update_post_meta($post_id, 'age', $age);
-        update_post_meta($post_id, 'lieu', $lieu);
-        update_post_meta($post_id, 'date', $date);
-        
-        // Redirection vers la même page
-        $current_url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-        wp_redirect(add_query_arg('success', 'true', $current_url));
-        exit;
+.intro-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.image-container {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    animation: fadeInLeft 1s ease-out;
+}
+
+.image-container img {
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+    border-radius: 2px 50px 2px 50px;
+    box-shadow: 20px 20px 60px rgba(183, 83, 108, 0.1),
+                -20px -20px 60px rgba(255, 255, 255, 0.8);
+    transition: var(--transition);
+}
+
+.image-container img:hover {
+    transform: translateY(-10px);
+    box-shadow: 25px 25px 70px rgba(183, 83, 108, 0.15),
+                -25px -25px 70px rgba(255, 255, 255, 0.9);
+}
+
+.text-container {
+    flex: 1;
+    max-width: 600px;
+    padding: 20px;
+    animation: fadeInRight 1s ease-out;
+}
+
+.text-container h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 48px; /* Taille ajustée pour tenir sur une ligne */
+    color: var(--primary-color);
+    margin-bottom: 25px;
+    line-height: 1.3;
+}
+
+.text-container p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    color: var(--primary-color);
+    margin-bottom: 30px;
+    line-height: 1.6;
+    max-width: 540px;
+}
+
+@media (max-width: 768px) {
+    .intro-section {
+        padding: 40px 20px;
+    }
+
+    .text-container h1 {
+        font-size: 42px;
+        text-align: center;
+    }
+
+    .text-container p {
+        text-align: center;
+        margin: 0 auto 30px auto;
+    }
+
+    .image-container {
+        margin-bottom: 30px;
     }
 }
 
-
-
-// Code de débogage
-$args = array(
-    'post_type'      => 'experience',
-    'posts_per_page' => -1,  // Affiche tous les posts
-    'post_status'    => 'publish'
-);
-
-$experiences = new WP_Query($args);
-
-// Affiche des informations de débogage
-echo '<!-- Nombre de posts trouvés : ' . $experiences->found_posts . ' -->';
-echo '<!-- La requête SQL : ' . $experiences->request . ' -->';
-
-if ($experiences->have_posts()) :
-    while ($experiences->have_posts()) : $experiences->the_post();
-        // Votre code d'affichage des expériences
-    endwhile;
-    wp_reset_postdata();
-else:
-    echo '<div>Aucune expérience trouvée. Soyez le premier à partager !</div>';
-endif;
-
-get_header();
-?>
-
-<style>
-    /* Variables CSS */
-    :root {
-        --primary-color: #B7536C;
-        --primary-light: #F4C7C2;
-        --background-light: #FEF6E9;
-        --text-dark: #333333;
-        --text-light: #666666;
-        --transition: all 0.3s ease;
+    /* Section Expériences */
+    .experiences-section {
+      background-color: var(--secondary-light);
+      padding: 80px 20px;
+      position: relative;
     }
 
-    /* Styles de base */
-    .forum-section {
-        background: linear-gradient(135deg, var(--background-light), #fff);
-        padding: 70px 20px;
-        min-height: 400px;
-        position: relative;
-        overflow: hidden;
+    .experiences-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background-color: var(--primary-color);
+      opacity: 0.3;
     }
 
-    .forum-title {
-        color: var(--primary-color);
-        font-size: 2.5em;
-        margin-bottom: 30px;
-        text-align: center;
-        font-family: 'Lora', serif;
-        opacity: 0;
-        animation: slideDown 1s ease forwards;
+    .section-title {
+      font-family: 'Lora', serif;
+      font-size: 36px;
+      color: var(--primary-color);
+      margin-bottom: 50px;
+      text-align: center;
+      position: relative;
     }
 
-    .forum-description {
-        text-align: center;
-        color: var(--text-dark);
-        max-width: 800px;
-        margin: 0 auto 50px;
-        line-height: 1.6;
-        opacity: 0;
-        animation: slideUp 1s ease forwards 0.5s;
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 100px;
+      height: 3px;
+      background: var(--primary-color);
+      margin: 20px auto;
     }
 
-    /* Section formulaire */
-    .post-section {
-        background: linear-gradient(45deg, var(--primary-light), #fff);
-        padding: 70px 20px;
-        position: relative;
+    .experiences-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
     }
 
-    .experience-form {
-        background: white;
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 30px;
-        border-radius: 20px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        transform: translateY(0);
-        transition: var(--transition);
-    }
-
-    .experience-form:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-    }
-
-    .form-group {
-        margin-bottom: 20px;
-    }
-
-    .form-label {
-        display: block;
-        margin-bottom: 8px;
-        color: var(--primary-color);
-        font-weight: bold;
-    }
-
-    .form-input,
-    .form-textarea {
-        width: 100%;
-        padding: 12px;
-        border: 2px solid var(--primary-light);
-        border-radius: 10px;
-        transition: var(--transition);
-    }
-
-    .form-textarea {
-        min-height: 150px;
-        resize: vertical;
-    }
-
-    .form-input:focus,
-    .form-textarea:focus {
-        outline: none;
-        border-color: var(--primary-color);
-        box-shadow: 0 0 0 3px rgba(183, 83, 108, 0.1);
-    }
-
-    .submit-button {
-        background: var(--primary-color);
-        color: white;
-        border: none;
-        padding: 15px 30px;
-        border-radius: 25px;
-        cursor: pointer;
-        font-size: 16px;
-        transition: var(--transition);
-        display: block;
-        margin: 30px auto 0;
-    }
-
-    .submit-button:hover {
-        transform: scale(1.05);
-        box-shadow: 0 5px 15px rgba(183, 83, 108, 0.3);
-    }
-
-    /* Message de succès */
-    .success-message {
-        background-color: #d4edda;
-        color: #155724;
-        padding: 15px 20px;
-        border-radius: 10px;
-        margin-bottom: 20px;
-        text-align: center;
-        animation: slideDown 0.5s ease;
-    }
-    /* Grid des expériences */
-    .experiences-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        gap: 30px;
-        padding: 20px;
-        max-width: 1200px;
-        margin: 40px auto;
-    }
-
+    /* Style des cartes d'expérience */
     .experience-card {
-        background: white;
-        border-radius: 15px;
-        padding: 25px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        transition: var(--transition);
-        transform: translateY(20px);
-        opacity: 0;
-        animation: fadeIn 0.5s ease-out forwards;
+      background-color: #FEF6E9;
+      border-radius: 2px 50px 2px 50px;
+      padding: 30px;
+      margin-bottom: 30px;
+      box-shadow: 10px 10px 30px rgba(183, 83, 108, 0.1);
+      transition: var(--transition);
+      animation: fadeInUp 0.8s ease-out;
     }
 
     .experience-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      transform: translateY(-8px);
+      box-shadow: 15px 15px 40px rgba(183, 83, 108, 0.15);
     }
 
-    .experience-header {
-        border-bottom: 2px solid var(--primary-light);
-        padding-bottom: 15px;
-        margin-bottom: 15px;
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      color: var(--primary-color);
     }
 
-    .experience-title {
-        color: var(--primary-color);
-        margin: 0;
-        font-size: 1.2em;
+    .card-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 20px;
+      font-weight: bold;
     }
 
-    .experience-meta {
-        display: flex;
-        gap: 15px;
-        color: var(--text-light);
-        font-size: 0.9em;
-        margin-top: 10px;
+    .card-date {
+      font-size: 14px;
+      opacity: 0.8;
     }
 
-    .experience-content {
-        color: var(--text-dark);
-        line-height: 1.6;
+    .card-content {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      color: #666;
     }
 
-    /* Animations */
-    @keyframes slideDown {
-        from { transform: translateY(-30px); opacity: 0; }
-        to { transform: translateY(0); opacity: 1; }
-    }
+/* Section formulaire */
+.form-section {
+    background: linear-gradient(135deg, var(--background-light), var(--secondary-light));
+    padding: 3rem 0;
+    animation: fadeIn 1s ease-out;
+}
 
-    @keyframes slideUp {
-        from { transform: translateY(30px); opacity: 0; }
-        to { transform: translateY(0); opacity: 1; }
-    }
+.form-container {
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    margin: 0 auto;
+    animation: floatIn 1s ease-out;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    background: none;
+}
 
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(20px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
+/* Modification du style pour le titre et l'ajout du trait */
+.form-title {
+    font-size: 2rem;
+    color: var(--primary-color);
+    font-weight: bold;
+    margin-bottom: 1rem; /* Réduit la marge pour le paragraphe */
+}
 
-    /* Media Queries */
+/* Style pour le trait séparateur */
+.title-separator {
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to right, transparent, rgba(183, 83, 108, 0.3), transparent);
+    margin: 1.5rem 0;
+}
+
+/* Style pour le paragraphe descriptif */
+.form-description {
+    font-size: 1rem;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+    line-height: 1.5;
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.form-control {
+    width: 100%;
+    padding: 1.2rem 1.5rem;
+    border: 2px solid rgba(183, 83, 108, 0.3);
+    border-radius: 25px;
+    font-size: 1rem;
+    transition: var(--transition);
+    background: var(--background-light);
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 15px rgba(183, 83, 108, 0.15);
+    transform: translateY(-2px);
+}
+
+textarea.form-control {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.submit-button {
+    background: var(--primary-color);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 1.5rem auto 0;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    box-shadow: 0 4px 15px rgba(183, 83, 108, 0.2);
+}
+
+.submit-button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+}
+
+.submit-button:hover::after {
+    transform: translateX(100%);
+}
+
+.submit-button:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(183, 83, 108, 0.3);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes floatIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .form-container {
+        width: 85%;
+    }
+    
+    .form-title {
+        font-size: 1.8rem;
+    }
+    
+    .form-control {
+        padding: 1rem 1.5rem;
+    }
+    
+    .submit-button {
+        padding: 1rem 2rem;
+    }
+}
+
+    /* Responsive Design */
     @media (max-width: 768px) {
-        .forum-title {
-            font-size: 2em;
-        }
-        .experiences-grid {
-            grid-template-columns: 1fr;
-        }
-        .experience-form {
-            padding: 20px;
-        }
+      .intro-section {
+        padding: 40px 20px;
+      }
+
+      .intro-container {
+        flex-direction: column;
+      }
+
+      .image-container {
+        order: -1;
+        margin-bottom: 40px;
+      }
+
+      .text-container {
+        text-align: center;
+        padding: 0;
+      }
+
+      .text-container h1 {
+        font-size: 48px;
+      }
+
+      .form-container {
+        padding: 20px;
+      }
+
+      .submit-button {
+        width: 100%;
+      }
     }
-</style>
+  </style>
 
-<section class="forum-section">
-    <h1 class="forum-title">Forum de Partage d'Expériences</h1>
-    <p class="forum-description">
-        Un espace sécurisé pour partager vos expériences et soutenir d'autres femmes. 
-        Vos témoignages contribuent à créer une communauté plus forte et plus sûre.
-    </p>
-</section>
-
-<section class="post-section">
-    <div class="container">
-        <?php if (isset($_GET['success'])): ?>
-            <div class="success-message">
-                Merci d'avoir partagé votre expérience. Votre témoignage a été publié avec succès.
-            </div>
-        <?php endif; ?>
-
-        <form class="experience-form" method="POST" action="">
-            <?php wp_nonce_field('submit_experience', 'experience_nonce'); ?>
-            
-            <div class="form-group">
-                <label class="form-label">Votre expérience :</label>
-                <textarea name="experience" class="form-textarea" required 
-                    placeholder="Partagez votre vécu ici..."></textarea>
-            </div>
-
-            <div class="form-group">
-                <label class="form-label">Votre prénom (optionnel) :</label>
-                <input type="text" name="nom" class="form-input" 
-                    placeholder="Laissez vide pour rester anonyme">
-            </div>
-
-            <div class="form-group">
-                <label class="form-label">Votre âge :</label>
-                <input type="number" name="age" class="form-input" 
-                    required min="13" max="100">
-            </div>
-
-            <div class="form-group">
-                <label class="form-label">Lieu :</label>
-                <input type="text" name="lieu" class="form-input" 
-                    required placeholder="Quartier ou lieu de l'événement">
-            </div>
-
-            <div class="form-group">
-                <label class="form-label">Date de l'événement :</label>
-                <input type="date" name="date" class="form-input" required>
-            </div>
-
-            <button type="submit" name="submit_experience" class="submit-button">
-                Partager mon expérience
-            </button>
-        </form>
-
-        <div class="experiences-grid">
-            <?php
-            $args = array(
-                'post_type'      => 'experience',
-                'posts_per_page' => 9,
-                'orderby'        => 'date',
-                'order'          => 'DESC',
-                'post_status'    => 'publish'
-            );
-
-            $experiences = new WP_Query($args);
-            $delay = 0;
-
-            if ($experiences->have_posts()) :
-                while ($experiences->have_posts()) : $experiences->the_post();
-                    $age = get_post_meta(get_the_ID(), 'age', true);
-                    $lieu = get_post_meta(get_the_ID(), 'lieu', true);
-                    $date = get_post_meta(get_the_ID(), 'date', true);
-                    $delay += 0.1;
-            ?>
-                <article class="experience-card" style="animation-delay: <?php echo $delay; ?>s">
-                    <header class="experience-header">
-                        <h3 class="experience-title">
-                            <?php echo esc_html(get_the_title()); ?>
-                        </h3>
-                        <div class="experience-meta">
-                            <?php if ($age) : ?>
-                                <span class="age"><?php echo esc_html($age); ?> ans</span>
-                            <?php endif; ?>
-                            <?php if ($lieu) : ?>
-                                <span class="lieu"><?php echo esc_html($lieu); ?></span>
-                            <?php endif; ?>
-                            <?php if ($date) : ?>
-                                <span class="date"><?php echo date('d/m/Y', strtotime($date)); ?></span>
-                            <?php endif; ?>
-                        </div>
-                    </header>
-                    <div class="experience-content">
-                        <?php the_content(); ?>
-                    </div>
-                </article>
-            <?php
-                endwhile;
-                wp_reset_postdata();
-            else:
-            ?>
-                <div style="grid-column: 1/-1; text-align: center;">
-                    <p>Aucune expérience n'a encore été partagée. Soyez la première à partager votre vécu.</p>
-                </div>
-            <?php endif; ?>
+ <!-- Section Intro -->
+<section class="intro-section">
+    <div class="intro-container">
+        <div class="image-container">
+            <img src="<?php echo esc_url(get_theme_file_uri('assets/images/forum-image.jpg')); ?>" 
+                 alt="Forum She Safe" 
+                 loading="lazy">
+        </div>
+        <div class="text-container">
+            <h1>Un espace bienveillant pour partager</h1>
+            <p>Partagez vos expériences et aidez d'autres femmes à se sentir en sécurité. Votre témoignage peut faire la différence dans la vie de quelqu'un.</p>
         </div>
     </div>
 </section>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Animation au scroll pour les cartes
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }
-        });
-    }, {
-        threshold: 0.1
+  <!-- Section Expériences -->
+  <section class="experiences-section">
+    <div class="experiences-container">
+      <h2 class="section-title">Expériences partagées</h2>
+      <div id="experiencesList">
+        <!-- Les expériences seront ajoutées ici dynamiquement -->
+      </div>
+    </div>
+  </section>
+
+  <section class="form-section">
+    <div class="form-container">
+        <h2 class="form-title">Partagez votre expérience</h2>
+        <div class="title-separator"></div>
+        <p class="form-description">
+            Votre témoignage est précieux. Il aidera d'autres femmes à se sentir plus en sécurité et soutenues dans leur quotidien.
+        </p>
+        <form id="experienceForm" class="login-form">
+            <div class="form-group">
+                <input type="text" class="form-control" id="name" placeholder="Votre nom" required>
+            </div>
+            
+            <div class="form-group">
+                <input type="number" class="form-control" id="age" placeholder="Votre âge" required>
+            </div>
+            
+            <div class="form-group">
+                <textarea class="form-control" id="experience" placeholder="Partagez votre expérience..." rows="5" required></textarea>
+            </div>
+
+            <button type="submit" class="submit-button">Partager mon expérience</button>
+        </form>
+    </div>
+</section>
+
+  <script>
+    // Données des expériences
+    let experiences = [
+      {
+        name: "Sophie",
+        age: 25,
+        text: "Après avoir été confrontée à des remarques dégradantes de la part d'un supérieur, j'ai décidé de parler. J'ai rassemblé mon courage, contacté les RH, et aujourd'hui, je suis fière d'avoir ouvert la voie à un environnement de travail plus respectueux.",
+        date: "2024-02-15"
+      },
+      {
+        name: "Laura",
+        age: 30,
+        text: "Un jour, dans les transports en commun, un homme s'est permis de me parler avec insistance malgré mes refus. J'ai finalement décidé de lui répondre à voix haute. Cela m'a montré que l'on peut se faire entendre, même dans les situations oppressantes.",
+        date: "2024-02-10"
+      },
+      {
+        name: "Mélissa",
+        age: 22,
+        text: "Un soir, en rentrant chez moi, j'ai remarqué qu'un homme me suivait. J'ai gardé mon calme, appelé une amie et changé de direction. Cet incident m'a donné la force de m'inscrire à des cours d'autodéfense.",
+        date: "2024-02-20"
+      }
+    ];
+
+    // Fonction d'affichage des expériences
+    function displayExperiences() {
+      const experiencesList = document.getElementById('experiencesList');
+      experiencesList.innerHTML = '';
+
+      experiences.forEach((exp, index) => {
+        const card = document.createElement('div');
+        card.className = 'experience-card';
+        card.style.animationDelay = `${index * 0.2}s`;
+        
+        card.innerHTML = `
+          <div class="card-header">
+            <h3 class="card-title">${exp.name}, ${exp.age} ans</h3>
+            <span class="card-date">${new Date(exp.date).toLocaleDateString()}</span>
+          </div>
+          <div class="card-content">
+            <p>${exp.text}</p>
+          </div>
+        `;
+        
+        experiencesList.appendChild(card);
+      });
+    }
+
+    // Gestion du formulaire
+    document.getElementById('experienceForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const newExperience = {
+        name: document.getElementById('name').value,
+        age: parseInt(document.getElementById('age').value),
+        text: document.getElementById('experience').value,
+        date: new Date().toISOString().split('T')[0]
+      };
+
+      experiences.unshift(newExperience);
+      displayExperiences();
+      this.reset();
+
+      // Animation de scroll vers la nouvelle expérience
+      document.querySelector('.experience-card').scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'center'
+      });
     });
 
-    document.querySelectorAll('.experience-card').forEach(card => {
-        observer.observe(card);
-    });
-});
-</script>
+    // Affichage initial
+    document.addEventListener('DOMContentLoaded', displayExperiences);
+  </script>
+</main>
 
 <?php get_footer(); ?>
