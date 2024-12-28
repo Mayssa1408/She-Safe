@@ -228,7 +228,8 @@ get_header();
         </form>
         <div class="links-separator"></div>
         <div class="login-link">
-            <p>Pas encore inscrit ? <a href="inscription.php">Créer un compte</a></p>
+            <p>Pas encore inscrit ? <a href="http://localhost:8888/wordpress/inscription">Créer un compte</a>
+            </p>
         </div>
     </div>
 </section>

@@ -13,9 +13,9 @@
                     <li><a href="<?php echo esc_url(home_url('/')); ?>" class="footer-link">Accueil</a></li>
                     <li><a href="<?php echo esc_url(home_url('/safe-place')); ?>" class="footer-link">Safe Place</a>
                     </li>
-                    <li><a href="<?php echo esc_url(home_url('/forum')); ?>" class="footer-link">Forum</a></li>
+                    <li><a href="<?php echo esc_url(home_url('/reconnexion')); ?>" class="footer-link">Forum</a></li>
                     <li><a href="<?php echo esc_url(home_url('/a-propos')); ?>" class="footer-link">À propos</a></li>
-                    <li><a href="<?php echo esc_url(home_url('/support')); ?>" class="footer-link">Support</a></li>
+                    <li><a href="<?php echo esc_url(home_url('/myfaq-page')); ?>" class="footer-link">Support</a></li>
                 </ul>
             </div>
 
