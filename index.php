@@ -165,27 +165,20 @@ D'accord, je vais vous envoyer le code complet avec toutes les modifications dem
     }
 
     .rectangle .flower-icon {
-      width: 60px;
-      height: 60px;
-      background-color: var(--primary-color);
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 25px;
-      animation: pulse 2s infinite;
-    }
+  font-size: 36px;
+  margin-bottom: 25px;
+  animation: pulse 2s infinite;
+}
 
-    .rectangle .flower-icon::before {
-      content: '🌸';
-      font-size: 36px;
-    }
+.rectangle .flower-icon::before {
+  content: '🌸';
+}
 
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.1); }
-      100% { transform: scale(1); }
-    }
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
 
     .rectangle p {
       font-family: 'Montserrat', sans-serif;
