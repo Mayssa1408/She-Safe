@@ -1,7 +1,3 @@
-Bien sûr, je vais vous fournir le code complet avec les modifications demandées pour la première section et la section
-des témoignages. Voici le code PHP complet pour votre page :
-
-```php
 <?php get_header(); ?>
 
 <main class="content">
@@ -66,7 +62,7 @@ des témoignages. Voici le code PHP complet pour votre page :
     .text-container h1 {
       font-family: 'Great Vibes', cursive;
       font-size: 64px;
-      color: var(--primary-color);
+      color: #9E4A5C;
       margin-bottom: 25px;
       animation: fadeInLeft 1s ease-out;
     }
@@ -92,12 +88,22 @@ des témoignages. Voici le code PHP complet pour votre page :
       background-color: var(--primary-color);
       color: #fff;
       text-decoration: none;
-      font-size: 18px;
+      font-size: 14px;
       padding: 15px 30px;
       border-radius: 50px;
       transition: var(--transition);
       display: inline-block;
+      font-family: 'Montserrat', sans-serif;
       box-shadow: 0 4px 15px #b7536c;
+    }
+
+    .cta-button i {
+      font-size: 16px;
+      /* Taille de l'icône */
+      margin-left: 20px;
+      /* Ajoute un espace de 12px entre le texte et l'icône */
+      vertical-align: middle;
+      /* Aligne l'icône avec le texte */
     }
 
     .cta-button:hover {
@@ -113,12 +119,13 @@ des témoignages. Voici le code PHP complet pour votre page :
       animation: fadeInRight 1s ease-out;
     }
 
+
     .image-container img {
-      width: 50%;
-      height: 50%;
-      object-fit: fill;
-      /* L'image sera déformée pour s'adapter à la section */
-      transition: var(--transition);
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+      object-fit: cover;
+      border-radius: 10px;
     }
 
 
@@ -212,7 +219,7 @@ des témoignages. Voici le code PHP complet pour votre page :
     }
 
     .rectangle .cta-button::after {
-      content: '→';
+
       position: absolute;
       right: 20px;
       top: 50%;
@@ -287,6 +294,17 @@ des témoignages. Voici le code PHP complet pour votre page :
       transition: var(--transition);
     }
 
+    .testimonial-card p {
+      color: #FEF6E9;
+      /* Choisis une couleur spécifique */
+      font-size: 16px;
+      /* Ajuste la taille du texte si nécessaire */
+      line-height: 1.5;
+      /* Améliore la lisibilité */
+      font-weight: bold;
+    }
+
+
     .testimonial-card:hover {
       transform: translateY(-5px);
       box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
@@ -299,7 +317,10 @@ des témoignages. Voici le code PHP complet pour votre page :
     }
 
     .testimonial-header h3 {
-      font-size: 18px;
+      font-family: 'Glory', cursive;
+      font-size: 24px;
+      font-weight: bold;
+      color: #FEF6E9;
       margin: 0;
     }
 
@@ -546,8 +567,23 @@ des témoignages. Voici le code PHP complet pour votre page :
         max-width: 300px;
         margin-bottom: 20px;
       }
+
+      /**svg */
+      .svg-icon {
+        width: 40px;
+        /* Ajuste la largeur */
+        height: auto;
+        /* Maintient le ratio */
+        display: block;
+        /* Assure que l'icône est bien placée */
+        margin: 0 auto;
+        /* Centre l'icône */
+        color: red;
+      }
+
     }
   </style>
+
 
   <!-- Section Intro -->
   <section class="intro-section">
@@ -558,10 +594,14 @@ des témoignages. Voici le code PHP complet pour votre page :
       </div>
       <div class="text-container">
         <h1>She Safe</h1>
-        <h2>Bienvenue dans ta Safe Place !</h2>
-        <p>Rejoins une communauté engagée pour la sécurité des femmes. Partage ton expérience, découvre des lieux sûrs
-          et connecte-toi à un réseau solidaire.</p>
-        <p>Explore dès maintenant !</p>
+
+        <p style="font-size: 1.2rem; color: #9E4A5C; line-height: 1.0; margin-top: 0;">
+          <strong>
+            Rejoins une communauté engagée pour la sécurité des femmes bruxelloises. Partage ton expérience, découvre des lieux sûrs
+            et connecte-toi à un réseau solidaire.
+          </strong>
+        </p>
+
         <a href="<?php echo esc_url(home_url('/a-propos')); ?>" class="cta-button">Découvrez-nous</a>
       </div>
     </div>
@@ -570,17 +610,34 @@ des témoignages. Voici le code PHP complet pour votre page :
   <!-- Section Safe Place -->
   <section class="second-section">
     <div class="rectangle-container">
+      <!--Section 1 --->
       <div class="rectangle">
+        <div class="icon-container mb-3">
+          <!-- Ajout de l'icône avec Font Awesome en jaune -->
+          <i class="fa-solid fa-map-pin" style="font-size: 40px; color: #FBBB16;"></i>
+        </div>
         <h2>Tu cherches une Safe Place à Bruxelles ?</h2>
-        <div class="flower-icon"></div>
         <p>Découvre les lieux les plus sûrs de Bruxelles grâce à nos sondages interactifs.</p>
-        <a href="<?php echo esc_url(home_url('/safe-place')); ?>" class="cta-button">En savoir plus</a>
+        <a href="<?php echo esc_url(home_url('/safe-place')); ?>" class="cta-button">
+          En savoir plus <i class="fa-solid fa-chevron-right"></i>
+        </a>
       </div>
+
+
+
+      <!--Section 2-->
       <div class="rectangle">
+        <div class="icon-container mb-3">
+          <!-- Ajout de l'icône avec Font Awesome en jaune -->
+
+          <i class="fa-solid fa-users" style="font-size: 40px; color: #FBBB16;"></i>
+        </div>
         <h2>Tu as vécu une expérience marquante ?</h2>
-        <div class="flower-icon"></div>
+
         <p>Partage-la avec notre communauté et découvre les témoignages inspirants des autres utilisatrices.</p>
-        <a href="<?php echo esc_url(home_url('/reconnexion')); ?>" class="cta-button">Partager mon expérience</a>
+        <a href="<?php echo esc_url(home_url('/reconnexion')); ?>" class="cta-button">
+          Partager mon expérience <i class="fa-solid fa-chevron-right"></i>
+        </a>
       </div>
     </div>
   </section>
@@ -589,44 +646,58 @@ des témoignages. Voici le code PHP complet pour votre page :
   <!-- SECTION TÉMOIGNAGES -->
   <section class="testimonials-section">
     <div class="container">
-      <h2 class="section-title">Vos avis</h2>
+      <h1 style="font-size: 48px; text-align: center; font-weight: bold; margin-bottom: 50px;">Vos avis</h1>
+      <strong>
+        <p
+          style="text-align: center; font-size: 18px; color: #9E4A5C; margin-bottom: 50px; max-width: 800px; margin-left: auto; margin-right: auto;">
+          Découvres ce que les femmes pensent de She Safe : des témoignages inspirants qui montrent comment cette
+          plateforme a renforcé leur confiance, leur sécurité, et leur sentiment d'appartenance à une communauté
+          bienveillante.
+        </p>
+      </strong>
       <div class="testimonials-container">
         <div class="testimonials-track">
           <div class="testimonial-card">
             <div class="testimonial-header">
               <h3>Marie, 23 ans</h3>
             </div>
-            <p>"She Safe m'a littéralement changé la vie ! Je me sens tellement plus en sécurité maintenant lors de mes
-              sorties nocturnes."</p>
+            <p> <i>"She Safe m'a littéralement changé la vie ! Je me sens tellement plus en sécurité maintenant lors de
+                mes
+                sorties nocturnes."</i> </p>
           </div>
 
           <div class="testimonial-card">
             <div class="testimonial-header">
               <h3>Camille, 18 ans</h3>
             </div>
-            <p>"Grâce à She Safe, j'ai retrouvé confiance. Les conseils de la communauté sont inestimables."</p>
+            <p> <i>"Grâce à She Safe, j'ai retrouvé confiance. Les conseils de la communauté sont inestimables."</i>
+            </p>
           </div>
 
           <div class="testimonial-card">
             <div class="testimonial-header">
               <h3>Laura, 29 ans</h3>
             </div>
-            <p>"Cette app m'a permis de découvrir des endroits sûrs où je peux travailler ou me détendre en toute
-              tranquillité."</p>
+            <p><i>"Ce site m'a permis de découvrir des endroits sûrs où je peux travailler ou me détendre en toute
+                tranquillité."</i>
+            </p>
           </div>
 
           <div class="testimonial-card">
             <div class="testimonial-header">
               <h3>Sophie, 25 ans</h3>
             </div>
-            <p>"La communauté est vraiment bienveillante. C'est rassurant de savoir qu'on n'est pas seule."</p>
+            <p> <i> "La communauté est vraiment bienveillante. C'est rassurant de savoir qu'on n'est pas seule."</i>
+            </p>
           </div>
 
           <div class="testimonial-card">
             <div class="testimonial-header">
               <h3>Emma, 27 ans</h3>
             </div>
-            <p>"J'utilise She Safe tous les jours pour planifier mes trajets. C'est devenu un réflexe indispensable !"
+            <p> <i>"J'utilise She Safe tous les jours pour planifier mes trajets. C'est devenu un réflexe indispensable
+                !"</i>
+
             </p>
           </div>
 
@@ -634,7 +705,10 @@ des témoignages. Voici le code PHP complet pour votre page :
             <div class="testimonial-header">
               <h3>Julie, 31 ans</h3>
             </div>
-            <p>"Les alertes en temps réel m'ont sauvée plusieurs fois d'endroits peu recommandables. Merci She Safe !"
+            <p> <i> "Les sondages interactifs en temps réel m'ont sauvée plusieurs fois d'endroits peu recommandables.
+                Merci
+                She Safe !"</i>
+
             </p>
           </div>
 
@@ -642,16 +716,18 @@ des témoignages. Voici le code PHP complet pour votre page :
             <div class="testimonial-header">
               <h3>Sarah, 22 ans</h3>
             </div>
-            <p>"Une app qui devrait être connue par toutes les femmes. Elle m'a aidée à me sentir plus forte et plus
-              confiante."</p>
+            <p><i> "Un site qui devrait être connue par toutes les femmes. Elle m'a aidée à me sentir plus forte et plus
+                confiante."</i>
+            </p>
           </div>
 
           <div class="testimonial-card">
             <div class="testimonial-header">
               <h3>Léa, 24 ans</h3>
             </div>
-            <p>"Le système de notation des lieux est génial. Ça aide vraiment à identifier les endroits sûrs
-              rapidement."</p>
+            <p> <i>"Le système de notation des lieux est génial. Ça aide vraiment à identifier les endroits sûrs
+                rapidement."</i>
+            </p>
           </div>
         </div>
       </div>

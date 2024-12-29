@@ -13,6 +13,10 @@
     rel="stylesheet">
   <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/style.css">
   <link rel="icon" type="image/x-icon" href="<?php echo get_template_directory_uri(); ?>/favicon.ico">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+
+
   <?php wp_head(); ?>
 </head>
 
