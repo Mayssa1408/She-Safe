@@ -212,22 +212,23 @@ get_header();
 <section>
     <div class="login-container">
         <h1>Connectes-toi pour accéder au forum</h1>
-        <form class="login-form" action="http://localhost:8888/wordpress/forum-page/" method="post">
+        <form class="login-form" action="<?php echo esc_url(wp_login_url(home_url('/forum'))); ?>" method="post">
             <div class="form-group">
-                <input type="text" name="username" placeholder="Nom d'utilisateur" required class="input-field">
+                <input type="text" name="log" placeholder="Nom d'utilisateur" required class="input-field">
             </div>
             <div class="form-group">
-                <input type="password" name="password" placeholder="Mot de passe" required class="input-field">
+                <input type="password" name="pwd" placeholder="Mot de passe" required class="input-field">
             </div>
+            <input type="hidden" name="redirect_to" value="<?php echo esc_url(home_url('/forum')); ?>">
             <div class="forgot-password">
-                <a href="mot-de-passe-oublie">Mot de passe oublié ?</a>
+                <a href="<?php echo wp_lostpassword_url(); ?>">Mot de passe oublié ?</a>
             </div>
             <button type="submit" class="submit-btn">Se connecter</button>
         </form>
         <div class="links-separator"></div>
         <div class="login-link">
-            <p>Pas encore inscrit ? <a href="http://localhost:8888/wordpress/inscription">Créer un compte</a>
-            </p>
+            <p>Pas encore inscrit ?
+                <a href="<?php echo esc_url(home_url('/inscription')); ?>">Créer un compte</a>
         </div>
     </div>
 </section>

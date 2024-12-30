@@ -3,7 +3,7 @@
 
 <?php
 /** 
- * Template Name: forum - Page 
+ * Template Name: Forum
  */
 get_header();
 ?>
