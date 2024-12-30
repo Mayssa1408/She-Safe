@@ -248,11 +248,16 @@ get_header();
         .faq-intro .container {
             flex-direction: column;
             text-align: center;
+            margin-top: 15%;
         }
 
         .faq-items {
             text-align: left;
         }
+    }
+
+    .text{
+        margin-top: 15%;
     }
 </style>
 
@@ -261,9 +266,9 @@ get_header();
     <section class="faq-intro">
         <div class="container">
             <div class="text-content">
-                <h1>Pas de panique,<br>nous t’aidons</h1>
+                <h1>Pas de panique,<br>nous t’aidofazf #000000Ans</h1>
                 <p>Consultez notre FAQ pour trouver des réponses rapides ou remplissez le formulaire de contact pour
-                    nous faire part de vos besoins. Nous sommes là pour vous accompagner.</p>
+                    nous faire part fqssde vos besoins. Nous sommes là pour vous accompagner.</p>
             </div>
             <div class="image-content">
                 <img src="<?php echo get_template_directory_uri(); ?>/assets/images/faq-intro.png" alt="SheSafe FAQ">

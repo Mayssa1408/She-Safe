@@ -16,9 +16,30 @@ get_header();
     /* Section d'introduction */
     .faq-intro {
         background-color: #fdf5e6;
-        padding: 100px 20px 60px;
-        /* Espacement de 100px entre header et premier titre */
+        padding: 150% 20px 60px;
         text-align: center;
+     
+    }
+
+    /* Ajustement pour les petits écrans */
+    @media (max-width: 768px) {
+        .faq-intro {
+            margin-top: 150px;
+            /* Réduit l'espace entre le header et le titre */
+            padding: 50% 20px 60px;
+            /* Réduit le padding pour les petits écrans */
+        }
+
+        .faq-intro .text-content {
+            max-width: 100%;
+            text-align: center;
+ 
+        }
+
+        .faq-intro .container {
+            flex-direction: column;
+            text-align: center;
+        }
     }
 
     .faq-intro .container {
@@ -38,7 +59,6 @@ get_header();
         font-family: 'Glory', cursive;
         font-weight: bold;
         font-size: 24px;
-        /* Montserrat Bold 24px */
         color: #B7536C;
     }
 
@@ -46,7 +66,6 @@ get_header();
         font-family: 'Glory', cursive;
         font-weight: lighter;
         font-size: 18px;
-        /* Montserrat Light 18px */
         color: #555;
         margin-top: 15px;
     }
@@ -59,7 +78,6 @@ get_header();
     /* Section FAQ */
     .faq-section {
         padding: 100px 20px 40px;
-        /* Espacement de 100px entre les sections */
         background-color: #F4C7C2;
     }
 
@@ -67,7 +85,6 @@ get_header();
         font-family: 'Great Vibes', cursive;
         text-align: center;
         font-size: 32px;
-        /* Lora Bold 32px */
         margin-bottom: 30px;
         color: #B7536C;
         font-weight: bold;
@@ -130,7 +147,6 @@ get_header();
     /* Section Formulaire */
     .contact-section {
         padding: 100px 20px 40px;
-        /* Espacement de 100px entre les sections */
         background: #E6DFF1;
     }
 
@@ -140,7 +156,6 @@ get_header();
         text-align: center;
         margin-bottom: 20px;
         font-size: 32px;
-        /* Montserrat Bold 32px */
         color: #8D8DAF;
     }
 
@@ -151,31 +166,22 @@ get_header();
         margin-bottom: 30px;
         color: #555;
         font-size: 18px;
-        /* Montserrat Light 18px */
         max-width: 700px;
-        /* Largeur limitée à 700px */
         margin-left: auto;
         margin-right: auto;
     }
 
     .contact-section textarea {
         width: 100%;
-        /* Prendre toute la largeur disponible */
         padding: 15px;
-        /* Espace à l'intérieur de la zone de texte */
         font-size: 1rem;
-        /* Taille de police ajustée */
         border: 1px solid #8D8DAF;
         border-radius: 5px;
         box-shadow: inset 0 1px 3px #8D8DAF;
         resize: vertical;
-        /* Permettre le redimensionnement vertical */
         min-height: 120px;
-        /* Hauteur minimale pour que la zone soit visible */
         max-height: 400px;
-        /* Hauteur maximale pour ne pas dépasser */
     }
-
 
     .contact-section form {
         max-width: 600px;
@@ -216,7 +222,6 @@ get_header();
         padding: 15px 30px;
         border: none;
         border-radius: 50px;
-        /* Bouton avec arrondis de 50px */
         cursor: pointer;
         font-size: 1rem;
         transition: background 0.3s ease;
@@ -234,12 +239,12 @@ get_header();
         text-align: right;
     }
 
-
     /* Responsive */
     @media (max-width: 768px) {
         .faq-intro .text-content {
             max-width: 100%;
             text-align: center;
+        
         }
 
         .faq-intro .container {
@@ -250,6 +255,9 @@ get_header();
         .faq-items {
             text-align: left;
         }
+    }
+    #faq-intro{
+        margin-top: 15%;
     }
 </style>
 

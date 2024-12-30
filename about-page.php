@@ -5,12 +5,12 @@ get_header();
 
 <div class="w-100 m-0 p-0">
     <!-- Section 1: Introduction -->
-    <section class="hero-section" style="margin-top: 100px;">
+    <section class="hero-section" >
         <div class="row gx-2 gy-0 justify-content-center align-items-center">
             <!-- Image à gauche -->
             <div class="col-lg-6 position-relative px-0 mb-1">
                 <img src="<?php echo get_template_directory_uri(); ?>/images/aboutUs.png" alt="About Us"
-                    class="about-us-" />
+                    class="about-us" />
             </div>
             <!-- Texte à droite -->
             <div class="col-lg-4 col-md-4 col-sm-12 text-lg-start text-center px-4">

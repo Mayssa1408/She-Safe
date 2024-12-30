@@ -6,7 +6,7 @@ get_header();
 <section class="features-section py-5" style="background-color:rgb(249, 232, 230);">
     <div class="container text-center">
         <div class="values-section">
-            <h1 style="color: #9E4A5C; font-size: 36px; font-weight: bold;">Mentions Légales</h1>
+            <h1 style="color: #9E4A5C; font-size: 36px; font-weight: bold; margin-top:100px">Mentions Légales</h1>
             <h3 class="text-center mx-auto text-container">
                 Retrouvez ici toutes les informations légales concernant She Safe.
             </h3>

@@ -15,6 +15,8 @@
   <link rel="icon" type="image/x-icon" href="<?php echo get_template_directory_uri(); ?>/favicon.ico">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
 
   <?php wp_head(); ?>
@@ -24,16 +26,13 @@
 
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #F4C7C2;">
-
     <div class="container-fluid">
-
       <!-- Logo -->
       <a class="navbar-brand d-flex align-items-center" href="<?php echo esc_url(home_url('/')); ?>">
         <img src="<?php echo esc_url(get_template_directory_uri()); ?>/images/SheSafeLG.svg" alt="Logo She Safe"
           width="75" height="55">
-        <h1 class="ms-2 mb-0 fs-4 "style="color : #B0596A;">She Safe</h1>
+        <h1 class="ms-2 mb-0 fs-4 " style="color : #B0596A;">She Safe</h1>
       </a>
-
       <!-- Toggle Button -->
       <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="offcanvas"
         data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">

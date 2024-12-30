@@ -1,20 +1,7 @@
-<!DOCTYPE html>
-<html lang="fr">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>She Safe</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
-</head>
-
 <?php
 /*
 Template Name: Safe Place
 */
-
 get_header(); ?>
 <style>
     #safe-place {
@@ -44,6 +31,7 @@ get_header(); ?>
         font-size: 2.5rem;
         text-align: right;
         animation: slideInRight 1s ease-out;
+        font-family: 'Great Vibes', sans-serif;
     }
 
     @keyframes slideInRight {
@@ -91,6 +79,7 @@ get_header(); ?>
     #safe-place .container-fluid {
         max-width: 100%;
         margin: 0 auto;
+        margin-top: 100px;
     }
 
     #safe-place .icon {
@@ -124,7 +113,7 @@ get_header(); ?>
     }
 
     .poll-card {
-        background-color: #FBD3CE;
+        background-color: #FEF6E9;
         border-radius: 15px 2px 15px 2px;
         box-shadow: 0 10px 30px rgba(186, 71, 109, 0.1);
         padding: 30px;
@@ -246,7 +235,7 @@ get_header(); ?>
         left: 0;
         width: 100%;
         height: 100%;
-        background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.2), transparent);
+        background: linear-gradient(to right, transparent, rgba(202, 24, 24, 0.2), transparent);
         transform: translateX(-100%);
         transition: transform 0.5s ease;
     }
@@ -362,63 +351,44 @@ get_header(); ?>
         box-shadow: 0 6px 20px rgba(183, 83, 108, 0.3);
     }
 
-    /* Style pour le formulaire sans cadre, fond ou contour */
+
     .card {
         background-color: transparent;
-        /* Pas de fond */
         padding: 0;
-        /* Pas de marges internes */
         box-shadow: none;
-        /* Pas d'ombre */
         border: none;
-        /* Suppression des bordures */
         position: relative;
         overflow: visible;
-        /* Pas de limitation de contenu */
     }
 
-    /* Suppression de la barre décorative */
+
     .card::before {
         content: none;
-        /* Rien avant la carte */
     }
 
-    /* Champs de saisie avec bordures */
+
     .form-control {
         border: 2px solid #ba476d;
-        /* Bordure visible pour les champs */
         border-radius: 25px;
-        /* Bordures arrondies */
         padding: 12px 20px;
-        /* Espacement interne */
         margin-bottom: 15px;
-        /* Espacement entre les champs */
         width: 100%;
         transition: all 0.3s ease;
         background-color: #fef6e9;
-        /* Fond léger */
         color: #333;
-        /* Couleur du texte */
     }
 
     .form-control:focus {
         outline: none;
-        /* Pas de contour au focus */
         border-color: #ba476d;
-        /* Bordure accentuée */
         box-shadow: 0 0 0 3px rgba(186, 71, 109, 0.1);
-        /* Légère lueur au focus */
     }
 
-    /* Bouton minimaliste */
     .btn {
         background-color: #ba476d;
-        /* Couleur principale */
         color: white;
         border: none;
-        /* Pas de bordure */
         border-radius: 50px;
-        /* Boutons arrondis */
         padding: 15px 30px;
         font-weight: bold;
         transition: all 0.3s ease;
@@ -426,10 +396,9 @@ get_header(); ?>
 
     .btn:hover {
         background-color: #90274f;
-        /* Changement de couleur au survol */
         transform: translateY(-2px);
         box-shadow: none;
-        /* Pas d'ombre */
+
     }
 
 
@@ -525,7 +494,6 @@ get_header(); ?>
     @media (max-width: 768px) {
         #carousel-navigation {
             flex-direction: row;
-            /* Force l'alignement horizontal même sur mobile */
             gap: 15px;
             padding: 10px;
         }
@@ -538,7 +506,6 @@ get_header(); ?>
         }
     }
 
-    /* Pour très petits écrans */
     @media (max-width: 480px) {
 
         .carousel-control-prev,
@@ -548,22 +515,22 @@ get_header(); ?>
         }
     }
 </style>
-<!--SECTION 1------------------------------------------------------------------------------------------------------->
-<section id="safe-place" class="py-5">
-    <div class="container-fluid px-3">
+
+<!--------------------------------SECTION 1---------------------------------------------------------------------->
+<section id="safe-place" class="py-5" style="padding-top: 100px;">
+    <div class="container-fluid px-4">
         <div class="row align-items-center">
             <!-- Colonne contenant l'icône et le texte -->
             <div class="col-lg-6 col-md-12 text-center text-lg-start px-5">
                 <!-- Titre -->
                 <h2 class="fw-bold mb-4" style="color: #BA476D;">Besoin d'une Safe Place ?</h2>
                 <!-- Texte -->
-                <p class="mb-4" style="color: #333;">
+                <h3 class="mb-4 text-container" style="text-align: right;">
                     Aides la communauté à identifier les lieux où tu te sens en
                     <span class="fw-bold" style="color: #BA476D;">sécurité</span>.
                     Votes pour tes endroits préférés et participes aux classements des Safe Place pour rendre
                     notre ville plus <span class="fw-bold" style="color: #BA476D;">sereine</span> pour toutes.
-                </p>
-
+                </h3>
             </div>
             <!-- Colonne contenant l'image -->
             <div class="col-lg-6 col-md-12 text-center mt-4 mt-lg-0">
@@ -573,11 +540,10 @@ get_header(); ?>
     </div>
 </section>
 
+
 <!---------------------------------SONDAGES--------------------------------------------->
-<!-- Polls Section -->
 
-
-<section id="poll-carousel" class="py-5">
+<section id="poll-carousel" class="py-5" style="background-color: #F7D7D4;">
     <div id="carouselExample" class="carousel slide" data-bs-interval="false">
         <div class="carousel-inner">
             <!-- Parcs -->
@@ -585,7 +551,11 @@ get_header(); ?>
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-lg-8 col-md-10 poll-card">
-                            <h2 class="text-center mb-4">Parcs</h2>
+                            <h2 class="text-center mb-4">
+                                <i class="fa-solid fa-tree" style="display: block; font-size: 2em; color: #FBBB16;"></i>
+                                Parcs
+                            </h2>
+
                             <div id="parcs-results" class="mb-4"></div>
                             <form id="parcs-form">
                                 <div class="option">
@@ -633,7 +603,11 @@ get_header(); ?>
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-lg-8 col-md-10 poll-card">
-                            <h2 class="text-center mb-4">Cafés</h2>
+                            <h2 class="text-center mb-4">
+                                <i class="fa-solid fa-mug-hot"
+                                    style="display: block; font-size: 2em; color: #FBBB16;"></i>
+                                Cafés
+                            </h2>
                             <div id="cafes-results" class="mb-4"></div>
                             <form id="cafes-form">
                                 <div class="option">
@@ -678,7 +652,11 @@ get_header(); ?>
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-lg-8 col-md-10 poll-card">
-                            <h2 class="text-center mb-4">Arrêts de transport en commun</h2>
+                            <h2 class="text-center mb-4">
+                                <i class="fa-solid fa-train-subway"
+                                    style="display: block; font-size: 2em; color: #FBBB16;"></i>
+                                Arrêts de transport en commun
+                            </h2>
                             <div id="transport-results" class="mb-4"></div>
                             <form id="transport-form">
                                 <div class="option">
@@ -725,7 +703,12 @@ get_header(); ?>
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-lg-8 col-md-10 poll-card">
-                            <h2 class="text-center mb-4">Bars</h2>
+                            <h2 class="text-center mb-4">
+                                <i class="fa-solid fa-wine-glass"
+                                    style="display: block; font-size: 2em; color: #FBBB16;"></i>
+                                Bars
+                            </h2>
+
                             <div id="bars-results" class="mb-4"></div>
                             <form id="bars-form">
                                 <div class="option">
@@ -782,7 +765,17 @@ get_header(); ?>
 
 <!-- Section Témoignages -->
 <section class="container my-5">
-    <h2 class="text-center mb-4">Ce que les femmes disent des Safe Places</h2>
+
+    <h1 style="color: #9E4A5C; font-size: 36px; font-weight: bold; text-align: center;">
+        Ce que les femmes disent des Safe Places
+    </h1>
+    <h3 class="text-center mx-auto text-container">
+        Partage tes <strong>lieux favoris à Bruxelles </strong>où tu te sens en sécurité ! Aide la communauté à
+        découvrir ces endroits et
+        à rendre notre ville plus sereine pour toutes.
+    </h3>
+
+
     <div id="testimonials" class="d-flex flex-wrap center-content-between">
         <?php
         // Exemple de données de témoignages
@@ -806,16 +799,28 @@ get_header(); ?>
 </section>
 
 <!-- Section Ajout de Témoignage -->
-<section class="container my-5">
-    <div class="card">
-        <h2 class="text-center mb-4">Partagez votre expérience</h2>
-        <form id="testimonial-form">
-            <input type="text" name="name" class="form-control" placeholder="Votre nom" required>
-            <input type="text" name="place" class="form-control" placeholder="Nom de l'endroit" required>
-            <textarea name="comment" class="form-control" rows="4" placeholder="Ajoutez votre commentaire..."
-                required></textarea>
-            <button type="submit" class="btn">Soumettre mon commentaire</button>
-        </form>
+<section class="py-5" style="background-color: #F7D7D4; width: 100%; padding: 40px; border-radius: 0;">
+    <div class="container">
+        <div class="card" style="border: none; background-color: transparent;">
+            <div class="card">
+                <h1 style="color: #9E4A5C; font-size: 36px; font-weight: bold; text-align: center;">
+                    Partages ton expérience
+                </h1>
+                <h3 class="text-center mx-auto text-container">
+                    Ton expérience peut faire la différence ! En partageant, tu aides d'autres femmes à se sentir plus
+                    confiantes et à découvrir des <strong>lieux sûrs à Bruxelles.</strong>
+                </h3>
+
+
+                <form id="testimonial-form">
+                    <input type="text" name="name" class="form-control" placeholder="Ton prénom" required>
+                    <input type="text" name="place" class="form-control" placeholder="Nom de l'endroit" required>
+                    <textarea name="comment" class="form-control" rows="4" placeholder="Ajoutes ton commentaire..."
+                        required></textarea>
+                    <button type="submit" class="btn">Soumettre mon commentaire</button>
+                </form>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -968,4 +973,4 @@ get_header(); ?>
 
 
 
-<?php get_footer(); ?>  
+<?php get_footer(); ?>

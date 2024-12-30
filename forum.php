@@ -6,20 +6,6 @@
  * Template Name: forum - Page 
  */
 get_header();
-
-
-session_start();
-if (!isset($_SESSION['username'])) {
-    $_SESSION['username'] = null;
-}
-
-?>
-
-<?php
-/** 
- * Template Name: forum - Page 
- */
-get_header();
 ?>
 
 <main class="content">
@@ -47,92 +33,90 @@ get_header();
       background-color: var(--background-light);
     }
 
-    Je vais remettre la police Great Vibes pour le h1 tout en gardant les autres améliorations :
-css
-/* Section Forum Intro */
-.intro-section {
-    padding: 80px 50px;
-    position: relative;
-    overflow: hidden;
-    background-color: var(--background-light);
-}
-
-.intro-container {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.image-container {
-    flex: 1;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-    animation: fadeInLeft 1s ease-out;
-}
-
-.image-container img {
-    width: 100%;
-    max-width: 450px;
-    height: auto;
-    border-radius: 2px 50px 2px 50px;
-    box-shadow: 20px 20px 60px rgba(183, 83, 108, 0.1),
-                -20px -20px 60px rgba(255, 255, 255, 0.8);
-    transition: var(--transition);
-}
-
-.image-container img:hover {
-    transform: translateY(-10px);
-    box-shadow: 25px 25px 70px rgba(183, 83, 108, 0.15),
-                -25px -25px 70px rgba(255, 255, 255, 0.9);
-}
-
-.text-container {
-    flex: 1;
-    max-width: 600px;
-    padding: 20px;
-    animation: fadeInRight 1s ease-out;
-}
-
-.text-container h1 {
-    font-family: 'Great Vibes', cursive;
-    font-size: 48px; /* Taille ajustée pour tenir sur une ligne */
-    color: var(--primary-color);
-    margin-bottom: 25px;
-    line-height: 1.3;
-}
-
-.text-container p {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 18px;
-    color: var(--primary-color);
-    margin-bottom: 30px;
-    line-height: 1.6;
-    max-width: 540px;
-}
-
-@media (max-width: 768px) {
+    /* Section Forum Intro */
     .intro-section {
-        padding: 40px 20px;
+      padding: 80px 50px;
+      position: relative;
+      overflow: hidden;
+      background-color: var(--background-light);
     }
 
-    .text-container h1 {
-        font-size: 42px;
-        text-align: center;
-    }
-
-    .text-container p {
-        text-align: center;
-        margin: 0 auto 30px auto;
+    .intro-container {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 5%;
     }
 
     .image-container {
-        margin-bottom: 30px;
+      flex: 1;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      animation: fadeInLeft 1s ease-out;
+
     }
-}
+
+    .image-container img {
+      width: 100%;
+      max-width: 450px;
+      height: auto;
+
+      transition: var(--transition);
+    }
+
+    .image-container img:hover {
+      transform: translateY(-10px);
+      box-shadow: 25px 25px 70px rgba(183, 83, 108, 0.15),
+        -25px -25px 70px rgba(255, 255, 255, 0.9);
+    }
+
+    .text-container {
+      flex: 1;
+      max-width: 600px;
+      padding: 20px;
+      animation: fadeInRight 1s ease-out;
+    }
+
+    .text-container h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 48px;
+      /* Taille ajustée pour tenir sur une ligne */
+      color: var(--primary-color);
+      margin-bottom: 25px;
+      line-height: 1.3;
+    }
+
+    .text-container p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 18px;
+      color: var(--primary-color);
+      margin-bottom: 30px;
+      line-height: 1.6;
+      max-width: 540px;
+    }
+
+    @media (max-width: 768px) {
+      .intro-section {
+        padding: 10px 2099px;
+      }
+
+      .text-container h1 {
+        font-size: 42px;
+        text-align: center;
+      }
+
+      .text-container p {
+        text-align: center;
+        margin: 0 auto 30px auto;
+      }
+
+      .image-container {
+        margin-bottom: 30px;
+      }
+    }
 
     /* Section Expériences */
     .experiences-section {
@@ -217,148 +201,155 @@ css
       color: #666;
     }
 
-/* Section formulaire */
-.form-section {
-    background: linear-gradient(135deg, var(--background-light), var(--secondary-light));
-    padding: 3rem 0;
-    animation: fadeIn 1s ease-out;
-}
+    /* Section formulaire */
+    .form-section {
+      background: linear-gradient(135deg, var(--background-light), var(--secondary-light));
+      padding: 3rem 0;
+      animation: fadeIn 1s ease-out;
+    }
 
-.form-container {
-    text-align: center;
-    max-width: 400px;
-    width: 90%;
-    margin: 0 auto;
-    animation: floatIn 1s ease-out;
-    border: none;
-    box-shadow: none;
-    padding: 0;
-    background: none;
-}
+    .form-container {
+      text-align: center;
+      max-width: 400px;
+      width: 90%;
+      margin: 0 auto;
+      animation: floatIn 1s ease-out;
+      border: none;
+      box-shadow: none;
+      padding: 0;
+      background: none;
+    }
 
-/* Modification du style pour le titre et l'ajout du trait */
-.form-title {
-    font-size: 2rem;
-    color: var(--primary-color);
-    font-weight: bold;
-    margin-bottom: 1rem; /* Réduit la marge pour le paragraphe */
-}
+    /* Modification du style pour le titre et l'ajout du trait */
+    .form-title {
+      font-size: 2rem;
+      color: var(--primary-color);
+      font-weight: bold;
+      margin-bottom: 1rem;
+      /* Réduit la marge pour le paragraphe */
+    }
 
-/* Style pour le trait séparateur */
-.title-separator {
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(to right, transparent, rgba(183, 83, 108, 0.3), transparent);
-    margin: 1.5rem 0;
-}
+    /* Style pour le trait séparateur */
+    .title-separator {
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(to right, transparent, rgba(183, 83, 108, 0.3), transparent);
+      margin: 1.5rem 0;
+    }
 
-/* Style pour le paragraphe descriptif */
-.form-description {
-    font-size: 1rem;
-    color: var(--primary-color);
-    margin-bottom: 2rem;
-    line-height: 1.5;
-}
+    /* Style pour le paragraphe descriptif */
+    .form-description {
+      font-size: 1rem;
+      color: var(--primary-color);
+      margin-bottom: 2rem;
+      line-height: 1.5;
+    }
 
-.form-group {
-    position: relative;
-    margin-bottom: 1.5rem;
-}
+    .form-group {
+      position: relative;
+      margin-bottom: 1.5rem;
+    }
 
-.form-control {
-    width: 100%;
-    padding: 1.2rem 1.5rem;
-    border: 2px solid rgba(183, 83, 108, 0.3);
-    border-radius: 25px;
-    font-size: 1rem;
-    transition: var(--transition);
-    background: var(--background-light);
-}
+    .form-control {
+      width: 100%;
+      padding: 1.2rem 1.5rem;
+      border: 2px solid rgba(183, 83, 108, 0.3);
+      border-radius: 25px;
+      font-size: 1rem;
+      transition: var(--transition);
+      background: var(--background-light);
+    }
 
-.form-control:focus {
-    outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 15px rgba(183, 83, 108, 0.15);
-    transform: translateY(-2px);
-}
+    .form-control:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 15px rgba(183, 83, 108, 0.15);
+      transform: translateY(-2px);
+    }
 
-textarea.form-control {
-    min-height: 150px;
-    resize: vertical;
-}
+    textarea.form-control {
+      min-height: 150px;
+      resize: vertical;
+    }
 
-.submit-button {
-    background: var(--primary-color);
-    color: white;
-    padding: 0.8rem 1.5rem;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: bold;
-    margin: 1.5rem auto 0;
-    transition: var(--transition);
-    position: relative;
-    overflow: hidden;
-    display: inline-block;
-    box-shadow: 0 4px 15px rgba(183, 83, 108, 0.2);
-}
+    .submit-button {
+      background: var(--primary-color);
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: bold;
+      margin: 1.5rem auto 0;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+      display: inline-block;
+      box-shadow: 0 4px 15px rgba(183, 83, 108, 0.2);
+    }
 
-.submit-button::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent);
-    transform: translateX(-100%);
-    transition: transform 0.6s ease;
-}
+    .submit-button::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transform: translateX(-100%);
+      transition: transform 0.6s ease;
+    }
 
-.submit-button:hover::after {
-    transform: translateX(100%);
-}
+    .submit-button:hover::after {
+      transform: translateX(100%);
+    }
 
-.submit-button:hover {
-    background-color: var(--primary-hover);
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(183, 83, 108, 0.3);
-}
+    .submit-button:hover {
+      background-color: var(--primary-hover);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(183, 83, 108, 0.3);
+    }
 
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
 
-@keyframes floatIn {
-    from {
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes floatIn {
+      from {
         opacity: 0;
         transform: translateY(20px);
-    }
-    to {
+      }
+
+      to {
         opacity: 1;
         transform: translateY(0);
+      }
     }
-}
 
-@media (max-width: 768px) {
-    .form-container {
+    @media (max-width: 768px) {
+      .form-container {
         width: 85%;
-    }
-    
-    .form-title {
+      }
+
+      .form-title {
         font-size: 1.8rem;
-    }
-    
-    .form-control {
+      }
+
+      .form-control {
         padding: 1rem 1.5rem;
-    }
-    
-    .submit-button {
+      }
+
+      .submit-button {
         padding: 1rem 2rem;
+      }
     }
-}
 
     /* Responsive Design */
     @media (max-width: 768px) {
@@ -373,6 +364,7 @@ textarea.form-control {
       .image-container {
         order: -1;
         margin-bottom: 40px;
+        margin-top: 25px;
       }
 
       .text-container {
@@ -394,25 +386,26 @@ textarea.form-control {
     }
   </style>
 
- <!-- Section Intro -->
-<section class="intro-section">
+  <!-- Section Intro -->
+  <section class="intro-section">
     <div class="intro-container">
-        <div class="image-container">
-            <img src="<?php echo esc_url(get_theme_file_uri('assets/images/forum-image.jpg')); ?>" 
-                 alt="Forum She Safe" 
-                 loading="lazy">
-        </div>
-        <div class="text-container">
-            <h1>Un espace bienveillant pour partager</h1>
-            <p>Partagez vos expériences et aidez d'autres femmes à se sentir en sécurité. Votre témoignage peut faire la différence dans la vie de quelqu'un.</p>
-        </div>
+      <div class="image-container">
+        <img src="<?php echo esc_url(get_theme_file_uri('/images/forumIntro.png')); ?>" alt="Forum She Safe"
+          loading="lazy">
+      </div>
+      <div class="text-container">
+        <h1>Un espace bienveillant pour partager</h1>
+        <p>Partages tes expériences et aides d'autres femmes à se sentir en <strong>sécurité.</strong> Ton témoignage
+          peut faire la
+          différence dans la vie de quelqu'un.</p>
+      </div>
     </div>
-</section>
+  </section>
 
   <!-- Section Expériences -->
   <section class="experiences-section">
     <div class="experiences-container">
-      <h2 class="section-title">Expériences partagées</h2>
+      <h2 class="section-title" style="font-family : 'Great Vibes'; font-size : 50px;">Expériences partagées</h2>
       <div id="experiencesList">
         <!-- Les expériences seront ajoutées ici dynamiquement -->
       </div>
@@ -421,28 +414,30 @@ textarea.form-control {
 
   <section class="form-section">
     <div class="form-container">
-        <h2 class="form-title">Partagez votre expérience</h2>
-        <div class="title-separator"></div>
-        <p class="form-description">
-            Votre témoignage est précieux. Il aidera d'autres femmes à se sentir plus en sécurité et soutenues dans leur quotidien.
-        </p>
-        <form id="experienceForm" class="login-form">
-            <div class="form-group">
-                <input type="text" class="form-control" id="name" placeholder="Votre nom" required>
-            </div>
-            
-            <div class="form-group">
-                <input type="number" class="form-control" id="age" placeholder="Votre âge" required>
-            </div>
-            
-            <div class="form-group">
-                <textarea class="form-control" id="experience" placeholder="Partagez votre expérience..." rows="5" required></textarea>
-            </div>
+      <h2 class="form-title" style="font-family : 'Great Vibes'; font-size : 50px;">Partagez votre expérience</h2>
+     
+      <p class="form-description">
+        Votre témoignage est précieux. Il aidera d'autres femmes à se sentir plus en sécurité et soutenues dans leur
+        quotidien.
+      </p>
+      <form id="experienceForm" class="login-form">
+        <div class="form-group">
+          <input type="text" class="form-control" id="name" placeholder="Votre nom" required>
+        </div>
 
-            <button type="submit" class="submit-button">Partager mon expérience</button>
-        </form>
+        <div class="form-group">
+          <input type="number" class="form-control" id="age" placeholder="Votre âge" required>
+        </div>
+
+        <div class="form-group">
+          <textarea class="form-control" id="experience" placeholder="Partagez votre expérience..." rows="5"
+            required></textarea>
+        </div>
+
+        <button type="submit" class="submit-button">Partager mon expérience</button>
+      </form>
     </div>
-</section>
+  </section>
 
   <script>
     // Données des expériences
@@ -476,7 +471,7 @@ textarea.form-control {
         const card = document.createElement('div');
         card.className = 'experience-card';
         card.style.animationDelay = `${index * 0.2}s`;
-        
+
         card.innerHTML = `
           <div class="card-header">
             <h3 class="card-title">${exp.name}, ${exp.age} ans</h3>
@@ -486,13 +481,13 @@ textarea.form-control {
             <p>${exp.text}</p>
           </div>
         `;
-        
+
         experiencesList.appendChild(card);
       });
     }
 
     // Gestion du formulaire
-    document.getElementById('experienceForm').addEventListener('submit', function(e) {
+    document.getElementById('experienceForm').addEventListener('submit', function (e) {
       e.preventDefault();
 
       const newExperience = {
@@ -507,7 +502,7 @@ textarea.form-control {
       this.reset();
 
       // Animation de scroll vers la nouvelle expérience
-      document.querySelector('.experience-card').scrollIntoView({ 
+      document.querySelector('.experience-card').scrollIntoView({
         behavior: 'smooth',
         block: 'center'
       });

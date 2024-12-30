@@ -3,28 +3,7 @@
  * Template Name: Page Se Connecter
  */
 
-// Débogage des erreurs
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
-
-// Hooks de débogage pour la connexion
-add_action('wp_login_failed', function ($username) {
-    error_log('Échec de connexion pour l\'utilisateur : ' . $username);
-}, 10, 1);
-
-add_action('wp_login', function ($user_login, $user) {
-    error_log('Connexion réussie pour l\'utilisateur : ' . $user_login);
-}, 10, 2);
-
-// Redirection si déjà connecté
-if (is_user_logged_in()) {
-    wp_redirect(home_url());
-    exit;
-}
-
-get_header();
-?>
-
+get_header(); ?>
 <style>
     /* Corps principal */
     body {
@@ -45,15 +24,19 @@ get_header();
 
     /* Conteneur principal du formulaire */
     .container {
-        background: white;
         max-width: 900px;
         margin: 40px auto;
         padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        /* Centrer le contenu horizontalement */
     }
 
     /* Formulaire de connexion */
+    form {
+        text-align: left;
+        /* Garde le texte aligné à gauche dans le formulaire */
+    }
+
     form label {
         font-weight: bold;
         color: #B7536C;
@@ -65,16 +48,17 @@ get_header();
         width: 100%;
         padding: 12px;
         border: 1px solid #B7536C;
+        /* Bordure autour des champs de saisie */
         border-radius: 5px;
         margin-top: 8px;
         font-size: 16px;
         color: #B7536C;
         background-color: #FFF1F0;
-        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        /* Couleur de fond claire pour les champs de saisie */
+        transition: box-shadow 0.3s ease;
     }
 
     form input:focus {
-        border-color: #D94F78;
         box-shadow: 0 0 5px rgba(217, 79, 120, 0.7);
         outline: none;
     }
@@ -84,14 +68,25 @@ get_header();
         background-color: #B7536C;
         color: white;
         border: none;
-        padding: 12px 20px;
-        border-radius: 5px;
+        /* Retire la bordure du bouton */
+        padding: 12px 40px;
+        /* Padding ajusté pour l'air autour du texte */
+        border-radius: 50px;
+        /* Coins arrondis à 50px */
         margin-top: 20px;
         font-size: 18px;
         font-weight: bold;
         cursor: pointer;
-        width: 100%;
+        width: auto;
+        /* Permet au bouton de s'adapter à la largeur du texte */
         transition: background-color 0.3s ease, transform 0.2s ease;
+        display: block;
+        /* Le bouton devient un élément de bloc pour pouvoir le centrer */
+        margin-left: auto;
+        margin-right: auto;
+        /* Centrer le bouton */
+        text-align: center;
+        /* Centre le texte à l'intérieur du bouton */
     }
 
     button:hover {
@@ -143,77 +138,64 @@ get_header();
     }
 </style>
 
-
-
 <main class="content">
-    <div class="container" style="background-color: #FEF6E9; max-width: 1200px; margin-top: 100px; padding: 50px;">
+
+    <div class="container" style="background-color: none; max-width: 1200px; margin-top: 100px; padding: 50px;">
+        <!-- Formulaire de connexion -->
         <div class="row">
             <div class="col-lg-6 col-12">
                 <h1 class="titreseconnecter">Se connecter</h1>
 
                 <?php
-                // Traitement du formulaire
-                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                    // Vérification du nonce
-                    if (isset($_POST['login_nonce']) && wp_verify_nonce($_POST['login_nonce'], 'login_action')) {
-                        $username = isset($_POST['uname']) ? sanitize_user($_POST['uname']) : '';
-                        $password = isset($_POST['upass']) ? $_POST['upass'] : '';
+                // Si l'utilisateur est déjà connecté, le rediriger
+                if (is_user_logged_in()) {
+                    echo '<p style="color: green;">Vous êtes déjà connecté. <a href="' . esc_url(home_url('/')) . '">Retour à l\'accueil</a></p>';
+                } else {
+                    // Si le formulaire est soumis
+                    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login_nonce'])) {
+                        if (wp_verify_nonce($_POST['login_nonce'], 'login_action')) {
+                            $username = sanitize_user($_POST['uname']);
+                            $password = sanitize_text_field($_POST['upass']);
 
-                        if (empty($username) || empty($password)) {
-                            echo '<div class="alert alert-danger">Veuillez remplir tous les champs.</div>';
-                        } else {
+                            // Tentative de connexion
                             $creds = array(
                                 'user_login' => $username,
                                 'user_password' => $password,
                                 'remember' => true
                             );
 
-                            // Désactive la redirection automatique de WordPress
-                            remove_action('authenticate', 'wp_authenticate_redirect_login_failed', 10);
-
                             $user = wp_signon($creds, false);
 
                             if (is_wp_error($user)) {
-                                echo '<div class="alert alert-danger">' .
-                                    esc_html($user->get_error_message()) .
-                                    '</div>';
-                                error_log('Erreur de connexion : ' . $user->get_error_message());
+                                echo '<p style="color: red;">Erreur de connexion : ' . $user->get_error_message() . '</p>';
                             } else {
-                                wp_set_current_user($user->ID);
-                                wp_set_auth_cookie($user->ID, true);
-
-                                // Redirection en PHP plutôt qu'en JavaScript
-                                wp_safe_redirect(home_url());
+                                wp_redirect(home_url()); // Redirige vers la page d'accueil après une connexion réussie
                                 exit;
                             }
+                        } else {
+                            echo '<p style="color: red;">Nonce de sécurité invalide.</p>';
                         }
-                    } else {
-                        echo '<div class="alert alert-danger">Erreur de sécurité. Veuillez réessayer.</div>';
                     }
                 }
                 ?>
 
-                <form method="POST" action="">
+                <form method="POST">
                     <label for="uname">Nom d'utilisateur</label>
-                    <input type="text" id="uname" name="uname" required
-                        value="<?php echo isset($_POST['uname']) ? esc_attr($_POST['uname']) : ''; ?>" />
+                    <input type="text" id="uname" name="uname" required />
 
                     <label for="upass">Mot de passe</label>
                     <input type="password" id="upass" name="upass" required />
 
-                    <?php wp_nonce_field('login_action', 'login_nonce'); ?>
-
+                    <input type="hidden" name="login_nonce" value="<?php echo wp_create_nonce('login_action'); ?>">
                     <button type="submit" class="btn-inscrire">Se connecter</button>
                 </form>
 
-                <p>Pas encore inscrit ?
-                    <a href="<?php echo esc_url(get_permalink(get_page_by_path('inscription'))); ?>">
-                        Créer un compte
-                    </a>
+                <p>Pas encore inscrit ? <a href="<?php echo esc_url(home_url('/inscription')); ?>">Créer un compte</a>
                 </p>
             </div>
         </div>
     </div>
+
 </main>
 
 <?php get_footer(); ?>

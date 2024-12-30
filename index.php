@@ -99,11 +99,8 @@
 
     .cta-button i {
       font-size: 16px;
-      /* Taille de l'icône */
       margin-left: 20px;
-      /* Ajoute un espace de 12px entre le texte et l'icône */
       vertical-align: middle;
-      /* Aligne l'icône avec le texte */
     }
 
     .cta-button:hover {
@@ -511,6 +508,7 @@
     @media (max-width: 768px) {
       .intro-section {
         padding: 40px 20px;
+        margin-top: 15%;
       }
 
       .intro-container {
@@ -597,7 +595,8 @@
 
         <p style="font-size: 1.2rem; color: #9E4A5C; line-height: 1.0; margin-top: 0;">
           <strong>
-            Rejoins une communauté engagée pour la sécurité des femmes bruxelloises. Partage ton expérience, découvre des lieux sûrs
+            Rejoins une communauté engagée pour la sécurité des femmes bruxelloises. Partage ton expérience, découvre
+            des lieux sûrs
             et connecte-toi à un réseau solidaire.
           </strong>
         </p>
@@ -612,28 +611,22 @@
     <div class="rectangle-container">
       <!--Section 1 --->
       <div class="rectangle">
+        <h2>Tu cherches une Safe Place à Bruxelles ?</h2>
         <div class="icon-container mb-3">
-          <!-- Ajout de l'icône avec Font Awesome en jaune -->
           <i class="fa-solid fa-map-pin" style="font-size: 40px; color: #FBBB16;"></i>
         </div>
-        <h2>Tu cherches une Safe Place à Bruxelles ?</h2>
         <p>Découvre les lieux les plus sûrs de Bruxelles grâce à nos sondages interactifs.</p>
         <a href="<?php echo esc_url(home_url('/safe-place')); ?>" class="cta-button">
           En savoir plus <i class="fa-solid fa-chevron-right"></i>
         </a>
       </div>
 
-
-
       <!--Section 2-->
       <div class="rectangle">
+        <h2>Tu as vécu une expérience marquante ?</h2>
         <div class="icon-container mb-3">
-          <!-- Ajout de l'icône avec Font Awesome en jaune -->
-
           <i class="fa-solid fa-users" style="font-size: 40px; color: #FBBB16;"></i>
         </div>
-        <h2>Tu as vécu une expérience marquante ?</h2>
-
         <p>Partage-la avec notre communauté et découvre les témoignages inspirants des autres utilisatrices.</p>
         <a href="<?php echo esc_url(home_url('/reconnexion')); ?>" class="cta-button">
           Partager mon expérience <i class="fa-solid fa-chevron-right"></i>
@@ -646,14 +639,14 @@
   <!-- SECTION TÉMOIGNAGES -->
   <section class="testimonials-section">
     <div class="container">
-      <h1 style="font-size: 48px; text-align: center; font-weight: bold; margin-bottom: 50px;">Vos avis</h1>
+      <h1 style="font-size: 48px; text-align: center; font-weight: bold;  color : #9E4A5C;">Vos avis
+      </h1>
       <strong>
-        <p
-          style="text-align: center; font-size: 18px; color: #9E4A5C; margin-bottom: 50px; max-width: 800px; margin-left: auto; margin-right: auto;">
-          Découvres ce que les femmes pensent de She Safe : des témoignages inspirants qui montrent comment cette
-          plateforme a renforcé leur confiance, leur sécurité, et leur sentiment d'appartenance à une communauté
+        <h3 class="text-center mx-auto text-container">
+          Découvres ce que les femmes pensent de <b>She Safe</b> : des témoignages inspirants qui montrent comment cette
+          plateforme a renforcé <b>leur confiance, leur sécurité, et leur sentiment d'appartenance</b> à une communauté
           bienveillante.
-        </p>
+        </h3>
       </strong>
       <div class="testimonials-container">
         <div class="testimonials-track">
@@ -778,11 +771,15 @@
 
   <!-- SECTION NEWSLETTER -->
   <section class="newsletter-section">
-    <h1 class="newsletter-title">Bruxelles en toute sécurité. Participe à notre initiative !</h1>
-    <p class="newsletter-text">
+    <h1 class="newsletter-title" style="color: #FFFFE9;">
+      Bruxelles en toute sécurité. Participe à notre initiative !
+    </h1>
+
+    <h3 class="text-center mx-auto text-container" style="color: #FFFFE9;">
       Abonne-toi à notre newsletter pour contribuer à la liste des lieux les plus sûrs de Bruxelles.
       Reçois des infos utiles et reste informée pour te déplacer en toute confiance !
-    </p>
+    </h3>
+
 
     <div class="input-container">
       <!-- Prénom Input -->

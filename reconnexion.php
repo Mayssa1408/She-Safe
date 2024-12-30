@@ -32,6 +32,7 @@ get_header();
         align-items: center;
         padding: 3rem 0;
         animation: fadeIn 1s ease-out;
+        margin-top: 20px;
     }
 
     @keyframes fadeIn {
@@ -50,13 +51,10 @@ get_header();
         width: 90%;
         animation: floatIn 1s ease-out;
         border: none;
-        /* Retrait de la bordure */
         box-shadow: none;
-        /* Retrait de l'ombre */
         padding: 0;
-        /* Retrait des marges internes */
         background: none;
-        /* Pas de fond */
+        margin-top: 10%;
     }
 
     @keyframes floatIn {
@@ -213,7 +211,7 @@ get_header();
 
 <section>
     <div class="login-container">
-        <h1>Connectez-vous pour accéder au forum</h1>
+        <h1>Connectes-toi pour accéder au forum</h1>
         <form class="login-form" action="http://localhost:8888/wordpress/forum-page/" method="post">
             <div class="form-group">
                 <input type="text" name="username" placeholder="Nom d'utilisateur" required class="input-field">
