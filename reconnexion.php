@@ -212,14 +212,49 @@ get_header();
 <section>
     <div class="login-container">
         <h1>Connectes-toi pour accéder au forum</h1>
-        <form class="login-form" action="<?php echo esc_url(wp_login_url(home_url('/forum'))); ?>" method="post">
+        <?php
+        // Vérifier si l'utilisateur est déjà connecté
+        if (is_user_logged_in()) {
+            wp_redirect(home_url('/forum'));
+            exit;
+        }
+
+        // Traitement du formulaire
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login_nonce'])) {
+            if (wp_verify_nonce($_POST['login_nonce'], 'login_action')) {
+                $creds = array(
+                    'user_login' => sanitize_user($_POST['log']),
+                    'user_password' => $_POST['pwd'],
+                    'remember' => true
+                );
+
+                $user = wp_signon($creds, false);
+
+                if (!is_wp_error($user)) {
+                    wp_redirect(home_url('/forum'));
+                    exit;
+                } else {
+                    $error_message = $user->get_error_message();
+                }
+            }
+        }
+        ?>
+
+        <!-- Affichage des erreurs -->
+        <?php if (isset($error_message)): ?>
+            <div class="error-message">
+                <?php echo esc_html($error_message); ?>
+            </div>
+        <?php endif; ?>
+
+        <form class="login-form" method="post">
+            <?php wp_nonce_field('login_action', 'login_nonce'); ?>
             <div class="form-group">
                 <input type="text" name="log" placeholder="Nom d'utilisateur" required class="input-field">
             </div>
             <div class="form-group">
                 <input type="password" name="pwd" placeholder="Mot de passe" required class="input-field">
             </div>
-            <input type="hidden" name="redirect_to" value="<?php echo esc_url(home_url('/forum')); ?>">
             <div class="forgot-password">
                 <a href="<?php echo wp_lostpassword_url(); ?>">Mot de passe oublié ?</a>
             </div>
@@ -232,5 +267,6 @@ get_header();
         </div>
     </div>
 </section>
+
 
 <?php get_footer(); ?>

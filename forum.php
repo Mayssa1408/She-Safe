@@ -1,6 +1,3 @@
-<!DOCTYPE html>
-<html lang="fr">
-
 <?php
 /** 
  * Template Name: Forum
